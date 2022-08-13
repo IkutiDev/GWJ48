@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 150 )
+
+[sub_resource type="OpenSimplexNoise" id=2]
+period = 0.1
+persistence = 0.747
+lacunarity = 1.38
+
+[sub_resource type="NoiseTexture" id=3]
+width = 300
+height = 300
+noise = SubResource( 2 )
+
+[node name="TestWall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 150 )
+shape = SubResource( 1 )
+
+[node name="Texture" type="Polygon2D" parent="."]
+color = Color( 0.419608, 0.427451, 0.447059, 1 )
+texture = SubResource( 3 )
+polygon = PoolVector2Array( -25, 0, 25, 0, 25, 300, -25, 300 )
+__meta__ = {
+"_editor_description_": ""
+}

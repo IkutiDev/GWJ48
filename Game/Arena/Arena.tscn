@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Arena/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Arena/TestWall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Arena/TestPlatform.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -13,10 +15,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.8, 3.4, 5 ),
-"transitions": PoolRealArray( -2, -2, -2, 1 ),
+"times": PoolRealArray( 0, 1.8, 3.4 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
 "update": 0,
-"values": [ Vector2( 157, 225 ), Vector2( 157, 102 ), Vector2( 157, 321 ), Vector2( 157, 225 ) ]
+"values": [ Vector2( 79, 236 ), Vector2( 453, 81 ), Vector2( 767, 252 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -48,3 +50,45 @@ zoom = Vector2( 0.25, 0.25 )
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="TestWall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 29, 0 )
+
+[node name="TestWall2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 847, 0 )
+
+[node name="TestWall3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 600, 323 )
+rotation = 1.5708
+
+[node name="TestWall5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 869, 323 )
+rotation = 1.5708
+
+[node name="TestWall4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 304, 323 )
+rotation = 1.5708
+
+[node name="Platform" parent="." instance=ExtResource( 3 )]
+position = Vector2( 691, 239 )
+
+[node name="Platform2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 520, 184 )
+
+[node name="Platform6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, 185 )
+
+[node name="Platform3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 182, 245 )
+
+[node name="Platform4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 157, 112 )
+
+[node name="Platform5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 701, 107 )
+
+[node name="Platform7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 525, 43 )
+
+[node name="Platform8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 317, 47 )

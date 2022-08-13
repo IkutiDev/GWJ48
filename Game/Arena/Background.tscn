@@ -7,8 +7,8 @@
 follow_viewport_enable = true
 
 [node name="Sky" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 1, 0.2 )
-motion_offset = Vector2( 0, -160 )
+motion_scale = Vector2( 0.1, 0.2 )
+motion_offset = Vector2( -120, -160 )
 __meta__ = {
 "_editor_description_": ""
 }
