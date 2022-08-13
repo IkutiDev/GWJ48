@@ -36,6 +36,7 @@ func physics_process(delta: float) -> void:
 	if owner.is_on_floor():
 		var target_state: = "Move/Idle" if move.get_move_direction().x == 0.0 else "Move/Run"
 		_state_machine.transition_to(target_state)
+		owner.audio_player.play_fall_SFX()
 
 func process(delta: float) -> void:
 	var move = get_parent() as MoveState
@@ -80,6 +81,7 @@ func jump() -> void:
 	move.velocity.y = 0
 	move.velocity += calculate_jump_velocity(jump_impulse)
 	_jump_count += 1
+	owner.audio_player.play_jump_SFX()
 
 func calculate_jump_velocity(impulse: = 0.0) -> Vector2:
 	var move: = get_parent() as MoveState

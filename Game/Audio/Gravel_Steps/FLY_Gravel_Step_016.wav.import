@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FLY_Gravel_Step_016.wav-88c050100416a7a21c2a0728f99607fa.sample"
+
+[deps]
+
+source_file="res://Audio/Gravel_Steps/FLY_Gravel_Step_016.wav"
+dest_files=[ "res://.import/FLY_Gravel_Step_016.wav-88c050100416a7a21c2a0728f99607fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

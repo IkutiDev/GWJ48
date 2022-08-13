@@ -56,6 +56,10 @@ one_shot = true
 [node name="Run" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 3 )
 max_sprint_speed = 300.0
+sprint_footstep_sound_speed = 0.35
+
+[node name="FootStepsTimer" type="Timer" parent="StateMachine/Move/Run"]
+wait_time = 0.5
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 2 )
