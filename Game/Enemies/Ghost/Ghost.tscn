@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Enemies/Ghost/Ghost.gd" type="Script" id=1]
+[ext_resource path="res://Resouces/Particles/SmallPoint.png" type="Texture" id=2]
+[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_7.png" type="Texture" id=4]
+[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_3.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/trailShader.tres" type="Shader" id=6]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.245161, 0.496774, 0.793548, 0.870968 )
+colors = PoolColorArray( 0.152941, 0.152941, 0.152941, 0, 0.886719, 0.886719, 0.886719, 1, 0.267609, 0.925781, 0, 1, 1, 0.940186, 0.453125, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 6 )
+shader_param/scrollSpeed1 = Vector2( 0, 1.314 )
+shader_param/scrollSpeed2 = Vector2( -1.306, 0 )
+shader_param/texture1Light = -3.106
+shader_param/texture2Light = -0.279
+shader_param/texture1 = ExtResource( 5 )
+shader_param/texture2 = ExtResource( 4 )
+shader_param/gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.709091 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.409091 ), -0.0848484, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 6.08276
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 120.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "New Anim"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:wobble")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 2, -2 ),
+"update": 0,
+"values": [ -20.0, -80.0 ]
+}
+
+[node name="Ghost" type="KinematicBody2D" groups=["Enemies"]]
+script = ExtResource( 1 )
+wobble = -20.5219
+
+[node name="Trail" type="Line2D" parent="."]
+material = SubResource( 3 )
+points = PoolVector2Array( 0, 2, 0, 5, 0, 8, 0, 11, 0, 14, 0, 17 )
+width_curve = SubResource( 4 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="SmallPoint" type="Sprite" parent="."]
+self_modulate = Color( 0.666667, 1, 0.619608, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="AttackRange" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource( 6 )
+
+[node name="Wobbler" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 7 )
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]

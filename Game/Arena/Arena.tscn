@@ -90,7 +90,7 @@ text = "Player"
 position = Vector2( 403, -170 )
 
 [node name="Platform2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 364, -46 )
+position = Vector2( 369, -82 )
 
 [node name="Platform6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 185, -127 )
@@ -99,7 +99,7 @@ position = Vector2( 185, -127 )
 position = Vector2( 95, -41 )
 
 [node name="Platform5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 239, 47 )
+position = Vector2( 240, -75 )
 
 [node name="Platform9" parent="." instance=ExtResource( 3 )]
 position = Vector2( 98, -222 )
@@ -116,9 +116,11 @@ position = Vector2( 113, -425 )
 [node name="Platform8" parent="." instance=ExtResource( 3 )]
 position = Vector2( 235, -311 )
 
-[node name="Guide" type="Sprite" parent="."]
-position = Vector2( 100, 121 )
-texture = ExtResource( 5 )
-
 [node name="ShadowShader" parent="." instance=ExtResource( 4 )]
 position = Vector2( 142, 121 )
+
+[node name="Ghost" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, 101 )
+
+[node name="DummyPlayer" parent="." instance=ExtResource( 5 )]
+position = Vector2( 34, 123 )
