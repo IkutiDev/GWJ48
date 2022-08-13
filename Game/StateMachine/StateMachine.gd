@@ -1,5 +1,5 @@
 extends Node
-class_name StateMachine, "res://assets/icons/state_machine.svg"
+class_name StateMachine, "res://Editor/icons/state_machine.svg"
 
 """
 Generic State Machine. Intializes states and delegates engine callbacks

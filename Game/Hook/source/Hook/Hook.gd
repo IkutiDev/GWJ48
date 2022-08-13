@@ -1,5 +1,5 @@
 extends Position2D
-class_name Hook, "res://assets/icons/icon_hook.svg"
+class_name Hook, "res://Editor/icons/icon_hook.svg"
 """
 Base hook class
 """

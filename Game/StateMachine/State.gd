@@ -1,5 +1,5 @@
 extends Node
-class_name State, "res://assets/icons/state.svg"
+class_name State, "res://Editor/icons/state.svg"
 """
 State interface to use in Hierarchical State Machines
 """
