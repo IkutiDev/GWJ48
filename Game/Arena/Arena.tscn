@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Arena/Background.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8, 3.4, 5 ),
+"transitions": PoolRealArray( -2, -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 157, 225 ), Vector2( 157, 102 ), Vector2( 157, 321 ), Vector2( 157, 225 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 157, 225 ) ]
+}
+
+[node name="Arena" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+follow_viewport_enable = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 157, 225 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+anims/RESET = SubResource( 2 )

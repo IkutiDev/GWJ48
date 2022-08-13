@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Arena/Moon.png" type="Texture" id=1]
+[ext_resource path="res://Arena/Sky.png" type="Texture" id=2]
+
+[node name="Background" type="ParallaxBackground"]
+follow_viewport_enable = true
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 1, 0.2 )
+motion_offset = Vector2( 0, -160 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Sky" type="Sprite" parent="Sky"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Moon" type="Sprite" parent="Sky"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="City" type="ParallaxLayer" parent="."]
