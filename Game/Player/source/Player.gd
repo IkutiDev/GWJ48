@@ -19,4 +19,4 @@ func set_is_active(value: bool) -> void:
 	if not collider:
 		return
 	collider.disabled = not value
-	hook.is_active = value
+#	hook.is_active = value

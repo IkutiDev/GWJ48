@@ -15,6 +15,7 @@ enabled = true
 cast_to = Vector2( 300, 0 )
 
 [node name="Arrow" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="SnapDetector" parent="." instance=ExtResource( 6 )]
 
