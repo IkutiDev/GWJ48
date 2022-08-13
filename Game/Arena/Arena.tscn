@@ -51,6 +51,7 @@ tracks/1/keys = {
 }
 
 [node name="Arena" type="Node2D"]
+position = Vector2( -7, 2 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -69,7 +70,6 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
-autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
@@ -115,3 +115,10 @@ position = Vector2( 113, -425 )
 
 [node name="Platform8" parent="." instance=ExtResource( 3 )]
 position = Vector2( 235, -311 )
+
+[node name="Guide" type="Sprite" parent="."]
+position = Vector2( 100, 121 )
+texture = ExtResource( 5 )
+
+[node name="ShadowShader" parent="." instance=ExtResource( 4 )]
+position = Vector2( 142, 121 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ex.png-e7f11e479d5a7751a7dcb7724eef89bb.stex"
+path="res://.import/Shader_Texture_1.png-f894660dd3e18efeef1d3340b6adc315.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resouces/Particles/Ex.png"
-dest_files=[ "res://.import/Ex.png-e7f11e479d5a7751a7dcb7724eef89bb.stex" ]
+source_file="res://Resouces/ShaderTextures/Shader_Texture_1.png"
+dest_files=[ "res://.import/Shader_Texture_1.png-f894660dd3e18efeef1d3340b6adc315.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
