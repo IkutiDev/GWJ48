@@ -8,6 +8,46 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Position2D",
+"class": "Hook",
+"language": "GDScript",
+"path": "res://Hook/source/Hook/Hook.gd"
+}, {
+"base": "Area2D",
+"class": "HookTarget",
+"language": "GDScript",
+"path": "res://Hook/source/HookTarget.gd"
+}, {
+"base": "State",
+"class": "MoveState",
+"language": "GDScript",
+"path": "res://Player/source/States/Move.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/source/Player.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://StateMachine/StateMachine.gd"
+} ]
+_global_script_class_icons={
+"Hook": "",
+"HookTarget": "",
+"MoveState": "",
+"Player": "",
+"State": "",
+"StateMachine": ""
+}
+
 [application]
 
 config/name="Godot Wild Jam 48"
@@ -24,6 +64,13 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="World"
+2d_physics/layer_3="Hookable"
+2d_physics/layer_4="Passthrough"
 
 [physics]
 
