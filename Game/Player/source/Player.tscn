@@ -43,7 +43,7 @@ script = ExtResource( 10 )
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 max_speed_default = Vector2( 200, 2000 )
-max_fall_speed = 500.0
+max_fall_speed = 450.0
 decceleration_default = Vector2( 1500, 3000 )
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
@@ -63,6 +63,7 @@ wait_time = 0.5
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 2 )
+acceleration_x = 2500.0
 jump_impulse = 800.0
 
 [node name="JumpDelay" type="Timer" parent="StateMachine/Move/Air"]
