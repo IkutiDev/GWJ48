@@ -135,6 +135,9 @@ debug_info={
 2d_physics/layer_2="World"
 2d_physics/layer_3="Hookable"
 2d_physics/layer_4="Passthrough"
+2d_physics/layer_5="PlayerAttack"
+2d_physics/layer_6="Enemy"
+2d_physics/layer_7="EnemyAttack"
 
 [physics]
 

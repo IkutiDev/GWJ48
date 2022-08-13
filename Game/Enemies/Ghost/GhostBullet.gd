@@ -10,6 +10,7 @@ func _on_GhostBullet_body_entered(body : PhysicsBody2D):
 	if body.has_method("damage"):
 		body.damage(damage)
 	$PopAnimator.play("Pop")
+	linear_velocity = Vector2(0,0)
 	pass # Replace with function body.
 
 

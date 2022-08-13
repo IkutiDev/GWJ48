@@ -22,7 +22,7 @@ void fragment() {
 	
 	float intesity = texture(texture1, UV + scorll1 * lifetime).r * texture(texture2, UV + scorll2 * lifetime).r;
 	
-	vec4 gradientColor = texture(gradient, vec2(intesity * 2.8));
+	vec4 gradientColor = texture(gradient, vec2(intesity * 2.0));
 	COLOR = gradientColor;
 	COLOR.a *= textureColor.a;
 }"

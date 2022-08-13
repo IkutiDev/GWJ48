@@ -27,9 +27,9 @@ func _ready():
 func fire_bullet():
 	var newBullet = bulletScene.instance()
 	newBullet.global_position = global_position
-	var attackDir = desiredLoc - global_position
+	var attackDir = target.global_position - global_position
 	attackDir = attackDir.normalized()
-	newBullet.applied_force = attackDir * 0.5
+	newBullet.apply_central_impulse(attackDir * 59.8) 
 	get_parent().add_child(newBullet)
 	pass
 

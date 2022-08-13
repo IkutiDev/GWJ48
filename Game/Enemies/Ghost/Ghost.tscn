@@ -1,26 +1,37 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemies/Ghost/Ghost.gd" type="Script" id=1]
 [ext_resource path="res://Resouces/Particles/SmallPoint.png" type="Texture" id=2]
-[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_7.png" type="Texture" id=4]
-[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_3.png" type="Texture" id=5]
+[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_10.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/trailShader.tres" type="Shader" id=6]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.245161, 0.496774, 0.793548, 0.870968 )
-colors = PoolColorArray( 0.152941, 0.152941, 0.152941, 0, 0.886719, 0.886719, 0.886719, 1, 0.267609, 0.925781, 0, 1, 1, 0.940186, 0.453125, 1, 1, 1, 1, 0 )
+offsets = PoolRealArray( 0.148387, 0.245161, 0.43871, 0.535484, 0.793548, 0.870968 )
+colors = PoolColorArray( 0.152941, 0.152941, 0.152941, 0, 0.886719, 0.886719, 0.886719, 1, 0.267609, 0.925781, 0, 1, 0.698039, 0.933333, 0.266667, 0, 1, 0.940186, 0.453125, 1, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
+[sub_resource type="OpenSimplexNoise" id=8]
+octaves = 6
+period = 198.8
+persistence = 0.682
+lacunarity = 1.71
+
+[sub_resource type="NoiseTexture" id=9]
+width = 64
+height = 64
+seamless = true
+noise = SubResource( 8 )
+
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 6 )
-shader_param/scrollSpeed1 = Vector2( 0, 1.314 )
-shader_param/scrollSpeed2 = Vector2( -1.306, 0 )
-shader_param/texture1Light = -3.106
-shader_param/texture2Light = -0.279
-shader_param/texture1 = ExtResource( 5 )
-shader_param/texture2 = ExtResource( 4 )
+shader_param/scrollSpeed1 = Vector2( 0.115, 0.075 )
+shader_param/scrollSpeed2 = Vector2( -0.785, -0.184 )
+shader_param/texture1Light = -0.365
+shader_param/texture2Light = -1.408
+shader_param/texture1 = SubResource( 9 )
+shader_param/texture2 = ExtResource( 3 )
 shader_param/gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
@@ -50,6 +61,8 @@ tracks/0/keys = {
 }
 
 [node name="Ghost" type="KinematicBody2D" groups=["Enemies"]]
+collision_layer = 32
+collision_mask = 16
 script = ExtResource( 1 )
 wobble = -20.5219
 
@@ -70,6 +83,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 5 )
 
 [node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
