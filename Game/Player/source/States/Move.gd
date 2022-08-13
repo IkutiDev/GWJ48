@@ -66,7 +66,14 @@ func process(delta: float) -> void:
 	if get_move_direction().x == 0:
 		owner.skin.play_animated_sprite("idle")
 	else:
+		movement_animation()
+			
+func movement_animation() -> void:
+	var run_is_pressed: = Input.is_action_pressed("sprint")
+	if run_is_pressed:
 		owner.skin.play_animated_sprite("run")
+	else:
+		owner.skin.play_animated_sprite("walk")
 
 static func calculate_velocity(
 	old_velocity: Vector2,

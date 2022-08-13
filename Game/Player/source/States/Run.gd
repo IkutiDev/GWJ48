@@ -23,8 +23,10 @@ func process(delta: float) -> void:
 	move.process(delta)
 
 func enter(msg: Dictionary = {}) -> void:
-	get_parent().enter(msg)
-	owner.skin.play_animated_sprite("run")
+	var move := get_parent() as MoveState
+	move.enter(msg)
+	move.movement_animation()
+	
 	
 func exit() -> void:
 	get_parent().exit()
