@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/window_glass_tall_3.png-aaa15c8e883d6044887f4a6ff3a48ea8.stex"
+path="res://.import/window_glass.png-fe483fb0526a2ba6c802121b79b3675f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arena/Tiles/window_glass_tall_3.png"
-dest_files=[ "res://.import/window_glass_tall_3.png-aaa15c8e883d6044887f4a6ff3a48ea8.stex" ]
+source_file="res://Arena/Tiles/window_glass.png"
+dest_files=[ "res://.import/window_glass.png-fe483fb0526a2ba6c802121b79b3675f.stex" ]
 
 [params]
 
