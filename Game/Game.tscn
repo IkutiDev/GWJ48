@@ -14,5 +14,5 @@ smoothing_enabled = true
 smoothing_speed = 3.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -141, 140 )
+position = Vector2( -139, 134 )
 scale = Vector2( 0.5, 0.5 )
