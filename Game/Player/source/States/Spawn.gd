@@ -17,5 +17,4 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	owner.is_active = true
-	owner.hook.visible = true
 	owner.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")

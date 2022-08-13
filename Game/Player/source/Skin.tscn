@@ -264,11 +264,9 @@ animations = [ {
 script = ExtResource( 3 )
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -84 )
-scale = Vector2( 3.014, 3.014 )
+position = Vector2( 0, -28 )
 frames = SubResource( 1 )
-animation = "walk"
-frame = 4
+animation = "idle"
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -276,6 +274,6 @@ root_node = NodePath("../PlayerSprite")
 
 [node name="Shadow" type="Sprite" parent="."]
 show_behind_parent = true
-position = Vector2( -2, 2 )
-scale = Vector2( -0.504181, -0.504181 )
+position = Vector2( -1, 2 )
+scale = Vector2( -0.225288, -0.225288 )
 texture = ExtResource( 2 )
