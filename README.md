@@ -29,9 +29,18 @@ The player gains points for defeating enemies, increasing their score, with the 
 ## Combat related questions
 
 - Should there be an invincibility frame after hit?
+> Yes, a short one, during which all damage is consumed.
 - Are all enemies knocked out on 1 hit, or do they have a health pool?
+> Enemies have a health pool
 - If enemies have health, should they stagger on hit?
+> Enemies should be slightly pushed back on hit
 - What happens when player and enemies touch?
+> Baseline - nothing
 - Is the above behavior shared with all enemies?
+> Some enemies could cause damage on touch, like a fire ball enemy.
 - Can the player regain health?
+> Yes.
 - If a method of health gain exists, how is it replenished?
+> Probably from orbs dropped from enemies. Sleeping could be later as an option to regain health.
+- How is damage detected / registered.
+> Hit boxes are used to detect damage. Heart boxes are used to initiate damage signals.
