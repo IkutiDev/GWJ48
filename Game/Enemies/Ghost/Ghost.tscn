@@ -142,7 +142,7 @@ animations = [ {
 "name": "float",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 25 ) ],
+"frames": [ SubResource( 25 ), SubResource( 25 ), SubResource( 25 ) ],
 "loop": true,
 "name": "hit",
 "speed": 5.0
@@ -196,7 +196,7 @@ end_cap_mode = 1
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 16 )
 animation = "float"
-frame = 2
+frame = 3
 playing = true
 
 [node name="SmallPoint" type="Sprite" parent="."]
