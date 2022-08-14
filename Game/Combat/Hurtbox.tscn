@@ -4,3 +4,4 @@
 
 [node name="Hurtbox" type="Area2D"]
 script = ExtResource( 1 )
+attack_each_frame_active = false

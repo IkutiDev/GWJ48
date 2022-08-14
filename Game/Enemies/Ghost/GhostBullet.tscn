@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_3.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Ghost/GhostBullet.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_11.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/particleShader.tres" type="Shader" id=5]
 [ext_resource path="res://Resouces/Particles/Glow.png" type="Texture" id=6]
+[ext_resource path="res://Combat/Hurtbox.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PhysicsMaterial" id=7]
 absorbent = true
@@ -204,10 +205,14 @@ anims/RESET = SubResource( 6 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
-[node name="HurtBox\?" type="Area2D" parent="."]
+[node name="Hurtbox" parent="." instance=ExtResource( 7 )]
+collision_layer = 64
+damage = 5
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox\?"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 1, 0.572549, 0, 1 )
 shape = SubResource( 15 )
 
 [connection signal="body_entered" from="." to="." method="_on_GhostBullet_body_entered"]
 [connection signal="timeout" from="OrphanTimer" to="." method="_on_OrphanTimer_timeout"]
+[connection signal="dealt_damage" from="Hurtbox" to="." method="_on_Hurtbox_dealt_damage"]

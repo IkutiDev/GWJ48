@@ -15,6 +15,8 @@ func _physics_process(delta: float) -> void:
 		return 
 	var areas = get_overlapping_areas()
 	
+	var targets_attacked_count_last_frame = targets_attacked.size()
+	
 	for a in areas:
 		if not (a is Hitbox):
 			continue
@@ -25,6 +27,9 @@ func _physics_process(delta: float) -> void:
 		(a as Hitbox).take_damage(damage)
 		if not attack_each_frame_active:
 			targets_attacked.append(a)
+			
+	if targets_attacked_count_last_frame < targets_attacked.size():
+		emit_signal("dealt_damage", damage)
 
 func set_is_active(value: bool) -> void:
 	is_active = value

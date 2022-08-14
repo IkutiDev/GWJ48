@@ -1,10 +1,14 @@
 extends KinematicBody2D
 
 var bulletScene = preload("res://Enemies/Ghost/GhostBullet.tscn")
+onready var hitbox: Hitbox = $Hitbox
+onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 
 export var wobble = 0.0
 
 export var speedModifier = 1.0
+
+export var health = 20
 
 var velocity = Vector2(0,0)
 
@@ -23,7 +27,8 @@ var cooldown = 0.0
 func _ready():
 	if get_tree().get_nodes_in_group("Player").size()>0:
 		target = get_tree().get_nodes_in_group("Player")[0]
-
+	
+	hitbox.current_health = health
 	pass # Replace with function body.
 
 func fire_bullet():
@@ -60,3 +65,18 @@ func _on_AttackRange_body_entered(body):
 func _on_AttackRange_body_exited(body):
 	attackMode = false
 	pass # Replace with function body.
+
+
+func _on_Hitbox_got_hit(damage) -> void:
+	# (#Ikuti) Add stagger/push code here, maybe
+	hitbox.current_health -= damage
+
+func _on_AnimatedSprite_finished() -> void:
+	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSprite_finished")
+	queue_free()
+
+func _on_Hitbox_died() -> void:
+	# (#Ikuti) Add gain score here
+	# (#Ikuti) Add drop exp/stuff here
+	animated_sprite.play("death")
+	animated_sprite.connect("animation_finished", self, "_on_AnimatedSprite_finished")
