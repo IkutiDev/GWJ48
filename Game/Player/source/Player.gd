@@ -31,3 +31,6 @@ func flip_direction(move_direction : float) -> void:
 	elif move_direction < 0:
 		skin.player_sprite.flip_h = true
 		player_combat.scale.x = -1
+
+func get_current_health() -> int:
+	return player_combat.current_health
