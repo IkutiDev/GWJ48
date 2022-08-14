@@ -2,6 +2,8 @@ extends CanvasLayer
 
 var pauseMenuScene = preload("res://UI/PauseMenu.tscn")
 
+onready var player = $"%Player"
+
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -9,7 +11,7 @@ func _input(event):
 		pass
 
 func _process(delta):
-	var player = get_tree().get_nodes_in_group("Player")[0]
+	#var player = get_tree().get_nodes_in_group("Player")[0]
 	if player != null :
-		$HP.value = player.player_combat.current_health
+		$HP.value = player.get_current_health()
 	

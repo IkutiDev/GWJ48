@@ -51,7 +51,7 @@ script = ExtResource( 4 )
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 424.0
-margin_bottom = 824.0
+margin_bottom = 704.0
 
 [node name="DebugPanel2" parent="Debug_UI/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -110,6 +110,7 @@ smoothing_enabled = true
 smoothing_speed = 3.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
 position = Vector2( -139, 140 )
 
 [node name="Air" parent="Player/StateMachine/Move" index="2"]
