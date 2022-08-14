@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=118 format=2]
 
 [ext_resource path="res://Player/source/AudioPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Player/assets/Audio/Wood_Steps/FLY_Wood_Step_018.wav" type="AudioStream" id=2]
@@ -112,6 +112,10 @@
 [ext_resource path="res://Player/assets/Audio/Sword_Swings/SFX_Weapon_Swing_01.wav" type="AudioStream" id=110]
 [ext_resource path="res://Player/assets/Audio/Pain_Grunts/VO_Pain_01.wav" type="AudioStream" id=111]
 [ext_resource path="res://Player/assets/Audio/Pain_Grunts/VO_Pain_02.wav" type="AudioStream" id=112]
+[ext_resource path="res://Player/assets/Audio/Death/VO_Death_01.wav" type="AudioStream" id=113]
+[ext_resource path="res://Player/assets/Audio/Death/VO_Death_00.wav" type="AudioStream" id=114]
+[ext_resource path="res://Player/assets/Audio/Death/VO_Death_02.wav" type="AudioStream" id=115]
+[ext_resource path="res://Player/assets/Audio/Death/VO_Death_03.wav" type="AudioStream" id=116]
 
 [sub_resource type="RayShape2D" id=1]
 
@@ -129,6 +133,7 @@ rock_falls = [ ExtResource( 101 ), ExtResource( 86 ) ]
 gravel_falls = [ ExtResource( 88 ), ExtResource( 85 ) ]
 sword_swings = [ ExtResource( 107 ), ExtResource( 109 ), ExtResource( 110 ) ]
 pain_grunts = [ ExtResource( 108 ), ExtResource( 111 ), ExtResource( 112 ) ]
+death_sounds = [ ExtResource( 114 ), ExtResource( 113 ), ExtResource( 115 ), ExtResource( 116 ) ]
 
 [node name="SurfaceDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -148,3 +153,5 @@ shape = SubResource( 1 )
 [node name="Swing" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Pain" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]

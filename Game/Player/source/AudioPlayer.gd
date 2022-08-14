@@ -8,6 +8,8 @@ onready var jump_grunt: AudioStreamPlayer2D = $JumpGrunt
 onready var fall: AudioStreamPlayer2D = $Fall
 onready var swing: AudioStreamPlayer2D = $Swing
 onready var pain: AudioStreamPlayer2D = $Pain
+onready var death: AudioStreamPlayer2D = $Death
+
 
 export(Array, Resource) var wood_foot_steps
 export(Array, Resource) var rock_foot_steps
@@ -24,6 +26,8 @@ export(Array, Resource) var gravel_falls
 
 export(Array, Resource) var sword_swings
 export(Array, Resource) var pain_grunts
+
+export(Array, Resource) var death_sounds
 
 var currentSurfaceType : int = Surface.SurfaceType.Air
 
@@ -83,6 +87,12 @@ func play_pain_SFX():
 	
 	pain.stream = pain_grunts[randi() % pain_grunts.size()]
 	pain.play()
+	
+func play_death_SFX():
+	death.stream = null
+	
+	death.stream = death_sounds[randi() % death_sounds.size()]
+	death.play()
 	
 	
 func find_current_surface_type() -> int:

@@ -17,8 +17,10 @@ func _on_Hitbox_got_hit(damage) -> void:
 		return
 	
 	invincibility_timer.start()
-	player.audio_player.play_pain_SFX()
+	
 	hitbox.current_health -= damage
+	if hitbox.current_health > 0:
+		player.audio_player.play_pain_SFX()
 	current_health = hitbox.current_health
 
 

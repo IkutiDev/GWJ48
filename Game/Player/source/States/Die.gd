@@ -17,6 +17,7 @@ func process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.skin.play_animated_sprite("die", 99)
+	owner.audio_player.play_death_SFX()
 
 
 func exit() -> void:
