@@ -10,7 +10,7 @@ var targets_attacked : Array
 
 var is_active: = true setget set_is_active
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not monitoring:
 		return 
 	var areas = get_overlapping_areas()

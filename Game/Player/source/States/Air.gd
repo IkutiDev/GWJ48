@@ -38,7 +38,7 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to(target_state)
 		owner.audio_player.play_fall_SFX()
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	var move = get_parent() as MoveState
 	
 	owner.flip_direction(move.get_move_direction().x)
@@ -52,7 +52,7 @@ func process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	var move := get_parent() as MoveState
 	move.enter(msg)
-	move.acceleration.x = acceleration_x
+	move.acceleration_local.x = acceleration_x
 	
 	if "velocity" in msg:
 		move.velocity = msg.velocity
@@ -61,14 +61,15 @@ func enter(msg: Dictionary = {}) -> void:
 	if "impulse" in msg:
 		jump()
 		
-	jump_delay.connect("timeout", self, "_on_CheckPlayerFallingAfterDelay_timer_finished")
+	var value = jump_delay.connect("timeout", self, "_on_CheckPlayerFallingAfterDelay_timer_finished")
+	assert(value == OK)
 	jump_delay.start()
 			
 func exit() -> void:
 	var move := get_parent() as MoveState
 	move.exit()
-	move.acceleration = move.acceleration_default
-	move.decceleration = move.decceleration_default
+	move.acceleration_local = move.acceleration_default
+	move.decceleration_local = move.decceleration_default
 	_jump_count = 0
 	jump_delay.disconnect("timeout", self, "_on_CheckPlayerFallingAfterDelay_timer_finished")
 	jump_delay.stop()
@@ -86,7 +87,7 @@ func calculate_jump_velocity(impulse: = 0.0) -> Vector2:
 	var move: = get_parent() as MoveState
 	return move.calculate_velocity(
 		move.velocity,
-		move.max_speed,
+		move.max_speed_local,
 		Vector2(0.0, impulse),
 		Vector2.ZERO,
 		1,

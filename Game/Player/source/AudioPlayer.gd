@@ -31,7 +31,7 @@ export(Array, Resource) var death_sounds
 
 var currentSurfaceType : int = Surface.SurfaceType.Air
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	self.currentSurfaceType = find_current_surface_type()
 	
 

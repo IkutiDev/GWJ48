@@ -18,7 +18,8 @@ func _on_InvincibilityTimer_time_out()-> void:
 
 func _ready() -> void:
 	hitbox.current_health = health
-	invincibility_timer.connect("timeout", self, "_on_InvincibilityTimer_time_out")
+	var value = invincibility_timer.connect("timeout", self, "_on_InvincibilityTimer_time_out")
+	assert(value == OK)
 
 func _on_Hitbox_got_hit(damage) -> void:
 	if invincible:

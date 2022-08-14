@@ -11,14 +11,14 @@ func _on_Skin_animation_finished() -> void:
 	play_hold_animation = true
 	owner.player.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	return
 		
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	if play_hold_animation:
 		owner.player.skin.play_animated_sprite("block", 1)
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.player.skin.play_animated_sprite("startBlock", 1)
 	owner.player.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 	

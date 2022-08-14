@@ -47,7 +47,8 @@ func _ready():
 		target = get_tree().get_nodes_in_group("Player")[0]
 	
 	animated_sprite.play("spawn")
-	animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteSpawn_finished")
+	var value = animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteSpawn_finished")
+	assert(value == OK)
 	hitbox.current_health = health
 	pass # Replace with function body.
 
@@ -73,7 +74,7 @@ func _physics_process(delta):
 		desiredLoc = target.global_position
 		
 	velocity = Steering.follow(velocity,global_position,desiredLoc,baseSpeed*speedModifier,30)
-	move_and_collide((velocity + Vector2(0,wobble) )* delta)
+	var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	cooldown -= delta
 	if cooldown < 0.0 and attackMode:
 		cooldown += 7.0
@@ -81,12 +82,12 @@ func _physics_process(delta):
 
 
 
-func _on_AttackRange_body_entered(body):
+func _on_AttackRange_body_entered(_body):
 	attackMode = true
 	pass # Replace with function body.
 
 
-func _on_AttackRange_body_exited(body):
+func _on_AttackRange_body_exited(_body):
 	attackMode = false
 	pass # Replace with function body.
 
@@ -94,14 +95,20 @@ func _on_AttackRange_body_exited(body):
 func _on_Hitbox_got_hit(damage) -> void:
 	if spawning:
 		return
-	# (#Ikuti) Add stagger/push code here, maybe
+	if hitbox.current_health <= 0:
+		return
 	hitbox.current_health -= damage
 	if hitbox.current_health > 0:
 		animated_sprite.play("hit")
-		animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteHit_finished")
+		if not animated_sprite.is_connected("animation_finished", self, "_on_AnimatedSpriteHit_finished"):
+			var value = animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteHit_finished")
+			assert(value == OK)
+
 
 func _on_Hitbox_died() -> void:
 	# (#Ikuti) Add gain score here
 	# (#Ikuti) Add drop exp/stuff here
+	print("Ghost died "+str(get_instance_id()))
 	animated_sprite.play("death")
-	animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteDeath_finished")
+	var value = animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteDeath_finished")
+	assert(value == OK)

@@ -12,12 +12,13 @@ var animation : String = "None"
 var currentWeight : int = 0
 
 func _ready() -> void:
-	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-	player_sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+	var value = animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+	assert(value == OK)
+	value = player_sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+	assert(value == OK)
 	
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	emit_signal("animation_finished", anim_name)
-	player_sprite.frames
 
 func _on_AnimatedSprite_animation_finished() -> void:
 	currentWeight = 0

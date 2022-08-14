@@ -19,6 +19,7 @@ var enemiesToKill = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	yield(owner, "ready")
 	SoundManager.play_song(1)
 	allExits = $Exits.get_children()
 	for z in allExits:
@@ -26,7 +27,7 @@ func _ready():
 			allGates.push_back(z)
 	spawn_enemy(enemyData.new())
 
-func _process(delta):
+func _process(_delta):
 	if $WaveTimer.time_left > 0:
 		$Overlay/Label.text = String($WaveTimer.time_left)
 	else:

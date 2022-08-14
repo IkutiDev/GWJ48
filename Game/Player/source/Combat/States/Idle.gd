@@ -6,13 +6,13 @@ func unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("block"):
 		_state_machine.transition_to("Block")
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	return
 		
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	return
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	return
 	
 func exit() -> void:

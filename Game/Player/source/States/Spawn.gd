@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_Skin_animation_finished() -> void:
 	_state_machine.transition_to("Move/Idle")
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	owner.is_active = false
 	owner.position = _start_position
 	owner.skin.play_animated_sprite("spawn")

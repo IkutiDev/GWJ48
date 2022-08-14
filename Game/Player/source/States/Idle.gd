@@ -6,7 +6,7 @@ func unhandled_input(event: InputEvent) -> void:
 	var move = get_parent() as MoveState
 	move.unhandled_input(event)
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	var move = get_parent() as MoveState
 	if owner.is_on_floor():
 		if move.get_move_direction().x != 0.0:
@@ -22,7 +22,7 @@ func enter(msg: Dictionary = {}) -> void:
 	var move = get_parent() as MoveState
 	move.enter(msg)
 	
-	move.max_speed = move.max_speed_default
+	move.max_speed_local = move.max_speed_default
 	move.velocity = Vector2.ZERO
 	
 	owner.skin.play_animated_sprite("idle")

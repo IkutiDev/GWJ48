@@ -11,7 +11,8 @@ func _input(event):
 		queue_free()
 
 func _on_Button2_pressed():
-	get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+	var value = get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+	assert(value == OK)
 	pass # Replace with function body.
 
 

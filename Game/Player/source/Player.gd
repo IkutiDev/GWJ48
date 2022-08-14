@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
+#warning-ignore:unused_signal
 signal body_exited
 
 onready var state_machine : StateMachine = $StateMachine
