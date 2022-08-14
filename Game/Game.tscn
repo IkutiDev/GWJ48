@@ -39,7 +39,7 @@ properties = PoolStringArray( "velocity", "max_speed", "acceleration", "decceler
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -139, 140 )
 current = true
-zoom = Vector2( 0.6, 0.6 )
+zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 smoothing_speed = 3.0
 
