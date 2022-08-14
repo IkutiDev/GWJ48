@@ -5,23 +5,36 @@
 [ext_resource path="res://Arena/City.png" type="Texture" id=3]
 
 [node name="Background" type="ParallaxBackground"]
-follow_viewport_enable = true
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
+scroll_base_scale = Vector2( 0.2, 0.2 )
 
 [node name="Sky" type="ParallaxLayer" parent="."]
+position = Vector2( -6.52191, -283.095 )
+scale = Vector2( 1.66667, 1.66667 )
+motion_scale = Vector2( 0.1, 0.3 )
+motion_offset = Vector2( -355, -360 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Sky" type="Sprite" parent="Sky"]
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Moon" type="Sprite" parent="Sky"]
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 centered = false
 
 [node name="City" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.8, 0.6 )
+motion_offset = Vector2( 0, -220 )
 motion_mirroring = Vector2( 320, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="City" type="Sprite" parent="City"]
 position = Vector2( 0, 153 )
