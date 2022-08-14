@@ -18,6 +18,7 @@ func _on_Hitbox_got_hit(damage) -> void:
 	
 	invincibility_timer.start()
 	
+	player.skin.play_animation_player("hurt")
 	hitbox.current_health -= damage
 	if hitbox.current_health > 0:
 		player.audio_player.play_pain_SFX()
