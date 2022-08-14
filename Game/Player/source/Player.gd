@@ -7,7 +7,7 @@ onready var state_machine : StateMachine = $StateMachine
 onready var skin: Node2D = $Skin
 
 onready var collider: CollisionShape2D = $CollisionShape2D
-onready var hook: Hook = $Hook
+#onready var hook: Hook = $Hook
 onready var pass_through_controller: Area2D = $PassThroughController
 onready var audio_player: Node2D = $AudioPlayer
 

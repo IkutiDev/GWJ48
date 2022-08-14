@@ -10,7 +10,6 @@ func _on_Skin_animation_finished() -> void:
 	_state_machine.transition_to("Spawn")
 
 func enter(msg: Dictionary = {}) -> void:
-	owner.hook.visible = false
 	owner.skin.play_animated_sprite("die")
 	owner.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 
