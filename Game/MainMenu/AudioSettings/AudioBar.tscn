@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/AudioSettings/AudioBar.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu/AudioSettings/AudioBar.gd" type="Script" id=1]
 
 [node name="AudioBar" type="HBoxContainer"]
 margin_top = 64.0

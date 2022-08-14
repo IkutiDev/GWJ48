@@ -159,6 +159,7 @@ volume_db = -80.0
 [node name="AmbienceEffect" type="AudioStreamPlayer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
 margin_left = 1021.0

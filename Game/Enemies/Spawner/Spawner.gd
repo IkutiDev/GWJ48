@@ -21,6 +21,11 @@ func _ready():
 	spawn_enemy(enemyData.new())
 	pass # Replace with function body.
 
+func record_death(enemy):
+	allEnemies.erase(enemy)
+	if allEnemies.size()<1:
+		print("wave complete")
+
 func spawn_enemy(data : enemyData):
 	var newEnemy = enemyScenes[data.type].instance()
 	data.walker = true
@@ -41,22 +46,4 @@ func is_a_closer(a,b):
 	var targetPos = $Exits.get_global_mouse_position()
 	return targetPos.distance_to(a.global_position) < targetPos.distance_to(b.global_position)
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-
-func _on_Timer_timeout():
-	spawn_enemy(enemyData.new())
-	pass # Replace with function body.
-
-
-func _on_Button2_pressed():
-	spawn_enemy(enemyData.new())
-	pass # Replace with function body.
-
-
-func _on_Button_pressed():
-	$Timer.one_shot = !$Timer.is_stopped()
-	$Timer.start()
-	pass # Replace with function body.
