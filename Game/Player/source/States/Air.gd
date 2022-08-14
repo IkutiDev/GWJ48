@@ -41,10 +41,7 @@ func physics_process(delta: float) -> void:
 func process(delta: float) -> void:
 	var move = get_parent() as MoveState
 	
-	if move.get_move_direction().x < 0:
-		owner.skin.player_sprite.flip_h = true
-	elif move.get_move_direction().x > 0:
-		owner.skin.player_sprite.flip_h = false
+	owner.flip_direction(move.get_move_direction().x)
 	
 	if sign(move.velocity.y) == -1:
 		if owner.skin.animation != "jump":

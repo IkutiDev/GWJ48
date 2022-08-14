@@ -7,6 +7,8 @@ onready var state_machine : StateMachine = $StateMachine
 onready var skin: Node2D = $Skin
 
 onready var collider: CollisionShape2D = $CollisionShape2D
+onready var player_combat: Node2D = $PlayerCombat
+
 #onready var hook: Hook = $Hook
 onready var pass_through_controller: Area2D = $PassThroughController
 onready var audio_player: Node2D = $AudioPlayer
@@ -21,3 +23,11 @@ func set_is_active(value: bool) -> void:
 		return
 	collider.disabled = not value
 #	hook.is_active = value
+
+func flip_direction(move_direction : float) -> void:
+	if move_direction > 0:
+		skin.player_sprite.flip_h = false
+		player_combat.scale.x = 1
+	elif move_direction < 0:
+		skin.player_sprite.flip_h = true
+		player_combat.scale.x = -1

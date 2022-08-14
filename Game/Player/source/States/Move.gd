@@ -58,10 +58,7 @@ func exit() -> void:
 	owner.disconnect("body_exited", self, "_on_PassThrough_body_exited")
 	
 func process(delta: float) -> void:
-	if get_move_direction().x < 0:
-		owner.skin.player_sprite.flip_h = true
-	elif get_move_direction().x > 0:
-		owner.skin.player_sprite.flip_h = false
+	owner.flip_direction(get_move_direction().x)
 	
 	if get_move_direction().x == 0:
 		owner.skin.play_animated_sprite("idle")
