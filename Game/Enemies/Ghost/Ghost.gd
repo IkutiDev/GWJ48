@@ -72,7 +72,7 @@ func _physics_process(delta):
 	else:
 		desiredLoc = target.global_position
 		
-	velocity = Steering.follow(velocity,global_position,desiredLoc,baseSpeed*speedModifier,1)
+	velocity = Steering.follow(velocity,global_position,desiredLoc,baseSpeed*speedModifier,30)
 	move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	cooldown -= delta
 	if cooldown < 0.0 and attackMode:

@@ -1,0 +1,213 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Combat/Hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resouces/Particles/SmallPoint.png" type="Texture" id=2]
+[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_10.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Wisp/Wisp.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/trailShader.tres" type="Shader" id=6]
+[ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.148387, 0.245161, 0.43871, 0.535484, 0.793548, 0.870968 )
+colors = PoolColorArray( 0.152941, 0.152941, 0.152941, 0, 0.886719, 0.886719, 0.886719, 1, 0.267609, 0.925781, 0, 1, 0.698039, 0.933333, 0.266667, 0, 1, 0.940186, 0.453125, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="OpenSimplexNoise" id=8]
+octaves = 6
+period = 198.8
+persistence = 0.682
+lacunarity = 1.71
+
+[sub_resource type="NoiseTexture" id=9]
+width = 64
+height = 64
+seamless = true
+noise = SubResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 6 )
+shader_param/scrollSpeed1 = Vector2( 0.115, 0.075 )
+shader_param/scrollSpeed2 = Vector2( -0.785, -0.184 )
+shader_param/texture1Light = -0.365
+shader_param/texture2Light = -1.408
+shader_param/texture1 = SubResource( 9 )
+shader_param/texture2 = ExtResource( 3 )
+shader_param/gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.709091 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.409091 ), -0.0848484, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 6.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "New Anim"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:wobble")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 2, -2 ),
+"update": 0,
+"values": [ 25.0, -60.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=33]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id=34]
+radius = 6.08276
+
+[sub_resource type="Animation" id=35]
+resource_name = "REST"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SmallPoint:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Trail:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SmallPoint:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SmallPoint:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Trail:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SmallPoint:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Trail:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Wisp" type="KinematicBody2D" groups=["Enemies"]]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource( 4 )
+
+[node name="Trail" type="Line2D" parent="."]
+material = SubResource( 3 )
+points = PoolVector2Array( 0, 2, 0, 5, 0, 8, 0, 11, 0, 14, 0, 17 )
+width_curve = SubResource( 4 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="SmallPoint" type="Sprite" parent="."]
+self_modulate = Color( 0.666667, 1, 0.619608, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 5 )
+
+[node name="Wobbler" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 7 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 9 )]
+visible = false
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color( 1, 0, 0, 1 )
+shape = SubResource( 33 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 1 )]
+visible = false
+damage = 5
+attack_each_frame_active = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 1, 0.572549, 0, 1 )
+shape = SubResource( 34 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/REST = SubResource( 35 )
+anims/death = SubResource( 36 )
+anims/spawn = SubResource( 37 )
+
+[connection signal="died" from="Hitbox" to="." method="_on_Hitbox_died"]
+[connection signal="got_hit" from="Hitbox" to="." method="_on_Hitbox_got_hit"]
+[connection signal="dealt_damage" from="Hurtbox" to="." method="_on_Hurtbox_dealt_damage"]
