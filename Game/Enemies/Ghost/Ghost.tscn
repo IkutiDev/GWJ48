@@ -196,7 +196,7 @@ end_cap_mode = 1
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 16 )
 animation = "float"
-frame = 1
+frame = 2
 playing = true
 
 [node name="SmallPoint" type="Sprite" parent="."]

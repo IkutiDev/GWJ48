@@ -72,6 +72,7 @@ func _on_Hitbox_got_hit(damage) -> void:
 	hitbox.current_health -= damage
 
 func _on_AnimatedSprite_finished() -> void:
+	get_tree().get_nodes_in_group("Spawner")[0].record_death(self)
 	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSprite_finished")
 	queue_free()
 
