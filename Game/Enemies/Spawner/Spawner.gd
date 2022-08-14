@@ -25,7 +25,6 @@ func _ready():
 	for z in allExits:
 		if !z.antialiased:
 			allGates.push_back(z)
-	spawn_enemy(enemyData.new())
 
 func _process(_delta):
 	if $WaveTimer.time_left > 0:

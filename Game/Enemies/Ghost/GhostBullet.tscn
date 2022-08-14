@@ -47,7 +47,7 @@ radius = 3.0
 
 [sub_resource type="Animation" id=5]
 resource_name = "Pop"
-length = 2.5
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Trail:emitting")
 tracks/0/interp = 1
@@ -60,51 +60,37 @@ tracks/0/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Explosion:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Explosion:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.5, 0.5 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.5 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Explosion:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Explosion:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("SmallPoint:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("SmallPoint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -175,6 +161,7 @@ gravity_scale = 0.0
 contacts_reported = 2
 contact_monitor = true
 can_sleep = false
+linear_damp = 0.0
 script = ExtResource( 2 )
 
 [node name="SmallPoint" type="Sprite" parent="."]
@@ -216,4 +203,5 @@ shape = SubResource( 15 )
 
 [connection signal="body_entered" from="." to="." method="_on_GhostBullet_body_entered"]
 [connection signal="timeout" from="OrphanTimer" to="." method="_on_OrphanTimer_timeout"]
+[connection signal="animation_finished" from="PopAnimator" to="." method="_on_PopAnimator_animation_finished"]
 [connection signal="dealt_damage" from="Hurtbox" to="." method="_on_Hurtbox_dealt_damage"]
