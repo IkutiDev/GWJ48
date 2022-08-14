@@ -7,7 +7,9 @@ func _ready() -> void:
 	_start_position = owner.position
 
 func _on_Skin_animation_finished() -> void:
-	_state_machine.transition_to("Spawn")
+	print("You died lol")
+	get_tree().paused = true
+	#_state_machine.transition_to("Spawn")
 
 func enter(msg: Dictionary = {}) -> void:
 	owner.skin.play_animated_sprite("die")

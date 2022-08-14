@@ -25,7 +25,7 @@ script = ExtResource( 4 )
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 424.0
-margin_bottom = 704.0
+margin_bottom = 824.0
 
 [node name="DebugPanel2" parent="Debug_UI/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -65,6 +65,16 @@ margin_bottom = 672.0
 mouse_filter = 2
 reference_path = NodePath("../../../../Player/Skin")
 properties = PoolStringArray( "animation" )
+
+[node name="DebugPanel5" parent="Debug_UI/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 680.0
+margin_right = 408.0
+margin_bottom = 808.0
+mouse_filter = 2
+reference_path = NodePath("../../../../Player/PlayerCombat")
+properties = PoolStringArray( "current_health" )
 
 [node name="Arena" parent="." instance=ExtResource( 1 )]
 

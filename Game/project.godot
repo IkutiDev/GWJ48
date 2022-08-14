@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Combat/Hitbox.gd"
+}, {
 "base": "Position2D",
 "class": "Hook",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_classes=[ {
 "path": "res://Arena/Surface.gd"
 } ]
 _global_script_class_icons={
+"Hitbox": "",
 "Hook": "res://Editor/icons/icon_hook.svg",
 "HookTarget": "",
 "Hurtbox": "",
