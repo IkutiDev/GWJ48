@@ -6,6 +6,10 @@ onready var foot_steps: AudioStreamPlayer2D = $FootSteps
 onready var jump: AudioStreamPlayer2D = $Jump
 onready var jump_grunt: AudioStreamPlayer2D = $JumpGrunt
 onready var fall: AudioStreamPlayer2D = $Fall
+onready var swing: AudioStreamPlayer2D = $Swing
+onready var pain: AudioStreamPlayer2D = $Pain
+onready var death: AudioStreamPlayer2D = $Death
+
 
 export(Array, Resource) var wood_foot_steps
 export(Array, Resource) var rock_foot_steps
@@ -19,6 +23,11 @@ export(Array, Resource) var gravel_jumps
 export(Array, Resource) var wood_falls
 export(Array, Resource) var rock_falls
 export(Array, Resource) var gravel_falls
+
+export(Array, Resource) var sword_swings
+export(Array, Resource) var pain_grunts
+
+export(Array, Resource) var death_sounds
 
 var currentSurfaceType : int = Surface.SurfaceType.Air
 
@@ -51,9 +60,9 @@ func play_jump_SFX():
 	
 	jump.play()	
 	
-	if not jump_grunt.playing:
-		jump_grunt.stream = jump_grunts[randi() % jump_grunts.size()]
-		jump_grunt.play()
+	jump_grunt.stream = null
+	jump_grunt.stream = jump_grunts[randi() % jump_grunts.size()]
+	jump_grunt.play()
 	
 func play_fall_SFX():
 	fall.stream = null
@@ -66,6 +75,25 @@ func play_fall_SFX():
 			fall.stream = gravel_falls[randi() % gravel_falls.size()]
 	
 	fall.play()		
+	
+func play_sword_swing_SFX():
+	swing.stream = null
+	
+	swing.stream = sword_swings[randi() % sword_swings.size()]
+	swing.play()
+	
+func play_pain_SFX():
+	pain.stream = null
+	
+	pain.stream = pain_grunts[randi() % pain_grunts.size()]
+	pain.play()
+	
+func play_death_SFX():
+	death.stream = null
+	
+	death.stream = death_sounds[randi() % death_sounds.size()]
+	death.play()
+	
 	
 func find_current_surface_type() -> int:
 	var closest_surface: int = Surface.SurfaceType.Air

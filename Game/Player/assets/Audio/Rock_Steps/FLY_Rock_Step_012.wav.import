@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FLY_Rock_Step_012.wav-acc1d6a554632902e9f755b0c1c0de0e.sample"
+
+[deps]
+
+source_file="res://Player/assets/Audio/Rock_Steps/FLY_Rock_Step_012.wav"
+dest_files=[ "res://.import/FLY_Rock_Step_012.wav-acc1d6a554632902e9f755b0c1c0de0e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

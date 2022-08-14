@@ -26,6 +26,8 @@ shape = SubResource( 2 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 visible = false
+collision_layer = 16
+collision_mask = 32
 monitoring = false
 attack_each_frame_active = false
 

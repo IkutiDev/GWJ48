@@ -20,6 +20,7 @@ func process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	owner.player.skin.play_animated_sprite("normalAttack", 1)
 	owner.player.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
+	owner.player.audio_player.play_sword_swing_SFX()
 	
 func exit() -> void:
 	owner.player.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
