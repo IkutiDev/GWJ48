@@ -6,14 +6,18 @@ func _ready() -> void:
 	yield(owner, "ready")
 	_start_position = owner.position
 
-func _on_Skin_animation_finished() -> void:
+func _end_game() -> void:
 	print("You died lol")
 	get_tree().paused = true
 	#_state_machine.transition_to("Spawn")
 
+func process(delta: float) -> void:
+	if owner.skin.is_animated_sprite_on_last_frame():
+		_end_game()
+
 func enter(msg: Dictionary = {}) -> void:
-	owner.skin.play_animated_sprite("die")
-	owner.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
+	owner.skin.play_animated_sprite("die", 99)
+
 
 func exit() -> void:
-	owner.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
+	return

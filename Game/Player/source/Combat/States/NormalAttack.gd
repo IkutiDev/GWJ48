@@ -1,6 +1,8 @@
 extends State
 
-onready var hurtbox: Area2D = $"../../Hurtbox"
+export var start_frame: int = 0
+
+onready var hurtbox: Hurtbox = $"../../Hurtbox"
 
 func _on_Skin_animation_finished() -> void:
 	_state_machine.transition_to("Idle")
@@ -12,15 +14,13 @@ func physics_process(delta: float) -> void:
 	return
 		
 func process(delta: float) -> void:
-	return
+	if owner.player.skin.get_current_frame() >= start_frame:
+		hurtbox.is_active = true
 
 func enter(msg: Dictionary = {}) -> void:
-	hurtbox.monitorable = true
-	hurtbox.visible = true
 	owner.player.skin.play_animated_sprite("normalAttack", 1)
 	owner.player.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 	
 func exit() -> void:
-	hurtbox.monitorable = false
-	hurtbox.visible = false
 	owner.player.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
+	hurtbox.is_active = false

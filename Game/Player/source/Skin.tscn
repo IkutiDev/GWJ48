@@ -308,7 +308,7 @@ animations = [ {
 "name": "block",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 24 ) ],
 "loop": true,
 "name": "die",
 "speed": 7.0
@@ -371,7 +371,7 @@ script = ExtResource( 3 )
 position = Vector2( 0, -28 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

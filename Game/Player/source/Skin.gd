@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	emit_signal("animation_finished", anim_name)
+	player_sprite.frames
 
 func _on_AnimatedSprite_animation_finished() -> void:
 	currentWeight = 0
@@ -33,5 +34,9 @@ func play_animated_sprite(anim_name: String, weigth: int = 0) -> void:
 	currentWeight = weigth
 	player_sprite.play(anim_name)
 	animation = player_sprite.animation
-	
 
+func is_animated_sprite_on_last_frame() -> bool:
+	return (player_sprite as AnimatedSprite).frame == (player_sprite as AnimatedSprite).frames.get_frame_count((player_sprite as AnimatedSprite).animation) - 1
+	
+func get_current_frame() -> int:
+	return (player_sprite as AnimatedSprite).frame
