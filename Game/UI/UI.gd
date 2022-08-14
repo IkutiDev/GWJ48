@@ -12,3 +12,4 @@ func _process(delta):
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	if player != null :
 		$HP.value = player.player_combat.current_health
+	

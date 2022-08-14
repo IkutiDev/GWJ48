@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://MainMenu/AudioSettings/AudioBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MainMenu/AudioSettings/AudioSettings.gd" type="Script" id=2]
 
 [node name="AudioSettings" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_right = 1024.0
+margin_right = 1280.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 text = "AUDIO SETTINGS"
@@ -15,18 +17,33 @@ align = 1
 valign = 1
 
 [node name="AudioBar" parent="." instance=ExtResource( 1 )]
+margin_right = 1280.0
 
 [node name="AudioBar2" parent="." instance=ExtResource( 1 )]
 margin_top = 84.0
+margin_right = 1280.0
 margin_bottom = 100.0
 busName = "Music"
 
 [node name="AudioBar3" parent="." instance=ExtResource( 1 )]
 margin_top = 104.0
+margin_right = 1280.0
 margin_bottom = 120.0
 busName = "Ambience"
 
 [node name="AudioBar4" parent="." instance=ExtResource( 1 )]
 margin_top = 124.0
+margin_right = 1280.0
 margin_bottom = 140.0
 busName = "Effects"
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="Node"]
+margin_left = 1020.0
+margin_top = 76.0
+margin_right = 1234.0
+margin_bottom = 132.0
+text = "BACK TO MAIN MENU"
+
+[connection signal="pressed" from="Node/Button" to="." method="_on_Button_pressed"]

@@ -1,25 +1,30 @@
 extends Node
 
-var songList = {}
+var songList = {
+	2 : preload("res://Resouces/Music/MUS_Combat_Exploration_Variant.ogg"), # fight
+	1 : preload("res://Resouces/Music/MUS_Music_Pad_and_Melody.ogg"), # rest
+	0 : preload("res://Resouces/Music/MUS_Short_Loop.ogg") # main menu
+	
+}
 
 var musicFolderPath = "res://Resouces/Music/"
 
 func _ready():
-	var musicFolder = Directory.new()
-	if musicFolder.open(musicFolderPath) == OK :
-		musicFolder.list_dir_begin()
-		var songName = musicFolder.get_next()
-		var ID = 0
-		while songName != "":
-			if !musicFolder.current_is_dir() and !songName.ends_with("import"):
-				songList[ID] = songName
-				$CanvasLayer/OptionButton.add_item(songName,ID)
-				ID += 1
-			songName = musicFolder.get_next()
+#	var musicFolder = Directory.new()
+#	if musicFolder.open(musicFolderPath) == OK :
+#		musicFolder.list_dir_begin()
+#		var songName = musicFolder.get_next()
+#		var ID = 0
+#		while songName != "":
+#			if !musicFolder.current_is_dir() and !songName.ends_with("import"):
+#				songList[ID] = songName
+#				$CanvasLayer/OptionButton.add_item(songName,ID)
+#				ID += 1
+#			songName = musicFolder.get_next()
 	pass
 
 func play_song(ID):
-	var nextSong = load(musicFolderPath+songList[ID])
+	var nextSong = songList[ID]
 	if $MusicPlayer1.playing:
 		$MusicPlayer2.stream = nextSong
 		$DJ.play("Play2")

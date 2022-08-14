@@ -19,6 +19,7 @@ var enemiesToKill = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SoundManager.play_song(1)
 	allExits = $Exits.get_children()
 	for z in allExits:
 		if !z.antialiased:
@@ -36,8 +37,10 @@ func record_death(enemy):
 	enemiesToKill -= 1
 	if enemiesToKill < 1:
 		$WaveTimer.start()
+		SoundManager.play_song(1)
 
 func start_next_wave():
+	SoundManager.play_song(2)
 	waveCounter += 1
 	enemiesToSpawn = 5 + waveCounter
 	enemiesToKill = enemiesToSpawn

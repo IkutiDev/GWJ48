@@ -1,5 +1,7 @@
 extends State
 
+var deathScreenScene = preload("res://UI/DeathScreen.tscn")
+
 var _start_position: = Vector2.ZERO
 
 func _ready() -> void:
@@ -7,8 +9,8 @@ func _ready() -> void:
 	_start_position = owner.position
 
 func _end_game() -> void:
-	print("You died lol")
-	get_tree().paused = true
+	get_tree().get_nodes_in_group("Game")[0].add_child(deathScreenScene.instance())
+	
 	#_state_machine.transition_to("Spawn")
 
 func process(delta: float) -> void:

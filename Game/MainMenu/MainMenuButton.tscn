@@ -5,5 +5,5 @@ margin_left = 288.0
 margin_right = 350.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 60 )
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 text = "ABCDEF"

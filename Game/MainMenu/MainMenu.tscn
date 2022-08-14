@@ -73,22 +73,47 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 size_flags_stretch_ratio = 8.89
 
+[node name="Control4" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_right = 179.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
 [node name="Credits" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 180.0
-margin_right = 244.0
+margin_left = 183.0
+margin_right = 362.0
 margin_bottom = 60.0
 text = "CREDITS"
 
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 366.0
+margin_right = 546.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
 [node name="Start" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 615.0
-margin_right = 665.0
+margin_left = 550.0
+margin_right = 729.0
 margin_bottom = 60.0
 text = "START"
 
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 733.0
+margin_right = 913.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
 [node name="Options" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 1032.0
-margin_right = 1103.0
+margin_left = 917.0
+margin_right = 1096.0
 margin_bottom = 60.0
 text = "OPTIONS"
 
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1100.0
+margin_right = 1280.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Options" to="." method="_on_Options_pressed"]
