@@ -2,11 +2,19 @@
 
 This is a repository for a game made for Godot Wild Jam 48.
 
-## Setting
+It will be a 2D-side view action game, with the camera following the player.
 
-The protagonist is as a knight that nimbly fights off enemies with sword and board.
+## WHO
 
-The game takes place in a medieval city, in the middle on the night.
+The protagonist is as a knight with sword and board. He can fight, jump and cast spells.
+
+## WHERE
+
+The game takes place in a medieval city, in the middle on the night. The game arena consists of a single level filled with platforms allowing for vertical movement via jumping.
+
+## ENEMIES
+
+Various monsters will spawn off screen and path to the player, attacking once they come in range.
 
 ## Loss condition
 
@@ -18,10 +26,12 @@ Health loss occurs through enemy attacks.
 
 The player gains points for defeating enemies, increasing their score, with the end goal of reaching a satisfactory high score.
 
-## Location
+## Combat related questions
 
-The game arena consists of a single level filled with platforms allowing for vertical movement via jumping.
-
-A battle arena from Terraria is a decent approximation of the intended game arena.
-
-![alt text](https://i.redd.it/zypkmjqhcuvy.png)
+- Should there be an invincibility frame after hit?
+- Are all enemies knocked out on 1 hit, or do they have a health pool?
+- If enemies have health, should they stagger on hit?
+- What happens when player and enemies touch?
+- Is the above behavior shared with all enemies?
+- Can the player regain health?
+- If a method of health gain exists, how is it replenished?
