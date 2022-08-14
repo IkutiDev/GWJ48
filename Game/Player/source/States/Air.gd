@@ -77,8 +77,10 @@ func jump() -> void:
 	var move = get_parent() as MoveState
 	move.velocity.y = 0
 	move.velocity += calculate_jump_velocity(jump_impulse)
+	if _jump_count == 0:
+		owner.audio_player.play_jump_SFX()
 	_jump_count += 1
-	owner.audio_player.play_jump_SFX()
+
 
 func calculate_jump_velocity(impulse: = 0.0) -> Vector2:
 	var move: = get_parent() as MoveState
