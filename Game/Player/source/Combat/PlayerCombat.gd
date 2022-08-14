@@ -1,5 +1,7 @@
 extends Node2D
 
+signal health_changed(current_health)
+
 onready var player: Player = $".."
 onready var hitbox: Hitbox = $Hitbox
 
@@ -25,8 +27,8 @@ func _on_Hitbox_got_hit(damage) -> void:
 	invincibility_timer.start()
 	invincible = true
 	player.skin.play_animation_player("hurt")
-	print(invincibility_timer.time_left)
 	hitbox.current_health -= damage
+	emit_signal("health_changed", hitbox.current_health)
 	if hitbox.current_health > 0:
 		player.audio_player.play_pain_SFX()
 	current_health = hitbox.current_health
