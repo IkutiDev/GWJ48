@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Enemies/Spawner/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
 
 [node name="Spawner" type="Node" groups=["Spawner"]]
 script = ExtResource( 1 )
@@ -14,7 +15,9 @@ margin_left = 551.0
 margin_top = 11.0
 margin_right = 591.0
 margin_bottom = 25.0
-rect_scale = Vector2( 3, 3 )
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "10.0"
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0

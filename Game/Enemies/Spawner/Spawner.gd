@@ -28,7 +28,7 @@ func _ready():
 
 func _process(_delta):
 	if $WaveTimer.time_left > 0:
-		$Overlay/Label.text = String($WaveTimer.time_left)
+		$Overlay/Label.text = String("%.1f" % ($WaveTimer.time_left))
 	else:
 		$Overlay/Label.text = ""
 

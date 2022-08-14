@@ -7,7 +7,7 @@ func _ready():
 	$Explosion.rotation = randf()*2*PI
 
 func _on_GhostBullet_body_entered(body : PhysicsBody2D):
-	if body is Player and not hurtbox.is_active:
+	if body is Player:
 		return
 	pop()
 	pass # Replace with function body.

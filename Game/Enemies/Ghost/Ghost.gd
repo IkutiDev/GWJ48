@@ -12,6 +12,8 @@ export var bulletSpeed = 150
 
 export var health = 20
 
+export var score = 20
+
 var velocity = Vector2(0,0)
 
 var baseSpeed = 50.0
@@ -109,7 +111,9 @@ func _on_Hitbox_got_hit(damage) -> void:
 
 
 func _on_Hitbox_died() -> void:
-	
+	if spawning or dead:
+		return
+	Events.emit_signal("score_gained", score)
 	# (#Ikuti) Add gain score here
 	# (#Ikuti) Add drop exp/stuff here
 	dead = true
