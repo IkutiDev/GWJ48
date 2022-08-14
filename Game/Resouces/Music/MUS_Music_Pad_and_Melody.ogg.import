@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MUS_Music_Pad_and_Melody.ogg-76aefdde7b13ef6b536496917d99880b.oggstr"
+
+[deps]
+
+source_file="res://Resouces/Music/MUS_Music_Pad_and_Melody.ogg"
+dest_files=[ "res://.import/MUS_Music_Pad_and_Melody.ogg-76aefdde7b13ef6b536496917d99880b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

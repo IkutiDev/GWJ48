@@ -88,6 +88,7 @@ config/icon="res://icon.png"
 
 Events="*res://Autoload/Events.gd"
 Steering="*res://Autoload/Steering.gd"
+SoundManager="*res://Autoload/SoundManager.tscn"
 
 [debug]
 
