@@ -12,19 +12,19 @@ scroll_base_scale = Vector2( 0.2, 0.2 )
 [node name="Sky" type="ParallaxLayer" parent="."]
 position = Vector2( -6.52191, -283.095 )
 scale = Vector2( 1.66667, 1.66667 )
-motion_scale = Vector2( 0.1, 0.3 )
-motion_offset = Vector2( -355, -360 )
+motion_scale = Vector2( 0.2, 0.5 )
+motion_offset = Vector2( -340, -120 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Sky" type="Sprite" parent="Sky"]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Moon" type="Sprite" parent="Sky"]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 centered = false
 

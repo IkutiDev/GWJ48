@@ -6,7 +6,7 @@ onready var jump_delay: Timer = $JumpDelay
 
 export var acceleration_x: = 5000.0
 export var max_jump_count: = 2
-export var jump_impulse: = 1500.0
+export var jump_impulse: = 800.0
 export var add_to_jump_count_on_fall: = true
 
 var _jump_count: = 0
