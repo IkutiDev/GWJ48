@@ -41,7 +41,7 @@ _data = [ Vector2( 0, 0.709091 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.409091 ), -0.084
 radius = 6.08276
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 120.0
+radius = 183.134
 
 [sub_resource type="Animation" id=7]
 resource_name = "New Anim"
