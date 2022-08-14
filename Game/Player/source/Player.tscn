@@ -64,7 +64,6 @@ wait_time = 0.5
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 2 )
 acceleration_x = 2500.0
-jump_impulse = 800.0
 
 [node name="JumpDelay" type="Timer" parent="StateMachine/Move/Air"]
 wait_time = 0.3

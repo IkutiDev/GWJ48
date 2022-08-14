@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/window_glass.png-fe483fb0526a2ba6c802121b79b3675f.stex"
+path="res://.import/window_glass.png-3bf00b8d05835656972309c1aa15c0fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arena/Tiles/window_glass.png"
-dest_files=[ "res://.import/window_glass.png-fe483fb0526a2ba6c802121b79b3675f.stex" ]
+source_file="res://Arena/window_glass.png"
+dest_files=[ "res://.import/window_glass.png-3bf00b8d05835656972309c1aa15c0fa.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

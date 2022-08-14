@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Arena/Arena.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/source/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Debug/DebugPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Debug/DebugDock.gd" type="Script" id=4]
 [ext_resource path="res://UI/Debug/theme/gdquest.theme" type="Theme" id=5]
+[ext_resource path="res://Enemies/Ghost/Ghost.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 
@@ -51,5 +52,8 @@ jump_impulse = 760.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Ghost" parent="." instance=ExtResource( 6 )]
+position = Vector2( 172, 11 )
 
 [editable path="Player"]

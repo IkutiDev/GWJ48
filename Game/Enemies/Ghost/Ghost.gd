@@ -6,6 +6,8 @@ export var wobble = 0.0
 
 export var speedModifier = 1.0
 
+var velocity = Vector2(0,0)
+
 var baseSpeed = 50.0
 
 var desiredLoc = Vector2()
@@ -35,17 +37,14 @@ func fire_bullet():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if target == null :
 		desiredLoc = get_global_mouse_position()
 	else:
 		desiredLoc = target.global_position
-	desiredLoc.y += wobble
-	var direction =  desiredLoc - global_position
-	var distance = direction.length()
-	direction = direction.normalized()
-	var distanceSpeedBonus = Vector2(4.0 - min(4.0,(distance + 200.0) / distance),1.0)
-	move_and_collide(direction * baseSpeed * speedModifier * distanceSpeedBonus * delta )
+		
+	velocity = Steering.follow(velocity,global_position,desiredLoc,baseSpeed*speedModifier,1)
+	move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	cooldown -= delta
 	if cooldown < 0.0 and attackMode:
 		cooldown += 7.0
