@@ -153,7 +153,7 @@ wobble = 25.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "float"
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]

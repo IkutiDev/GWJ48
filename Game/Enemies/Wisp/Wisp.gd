@@ -1,5 +1,7 @@
 extends Enemy
 
+onready var hurtbox: Hurtbox = $Hurtbox
+
 var velocity = Vector2.ZERO
 
 export var mass:= 20.0
@@ -18,9 +20,14 @@ func death_finished() -> void:
 	
 func spawn_finished() -> void:
 	current_enemy_life_state = enemy_life_state.Alive
+	hurtbox.is_active = true
+
+func buff_enemy(buff_counter: int) -> void:
+	.buff_enemy(buff_counter)
 
 func _ready() -> void:
 	._ready()
+	hurtbox.damage = damage
 	skin.play_animation_player("spawn")
 	skin.connect("animation_finished", self, "_on_AnimationPlayer_finished")
 
@@ -43,11 +50,13 @@ func _on_Hitbox_got_hit(damage) -> void:
 	if hitbox.current_health <= 0:
 		return
 	_got_hit(damage)
-
+	if hitbox.current_health > 0:
+		skin.play_animation_player("hit")
 
 
 func _on_Hitbox_died() -> void:
 	if not _is_enemy_alive():
 		return
 	_death()
+	hurtbox.is_active = false
 	skin.play_animation_player("death")

@@ -1,9 +1,13 @@
 extends RigidBody2D
+class_name GhostBullet
 onready var hurtbox: Area2D = $Hurtbox
 
 var dead = false
 
+var damage := 0
+
 func _ready():
+	hurtbox.damage = damage
 	$Explosion.rotation = randf()*2*PI
 
 func _on_GhostBullet_body_entered(body : PhysicsBody2D):

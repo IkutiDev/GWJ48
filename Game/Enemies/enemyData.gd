@@ -1,13 +1,9 @@
 extends Resource
 
-class_name enemyData
+class_name enemyData, "res://Editor/icons/monster_data.svg"
 
-enum types {ghost}
+export var enemy_scene : PackedScene 
 
-export (types) var type = 0
+export var start_wave : int = 0
 
 export var walker = false
-
-var bonusHP = 0
-
-

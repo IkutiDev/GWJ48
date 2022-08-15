@@ -48,7 +48,8 @@ func _ready():
 func fire_bullet():
 	if not _is_enemy_alive():
 		return
-	var newBullet = bulletScene.instance()
+	var newBullet : GhostBullet = bulletScene.instance()
+	newBullet.damage = damage
 	newBullet.global_position = global_position
 	var attackDir = target.global_position - global_position
 	attackDir = attackDir.normalized()

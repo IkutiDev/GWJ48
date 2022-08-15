@@ -1,8 +1,14 @@
 extends Node
 
-var enemyScenes = {
-	enemyData.types.ghost : preload("res://Enemies/Ghost/Ghost.tscn")
-	}
+export var buff_enemies_on_every_x_wave : int = 5
+export var minimal_spawn_timer : float = 0.5
+export var spawn_timer_increase_per_wave : float = 0.1
+
+export(Array, Resource) var enemies_data
+
+#var enemyScenes = {
+#	enemyData.types.ghost : preload("res://Enemies/Ghost/Ghost.tscn")
+#	}
 
 var allExits = [] # holes have antialiasing set to true
 
@@ -10,16 +16,26 @@ var allGates = []
 
 var allEnemies = []
 
+var allowedEnemies : Array
+
 var waveCounter = 0
 
 var enemiesToSpawn = 0
 
 var enemiesToKill = 100
 
+var buff_counter = 1
+
+var current_spawn_wait_time = 3
+
+func _enter_tree() -> void:
+	for d in enemies_data:
+		assert(d is enemyData)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(owner, "ready")
+	current_spawn_wait_time = $SpawnTimer.wait_time
 	Events.connect("spawner_record_death", self, "record_death")
 	SoundManager.play_song(1)
 	allExits = $Exits.get_children()
@@ -46,13 +62,23 @@ func record_death(enemy):
 func start_next_wave():
 	SoundManager.play_song(2)
 	waveCounter += 1
-	enemiesToSpawn = 5 + waveCounter
+	current_spawn_wait_time -= spawn_timer_increase_per_wave
+	if waveCounter % buff_enemies_on_every_x_wave == 0:
+		buff_counter +=1
+	enemiesToSpawn = 5 + pow(2, (waveCounter/4)) + waveCounter
 	enemiesToKill = enemiesToSpawn
+	allowedEnemies.clear()
+	for d in enemies_data:
+		if (d as enemyData).start_wave <= waveCounter:
+			allowedEnemies.append(d)
+	$SpawnTimer.wait_time = current_spawn_wait_time
 	$SpawnTimer.start()
 	pass
 
 func spawn_enemy(data : enemyData):
-	var newEnemy = enemyScenes[data.type].instance()
+	var newEnemy : Enemy = data.enemy_scene.instance()
+	if buff_counter > 1:
+		newEnemy.buff_enemy(buff_counter)
 	var validExits = []
 	if data.walker:
 		validExits = allGates.duplicate()
@@ -74,7 +100,8 @@ func is_a_closer(a,b): # is a not a closer! is a me! Mario!
 
 
 func _on_SpawnTimer_timeout():
-	spawn_enemy(enemyData.new())
+	var enemy_to_spawn : enemyData = allowedEnemies[randi() % allowedEnemies.size()]
+	spawn_enemy(enemy_to_spawn)
 	enemiesToSpawn -= 1
 	if enemiesToSpawn < 1:
 		$SpawnTimer.stop()

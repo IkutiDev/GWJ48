@@ -3,8 +3,9 @@ class_name Hurtbox
 
 signal dealt_damage(damage)
 
-export var damage: int = 10
 export var attack_each_frame_active := true
+
+var damage: int = 0
 
 var targets_attacked : Array
 

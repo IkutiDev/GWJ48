@@ -9,6 +9,8 @@ enum enemy_life_state {Spawning = 0, Alive = 1, Dead = 2}
 onready var skin: CharacterSkin = $Skin
 onready var hitbox: Hitbox = $Hitbox
 
+export var damage: int = 5
+
 export var health: int = 20
 
 export var score : int = 20
@@ -19,6 +21,12 @@ var current_enemy_life_state : int = enemy_life_state.Spawning
 
 var target : Node2D
 var desiredLoc = Vector2()
+
+func buff_enemy(buff_counter: int) -> void:
+	assert(buff_counter > 0)
+	health *= buff_counter
+	damage *= buff_counter / 2
+	score *= buff_counter / 2
 
 func _ready() -> void:
 	#Find the reference to target, as in the Player, from the group. 

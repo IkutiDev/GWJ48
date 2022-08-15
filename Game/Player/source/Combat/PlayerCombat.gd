@@ -4,10 +4,12 @@ signal health_changed(current_health)
 
 onready var player: Player = $".."
 onready var hitbox: Hitbox = $Hitbox
+onready var hurtbox: Hurtbox = $Hurtbox
 
 onready var invincibility_timer: Timer = $InvincibilityTimer
 
 export var health: int = 100
+export var normal_attack_damage: int = 10
 
 var current_health = health 
 
@@ -18,6 +20,7 @@ func _on_InvincibilityTimer_time_out()-> void:
 
 func _ready() -> void:
 	hitbox.current_health = health
+	hurtbox.damage = normal_attack_damage
 	var value = invincibility_timer.connect("timeout", self, "_on_InvincibilityTimer_time_out")
 	assert(value == OK)
 
