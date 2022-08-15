@@ -20,5 +20,5 @@ func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
 			
 func exit() -> void:
-	var move := get_parent() as MoveState
+	var move := get_parent()
 	move.exit()
