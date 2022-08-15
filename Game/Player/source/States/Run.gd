@@ -16,9 +16,9 @@ func physics_process(delta: float) -> void:
 	move.max_speed_local.x = max_sprint_speed if Input.is_action_pressed("sprint") else move.max_speed_default.x
 	foot_steps_timer.wait_time = sprint_footstep_sound_speed if Input.is_action_pressed("sprint") else default_footstep_sound_speed
 	if owner.is_on_floor():
-		if move.DECCELERATION_ENABLED and move.velocity.length() < 1.0 and move.get_move_direction().x == 0:
+		if move.DECCELERATION_ENABLED and move.velocity.length() < 1.0 and move.get_move_direction(owner.player_combat.block_active).x == 0:
 			_state_machine.transition_to("Move/Idle")
-		elif not move.DECCELERATION_ENABLED and move.get_move_direction().x == 0:
+		elif not move.DECCELERATION_ENABLED and move.get_move_direction(owner.player_combat.block_active).x == 0:
 			_state_machine.transition_to("Move/Idle")
 	else:
 		_state_machine.transition_to("Move/Air")

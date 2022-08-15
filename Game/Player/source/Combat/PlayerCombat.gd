@@ -9,11 +9,14 @@ onready var hurtbox: Hurtbox = $Hurtbox
 onready var invincibility_timer: Timer = $InvincibilityTimer
 
 export var health: int = 100
+export var shield_charges: int = 3
 export var normal_attack_damage: int = 10
 
 var current_health = health 
-
+var current_shield_charges = shield_charges
 var invincible := false
+
+var block_active := false
 
 func _on_InvincibilityTimer_time_out()-> void:
 	invincible = false
@@ -27,7 +30,9 @@ func _ready() -> void:
 func _on_Hitbox_got_hit(damage) -> void:
 	if invincible:
 		return
-	
+	if block_active:
+		current_shield_charges -= 1
+		return
 	invincibility_timer.start()
 	invincible = true
 	player.skin.play_animation_player("hurt")
