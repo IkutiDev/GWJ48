@@ -44,3 +44,8 @@ The player gains points for defeating enemies, increasing their score, with the 
 > Probably from orbs dropped from enemies. Sleeping could be later as an option to regain health.
 - How is damage detected / registered.
 > Hit boxes are used to detect damage. Heart boxes are used to initiate damage signals.
+
+## Enemies cool to haves:
+- Make rats go after the player no matter the player y, make sure falling works and add ability for them to run up walls and jump of them in player direction
+- Have a caster enemy that spawns projectiles, teleports and maybe(?) buffs other enemies nearby
+- Have a meele enemy (similiar to rat) but with teleports. Shadow warrior or something like that
