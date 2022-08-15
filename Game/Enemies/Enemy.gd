@@ -4,6 +4,8 @@ class_name Enemy, "res://Editor/icons/monster.svg"
 General class for all enemies
 """
 
+const FLOOR_NORMAL: = Vector2.UP
+
 enum enemy_life_state {Spawning = 0, Alive = 1, Dead = 2}
 
 onready var skin: CharacterSkin = $Skin
@@ -48,6 +50,7 @@ func _is_enemy_alive() -> bool:
 
 func _death() -> void:
 	Events.emit_signal("score_gained", score)
+	Events.emit_signal("spawner_record_death", self)
 	# (#Ikuti) Add drop exp/stuff here
 	current_enemy_life_state = enemy_life_state.Dead
 

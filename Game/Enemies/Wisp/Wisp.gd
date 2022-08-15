@@ -14,7 +14,6 @@ func _on_AnimationPlayer_finished(anim_name: String) -> void:
 			death_finished()
 
 func death_finished() -> void:
-	Events.emit_signal("spawner_record_death", self)
 	skin.disconnect("animation_finished", self, "_on_AnimationPlayer_finished")
 	queue_free()
 	
