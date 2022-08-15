@@ -1,95 +1,74 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Combat/Hurtbox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resouces/Particles/SmallPoint.png" type="Texture" id=2]
-[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_10.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/Wisp/Wisp.gd" type="Script" id=4]
 [ext_resource path="res://Player/source/Skin.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/trailShader.tres" type="Shader" id=6]
+[ext_resource path="res://Enemies/Wisp/assets/NoobGodoter'sSpritesheet.png" type="Texture" id=7]
 [ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.148387, 0.245161, 0.43871, 0.535484, 0.793548, 0.870968 )
-colors = PoolColorArray( 0.152941, 0.152941, 0.152941, 0, 0.886719, 0.886719, 0.886719, 1, 0.267609, 0.925781, 0, 1, 0.698039, 0.933333, 0.266667, 0, 1, 0.940186, 0.453125, 1, 1, 1, 1, 0 )
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 288, 288 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 7 )
+region = Rect2( 288, 0, 288, 288 )
 
-[sub_resource type="OpenSimplexNoise" id=8]
-octaves = 6
-period = 198.8
-persistence = 0.682
-lacunarity = 1.71
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 7 )
+region = Rect2( 576, 0, 288, 288 )
 
-[sub_resource type="NoiseTexture" id=9]
-width = 64
-height = 64
-seamless = true
-noise = SubResource( 8 )
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 7 )
+region = Rect2( 864, 0, 288, 288 )
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 6 )
-shader_param/scrollSpeed1 = Vector2( 0.115, 0.075 )
-shader_param/scrollSpeed2 = Vector2( -0.785, -0.184 )
-shader_param/texture1Light = -0.365
-shader_param/texture2Light = -1.408
-shader_param/texture1 = SubResource( 9 )
-shader_param/texture2 = ExtResource( 3 )
-shader_param/gradient = SubResource( 2 )
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 7 )
+region = Rect2( 1152, 0, 288, 288 )
 
-[sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 0.709091 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.409091 ), -0.0848484, 0.0, 0, 0 ]
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 7 )
+region = Rect2( 1440, 0, 288, 288 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 7 )
+region = Rect2( 1728, 0, 288, 288 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 7 )
+region = Rect2( 2016, 0, 288, 288 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 7 )
+region = Rect2( 2304, 0, 288, 288 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 7 )
+region = Rect2( 2592, 0, 288, 288 )
+
+[sub_resource type="SpriteFrames" id=49]
+animations = [ {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
+"loop": true,
+"name": "float",
+"speed": 10.0
+} ]
 
 [sub_resource type="Animation" id=35]
 resource_name = "REST"
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("SmallPoint:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Trail:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=36]
 resource_name = "death"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("SmallPoint:modulate")
+tracks/0/path = NodePath("Skin/AnimatedSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Trail:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -100,7 +79,7 @@ resource_name = "hit"
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("SmallPoint:modulate")
+tracks/0/path = NodePath("Skin/AnimatedSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -109,26 +88,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.85098, 0.266667, 0.109804, 0.498039 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Trail:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.85098, 0.266667, 0.109804, 0.498039 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0666667, 0.560784, 0.886275, 0.294118 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=37]
 resource_name = "spawn"
-length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("SmallPoint:modulate")
+tracks/0/path = NodePath("Skin/AnimatedSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -136,30 +102,18 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 3,
+"update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Trail:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 3,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 6.0
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id=33]
-radius = 11.0454
+radius = 16.0312
 
 [sub_resource type="CircleShape2D" id=34]
-radius = 3.0
+radius = 5.0
 
 [node name="Wisp" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 32
@@ -168,19 +122,13 @@ script = ExtResource( 4 )
 health = 10
 score = 10
 
-[node name="Trail" type="Line2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 3 )
-points = PoolVector2Array( 0, 2, 0, 5, 0, 8, 0, 11, 0, 14, 0, 17 )
-width_curve = SubResource( 4 )
-default_color = Color( 1, 1, 1, 1 )
-texture_mode = 2
-begin_cap_mode = 1
-end_cap_mode = 1
-
 [node name="Skin" parent="." instance=ExtResource( 5 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
+position = Vector2( 2, -4 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 49 )
+animation = "float"
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
@@ -190,13 +138,7 @@ anims/death = SubResource( 36 )
 anims/hit = SubResource( 38 )
 anims/spawn = SubResource( 37 )
 
-[node name="SmallPoint" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-self_modulate = Color( 0.666667, 1, 0.619608, 1 )
-texture = ExtResource( 2 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 5 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 9 )]
@@ -206,6 +148,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 0, -2 )
 shape = SubResource( 33 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
@@ -215,6 +158,7 @@ attack_each_frame_active = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 modulate = Color( 1, 0.572549, 0, 1 )
+position = Vector2( 0, 1 )
 shape = SubResource( 34 )
 
 [connection signal="died" from="Hitbox" to="." method="_on_Hitbox_died"]
