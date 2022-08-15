@@ -9,6 +9,8 @@ var songList = {
 
 var musicFolderPath = "res://Resouces/Music/"
 
+var current_song_id : int = -1
+
 func _ready():
 #	var musicFolder = Directory.new()
 #	if musicFolder.open(musicFolderPath) == OK :
@@ -24,7 +26,10 @@ func _ready():
 	pass
 
 func play_song(ID):
+	if ID == current_song_id:
+		return
 	var nextSong = songList[ID]
+	current_song_id = ID
 	if $MusicPlayer1.playing:
 		$MusicPlayer2.stream = nextSong
 		$DJ.play("Play2")
