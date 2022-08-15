@@ -10,7 +10,7 @@ func _on_Start_pressed():
 
 
 func _on_Options_pressed():
-	var value = get_tree().change_scene("res://MainMenu/AudioSettings/AudioSettings.tscn")
+	var value = get_tree().change_scene("res://MainMenu/OptionsMenu.tscn")
 	assert(value == OK)
 	pass # Replace with function body.
 

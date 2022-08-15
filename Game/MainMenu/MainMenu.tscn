@@ -3,7 +3,7 @@
 [ext_resource path="res://Arena/Sky.png" type="Texture" id=1]
 [ext_resource path="res://Arena/City.png" type="Texture" id=2]
 [ext_resource path="res://Arena/Moon.png" type="Texture" id=3]
-[ext_resource path="res://MainMenu/MainMenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MainMenu/BasicButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=5]
 
 [node name="MainMenu" type="Control"]
@@ -81,7 +81,6 @@ size_flags_horizontal = 3
 [node name="Credits" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 183.0
 margin_right = 362.0
-margin_bottom = 60.0
 text = "CREDITS"
 
 [node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
@@ -93,7 +92,6 @@ size_flags_horizontal = 3
 [node name="Start" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 550.0
 margin_right = 729.0
-margin_bottom = 60.0
 text = "START"
 
 [node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
@@ -105,7 +103,6 @@ size_flags_horizontal = 3
 [node name="Options" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 917.0
 margin_right = 1096.0
-margin_bottom = 60.0
 text = "OPTIONS"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]

@@ -53,7 +53,7 @@ script = ExtResource( 4 )
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 424.0
-margin_bottom = 858.0
+margin_bottom = 892.0
 
 [node name="DebugPanel2" parent="Debug_UI/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -99,7 +99,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 680.0
 margin_right = 408.0
-margin_bottom = 842.0
+margin_bottom = 876.0
 mouse_filter = 2
 reference_path = NodePath("../../../../Player/PlayerCombat")
 properties = PoolStringArray( "current_health", "invincible", "block_active" )
@@ -114,12 +114,6 @@ smoothing_speed = 3.0
 [node name="Player" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( -108, 75 )
-
-[node name="AnimatedSprite" parent="Player/Skin" index="0"]
-frame = 1
-
-[node name="AnimatedSprite" parent="Player/Skin" index="0"]
-frame = 1
 
 [node name="Air" parent="Player/StateMachine/Move" index="2"]
 jump_impulse = 785.0

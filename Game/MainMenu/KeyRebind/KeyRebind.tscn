@@ -1,0 +1,263 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainMenu/KeyRebind/RebindButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
+
+[node name="KeyRebind" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="."]
+margin_top = 18.0
+margin_right = 1280.0
+margin_bottom = 47.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.1
+custom_fonts/font = ExtResource( 2 )
+text = "Key Rebinding"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 69.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Jump"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+action = "jump"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 1280.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Down"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+action = "move_down"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 100.0
+margin_right = 1280.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Left"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer3" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+action = "move_left"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 150.0
+margin_right = 1280.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer4"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Right"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer4" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+action = "move_right"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 200.0
+margin_right = 1280.0
+margin_bottom = 246.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer5"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Attack"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer5" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+action = "attack"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer5"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 250.0
+margin_right = 1280.0
+margin_bottom = 296.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer6"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer6"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Block"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer6" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+action = "block"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer6"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 300.0
+margin_right = 1280.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 0, 46 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer7"]
+margin_right = 339.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer7"]
+margin_left = 343.0
+margin_top = 8.0
+margin_right = 682.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "???"
+
+[node name="RebindButton" parent="VBoxContainer/HBoxContainer7" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 0.0
+margin_right = 936.0
+margin_bottom = 46.0
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer7"]
+margin_left = 940.0
+margin_right = 1280.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+
+[connection signal="toggled" from="VBoxContainer/HBoxContainer6/RebindButton" to="VBoxContainer/HBoxContainer/RebindButton" method="_on_RebindButton_toggled"]
