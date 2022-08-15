@@ -102,7 +102,7 @@ margin_right = 408.0
 margin_bottom = 842.0
 mouse_filter = 2
 reference_path = NodePath("../../../../Player/PlayerCombat")
-properties = PoolStringArray( "current_health", "invincible" )
+properties = PoolStringArray( "current_health", "invincible", "block_active" )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -108, 75 )
@@ -114,6 +114,9 @@ smoothing_speed = 3.0
 [node name="Player" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( -108, 75 )
+
+[node name="AnimatedSprite" parent="Player/Skin" index="0"]
+frame = 1
 
 [node name="AnimatedSprite" parent="Player/Skin" index="0"]
 frame = 1
