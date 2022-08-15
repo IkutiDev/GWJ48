@@ -20,11 +20,15 @@ var enemiesToKill = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(owner, "ready")
+	Events.connect("spawner_record_death", self, "record_death")
 	SoundManager.play_song(1)
 	allExits = $Exits.get_children()
 	for z in allExits:
 		if !z.antialiased:
 			allGates.push_back(z)
+
+func _exit_tree() -> void:
+	Events.disconnect("spawner_record_death", self, "record_death")
 
 func _process(_delta):
 	if $WaveTimer.time_left > 0:

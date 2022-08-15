@@ -4,3 +4,5 @@ extends Node
 signal player_moved(player)
 #warning-ignore:unused_signal
 signal score_gained(score)
+#warning-ignore:unused_signal
+signal spawner_record_death(enemy)

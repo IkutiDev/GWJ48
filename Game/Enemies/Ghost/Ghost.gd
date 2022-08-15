@@ -1,64 +1,52 @@
-extends KinematicBody2D
+extends Enemy
 
 var bulletScene = preload("res://Enemies/Ghost/GhostBullet.tscn")
-onready var hitbox: Hitbox = $Hitbox
-onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 
 export var wobble = 0.0
 
-export var speedModifier = 1.0
+export var mass: = 30.0
 
 export var bulletSpeed = 150
 
-export var health = 20
-
-export var score = 20
+export var fire_rate: = 7.0
 
 var velocity = Vector2(0,0)
 
-var baseSpeed = 50.0
-
-var desiredLoc = Vector2()
-
-var target : Node2D
-
 var attackMode = false
-
 
 var cooldown = 0.0
 
-var spawning = true
-var dead = false
 
-
-func _on_AnimatedSpriteDeath_finished() -> void:
-	get_tree().get_nodes_in_group("Spawner")[0].record_death(self)
-	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSpriteDeath_finished")
+func death_finished() -> void:
+	Events.emit_signal("spawner_record_death", self)
+	skin.disconnect("animated_sprite_finished", self, "_on_AnimatedSprite_finished")
 	queue_free()
 
-func _on_AnimatedSpriteHit_finished() -> void:
-	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSpriteHit_finished")
-	animated_sprite.play("float")
+func hit_finished() -> void:
+	skin.play_animated_sprite("float")
 	
-func _on_AnimatedSpriteSpawn_finished() -> void:
-	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSpriteSpawn_finished")
-	animated_sprite.play("float")
-	spawning = false
+func _on_AnimatedSprite_finished(anim_name: String) -> void:
+	match anim_name:
+		"spawn":
+			spawn_finished()
+		"hit":
+			hit_finished()
+		"death":
+			death_finished()
+	
+func spawn_finished() -> void:
+	skin.play_animated_sprite("float")
+	current_enemy_life_state = enemy_life_state.Alive
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawning = true
-	if get_tree().get_nodes_in_group("Player").size()>0:
-		target = get_tree().get_nodes_in_group("Player")[0]
-	
-	animated_sprite.play("spawn")
-	var value = animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteSpawn_finished")
+	._ready()
+	skin.play_animated_sprite("spawn")
+	var value = skin.connect("animated_sprite_finished", self, "_on_AnimatedSprite_finished")
 	assert(value == OK)
-	hitbox.current_health = health
-	pass # Replace with function body.
 
 func fire_bullet():
-	if spawning or dead:
+	if not _is_enemy_alive():
 		return
 	var newBullet = bulletScene.instance()
 	newBullet.global_position = global_position
@@ -71,18 +59,14 @@ func fire_bullet():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if spawning or dead:
+	if not _is_enemy_alive():
 		return
-	if target == null :
-		desiredLoc = get_global_mouse_position()
-	else:
-		desiredLoc = target.global_position
-		
-	velocity = Steering.follow(velocity,global_position,desiredLoc,baseSpeed*speedModifier,30)
+	._physics_process(delta)
+	velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
 	var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	cooldown -= delta
 	if cooldown < 0.0 and attackMode:
-		cooldown += 7.0
+		cooldown += fire_rate
 		fire_bullet()
 
 
@@ -98,25 +82,17 @@ func _on_AttackRange_body_exited(_body):
 
 
 func _on_Hitbox_got_hit(damage) -> void:
-	if spawning or dead:
+	if not _is_enemy_alive():
 		return
 	if hitbox.current_health <= 0:
 		return
-	hitbox.current_health -= damage
+	_got_hit(damage)
 	if hitbox.current_health > 0:
-		animated_sprite.play("hit")
-		if not animated_sprite.is_connected("animation_finished", self, "_on_AnimatedSpriteHit_finished"):
-			var value = animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteHit_finished")
-			assert(value == OK)
+		skin.play_animated_sprite("hit")
 
 
 func _on_Hitbox_died() -> void:
-	if spawning or dead:
+	if not _is_enemy_alive():
 		return
-	Events.emit_signal("score_gained", score)
-	# (#Ikuti) Add gain score here
-	# (#Ikuti) Add drop exp/stuff here
-	dead = true
-	animated_sprite.play("death")
-	var value = animated_sprite.connect("animation_finished", self, "_on_AnimatedSpriteDeath_finished")
-	assert(value == OK)
+	_death()
+	skin.play_animated_sprite("death")

@@ -1,165 +1,130 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Enemies/Ghost/Ghost.gd" type="Script" id=1]
-[ext_resource path="res://Resouces/Particles/SmallPoint.png" type="Texture" id=2]
-[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_10.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Float.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Death.png" type="Texture" id=5]
-[ext_resource path="res://Enemies/trailShader.tres" type="Shader" id=6]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Appear.png" type="Texture" id=7]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Hit.png" type="Texture" id=8]
 [ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/source/Skin.tscn" type="PackedScene" id=10]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.148387, 0.245161, 0.43871, 0.535484, 0.793548, 0.870968 )
-colors = PoolColorArray( 0.152941, 0.152941, 0.152941, 0, 0.886719, 0.886719, 0.886719, 1, 0.267609, 0.925781, 0, 1, 0.698039, 0.933333, 0.266667, 0, 1, 0.940186, 0.453125, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="OpenSimplexNoise" id=8]
-octaves = 6
-period = 198.8
-persistence = 0.682
-lacunarity = 1.71
-
-[sub_resource type="NoiseTexture" id=9]
-width = 64
-height = 64
-seamless = true
-noise = SubResource( 8 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 6 )
-shader_param/scrollSpeed1 = Vector2( 0.115, 0.075 )
-shader_param/scrollSpeed2 = Vector2( -0.785, -0.184 )
-shader_param/texture1Light = -0.365
-shader_param/texture2Light = -1.408
-shader_param/texture1 = SubResource( 9 )
-shader_param/texture2 = ExtResource( 3 )
-shader_param/gradient = SubResource( 2 )
-
-[sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 0.709091 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.409091 ), -0.0848484, 0.0, 0, 0 ]
-
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=82]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=83]
 atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=84]
 atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=85]
 atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=86]
 atlas = ExtResource( 5 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=87]
 atlas = ExtResource( 5 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=88]
 atlas = ExtResource( 5 )
 region = Rect2( 192, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=89]
 atlas = ExtResource( 5 )
 region = Rect2( 224, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=90]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=91]
 atlas = ExtResource( 4 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=92]
 atlas = ExtResource( 4 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=93]
 atlas = ExtResource( 4 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=94]
 atlas = ExtResource( 4 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=95]
 atlas = ExtResource( 4 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=96]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=97]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=98]
 atlas = ExtResource( 7 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=99]
 atlas = ExtResource( 7 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=100]
 atlas = ExtResource( 7 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=101]
 atlas = ExtResource( 7 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=102]
 atlas = ExtResource( 7 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=103]
 atlas = ExtResource( 7 )
 region = Rect2( 192, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=104]
 animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": true,
 "name": "death",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
 "loop": true,
 "name": "float",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 25 ), SubResource( 25 ), SubResource( 25 ) ],
+"frames": [ SubResource( 96 ), SubResource( 96 ), SubResource( 96 ) ],
 "loop": true,
 "name": "hit",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"frames": [ SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
 "loop": true,
 "name": "spawn",
 "speed": 10.0
 } ]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=105]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=106]
 radius = 183.134
 
-[sub_resource type="Animation" id=7]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=107]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -175,7 +140,7 @@ tracks/0/keys = {
 "values": [ 25.0, -60.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=33]
+[sub_resource type="CircleShape2D" id=108]
 
 [node name="Ghost" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 32
@@ -183,29 +148,19 @@ collision_mask = 16
 script = ExtResource( 1 )
 wobble = 25.0
 
-[node name="Trail" type="Line2D" parent="."]
-visible = false
-material = SubResource( 3 )
-points = PoolVector2Array( 0, 2, 0, 5, 0, 8, 0, 11, 0, 14, 0, 17 )
-width_curve = SubResource( 4 )
-default_color = Color( 1, 1, 1, 1 )
-texture_mode = 2
-begin_cap_mode = 1
-end_cap_mode = 1
+[node name="Skin" parent="." instance=ExtResource( 10 )]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 16 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
+frames = SubResource( 104 )
 animation = "float"
-frame = 4
+frame = 1
 playing = true
 
-[node name="SmallPoint" type="Sprite" parent="."]
-visible = false
-self_modulate = Color( 0.666667, 1, 0.619608, 1 )
-texture = ExtResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
+root_node = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 105 )
 
 [node name="AttackRange" type="Area2D" parent="."]
 visible = false
@@ -213,11 +168,11 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource( 6 )
+shape = SubResource( 106 )
 
 [node name="Wobbler" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 7 )
+"anims/New Anim" = SubResource( 107 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 9 )]
 collision_layer = 32
@@ -225,7 +180,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 modulate = Color( 1, 0, 0, 1 )
-shape = SubResource( 33 )
+shape = SubResource( 108 )
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]

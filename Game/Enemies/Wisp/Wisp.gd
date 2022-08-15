@@ -1,45 +1,35 @@
-extends KinematicBody2D
+extends Enemy
 
-onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var hitbox: Area2D = $Hitbox
-
-var spawning = true
-
-var target : Node2D
 var velocity = Vector2.ZERO
-var desiredLoc : Vector2 = Vector2.ZERO
-var base_speed : float = 50.0
-export var speed_modifier: float = 1.0
-export var health := 10
 
+export var mass:= 20.0
 
-func _on_AnimatedSpriteDeath_finished(name: String) -> void:
-	get_tree().get_nodes_in_group("Spawner")[0].record_death(self)
-	animation_player.disconnect("animation_finished", self, "_on_AnimatedSpriteDeath_finished")
+func _on_AnimationPlayer_finished(anim_name: String) -> void:
+	match anim_name:
+		"spawn":
+			spawn_finished()
+		"death":
+			death_finished()
+
+func death_finished() -> void:
+	Events.emit_signal("spawner_record_death", self)
+	skin.disconnect("animation_finished", self, "_on_AnimationPlayer_finished")
 	queue_free()
 	
-func _on_AnimatedSpriteSpawn_finished(name: String) -> void:
-	animation_player.disconnect("animation_finished", self, "_on_AnimatedSpriteSpawn_finished")
-	spawning = false
+func spawn_finished() -> void:
+	current_enemy_life_state = enemy_life_state.Alive
 
 func _ready() -> void:
-	spawning = true
-	if get_tree().get_nodes_in_group("Player").size()>0:
-		target = get_tree().get_nodes_in_group("Player")[0]
-	animation_player.play("spawn")
-	animation_player.connect("animation_finished", self, "_on_AnimatedSpriteSpawn_finished")
-	hitbox.current_health = health
+	._ready()
+	skin.play_animation_player("spawn")
+	skin.connect("animation_finished", self, "_on_AnimationPlayer_finished")
 
 
 func _physics_process(delta):
-	if spawning:
+	if not _is_enemy_alive():
 		return
-	if target == null :
-		desiredLoc = get_global_mouse_position()
-	else:
-		desiredLoc = target.global_position
-		
-	velocity = Steering.follow(velocity,global_position,desiredLoc,base_speed*speed_modifier,1)
+	._physics_process(delta)	
+	velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
 	move_and_collide(velocity* delta)
 
 
@@ -48,10 +38,16 @@ func _on_Hurtbox_dealt_damage(damage) -> void:
 
 
 func _on_Hitbox_got_hit(damage) -> void:
-	hitbox.current_health -= damage
+	if not _is_enemy_alive():
+		return
+	if hitbox.current_health <= 0:
+		return
+	_got_hit(damage)
 
 
 
 func _on_Hitbox_died() -> void:
-	animation_player.play("death")
-	animation_player.connect("animation_finished", self, "_on_AnimatedSpriteDeath_finished")
+	if not _is_enemy_alive():
+		return
+	_death()
+	skin.play_animation_player("death")

@@ -3,5 +3,6 @@ extends Control
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+	var value = get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+	assert(value == OK)
 	pass # Replace with function body.

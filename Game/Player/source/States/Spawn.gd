@@ -7,7 +7,7 @@ func _ready() -> void:
 	_start_position = owner.position
 
 
-func _on_Skin_animation_finished() -> void:
+func _on_Skin_animation_finished(_anim_name: String) -> void:
 	_state_machine.transition_to("Move/Idle")
 
 func enter(_msg: Dictionary = {}) -> void:

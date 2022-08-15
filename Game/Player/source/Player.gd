@@ -27,10 +27,10 @@ func set_is_active(value: bool) -> void:
 
 func flip_direction(move_direction : float) -> void:
 	if move_direction > 0:
-		skin.player_sprite.flip_h = false
+		skin.animated_sprite.flip_h = false
 		player_combat.scale.x = 1
 	elif move_direction < 0:
-		skin.player_sprite.flip_h = true
+		skin.animated_sprite.flip_h = true
 		player_combat.scale.x = -1
 
 func get_current_health() -> int:

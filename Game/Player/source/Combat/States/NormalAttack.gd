@@ -4,7 +4,7 @@ export var start_frame: int = 0
 
 onready var hurtbox: Hurtbox = $"../../Hurtbox"
 
-func _on_Skin_animation_finished() -> void:
+func _on_Skin_animation_finished(_anim_name: String) -> void:
 	_state_machine.transition_to("Idle")
 
 func unhandled_input(_event: InputEvent) -> void:

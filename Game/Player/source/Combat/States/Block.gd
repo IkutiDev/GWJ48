@@ -7,7 +7,7 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Idle")
 
 
-func _on_Skin_animation_finished() -> void:
+func _on_Skin_animation_finished(_anim_name: String) -> void:
 	play_hold_animation = true
 	owner.player.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 

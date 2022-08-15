@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "CharacterSkin",
+"language": "GDScript",
+"path": "res://Player/source/Skin.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemies/Enemy.gd"
+}, {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
@@ -39,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/source/Player.gd"
 }, {
-"base": "Node2D",
-"class": "PlayerSkin",
-"language": "GDScript",
-"path": "res://Player/source/Skin.gd"
-}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -65,13 +70,14 @@ _global_script_classes=[ {
 "path": "res://Enemies/enemyData.gd"
 } ]
 _global_script_class_icons={
+"CharacterSkin": "",
+"Enemy": "res://Editor/icons/monster.svg",
 "Hitbox": "",
 "Hook": "res://Editor/icons/icon_hook.svg",
 "HookTarget": "",
 "Hurtbox": "",
 "MoveState": "",
 "Player": "",
-"PlayerSkin": "",
 "State": "res://Editor/icons/state.svg",
 "StateMachine": "res://Editor/icons/state_machine.svg",
 "Surface": "",
