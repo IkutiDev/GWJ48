@@ -19,6 +19,8 @@ export var score : int = 20
 
 export var speed : float = 50.0
 
+export var distance_to_attack : float = 25.0
+
 var current_enemy_life_state : int = enemy_life_state.Spawning
 
 var target : Node2D
