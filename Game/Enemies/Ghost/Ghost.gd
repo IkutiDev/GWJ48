@@ -18,7 +18,6 @@ var cooldown = 0.0
 
 
 func death_finished() -> void:
-	Events.emit_signal("spawner_record_death", self)
 	skin.disconnect("animated_sprite_finished", self, "_on_AnimatedSprite_finished")
 	queue_free()
 

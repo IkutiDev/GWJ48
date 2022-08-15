@@ -42,7 +42,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed_local, acceleration_local, decceleration_local, delta, 
-	get_move_direction(), max_fall_speed)
+	get_move_direction(owner.player_combat.block_active), max_fall_speed)
 	var player = owner as Player
 	velocity = player.move_and_slide(velocity, player.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", player)
@@ -60,9 +60,9 @@ func exit() -> void:
 	owner.disconnect("body_exited", self, "_on_PassThrough_body_exited")
 	
 func process(_delta: float) -> void:
-	owner.flip_direction(get_move_direction().x)
+	owner.flip_direction(get_move_direction(owner.player_combat.block_active).x)
 	
-	if get_move_direction().x == 0:
+	if get_move_direction(owner.player_combat.block_active).x == 0:
 		owner.skin.play_animated_sprite("idle")
 	else:
 		movement_animation()
@@ -101,8 +101,9 @@ static func calculate_velocity(
 	new_velocity.y = clamp(new_velocity.y, -max_speed.y, fall_speed)
 	return new_velocity
 
-static func get_move_direction() -> Vector2:
+static func get_move_direction(block_active: bool) -> Vector2:
+	var direction_value : float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left") if not block_active else 0.0
 	return Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		direction_value,
 		1.0
 	)
