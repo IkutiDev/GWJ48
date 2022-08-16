@@ -254,7 +254,7 @@ scale = Vector2( -1, 1 )
 position = Vector2( 0, 4 )
 frames = SubResource( 104 )
 animation = "idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
@@ -302,7 +302,7 @@ spawn_projectile_frame = 5
 projectile_scene = ExtResource( 4 )
 
 [node name="AttackCooldown" type="Timer" parent="StateMachine/AttackEnemy"]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="HitEnemy" type="Node" parent="StateMachine"]
@@ -310,6 +310,7 @@ script = ExtResource( 14 )
 
 [node name="MoveEnemy" type="Node" parent="StateMachine"]
 script = ExtResource( 13 )
+distance_to_player = Vector2( 100, 200 )
 
 [node name="IdleEnemy" type="Node" parent="StateMachine/MoveEnemy"]
 script = ExtResource( 17 )

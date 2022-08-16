@@ -4,6 +4,7 @@ onready var ledge_detector: Area2D = $"../../LedgeDetector"
 export var max_fall_speed: = 1500.0
 export var acceleration_default: = Vector2(100000, 3000.0)
 export var decceleration_default: = Vector2(500, 3000.0)
+export var distance_to_player: = Vector2(4, 200)
 
 var acceleration_local: = acceleration_default
 var decceleration_local: = decceleration_default
@@ -20,7 +21,7 @@ func _ready() -> void:
 func physics_process(delta: float) -> void:
 	var enemy = owner as Enemy
 	velocity = calculate_velocity(velocity, max_speed_local, acceleration_local, decceleration_local, delta, 
-	get_move_direction(enemy.desiredLoc, owner.global_position), max_fall_speed)
+	get_move_direction(enemy.desiredLoc, owner.global_position, distance_to_player), max_fall_speed)
 	
 	if abs(abs(enemy.global_position.x) - abs(enemy.desiredLoc.x)) < 4 or abs(enemy.global_position.y - enemy.desiredLoc.y) > 200:
 		velocity = Vector2.ZERO
@@ -32,7 +33,7 @@ func physics_process(delta: float) -> void:
 	
 func process(_delta: float) -> void:
 	var enemy = owner as Enemy
-	owner.flip_direction(get_move_direction(enemy.desiredLoc, owner.global_position).x)
+	owner.flip_direction(get_move_direction(enemy.desiredLoc, owner.global_position, distance_to_player).x)
 	
 	if velocity == Vector2.ZERO:
 		owner.skin.play_animated_sprite("idle")
@@ -57,7 +58,7 @@ static func calculate_velocity(
 	new_velocity.y = clamp(new_velocity.y, -max_speed.y, fall_speed)
 	return new_velocity
 
-static func get_move_direction(target: Vector2, global_position: Vector2) -> Vector2:
-	if abs(abs(global_position.x) - abs(target.x)) < 4 or abs(global_position.y - target.y) > 200:
+static func get_move_direction(target: Vector2, global_position: Vector2, distance_to_player : Vector2) -> Vector2:
+	if abs(abs(global_position.x) - abs(target.x)) < distance_to_player.x or abs(global_position.y - target.y) > distance_to_player.y:
 		return Vector2.ZERO
 	return Vector2((target - global_position).normalized().x, 1.0)

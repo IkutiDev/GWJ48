@@ -26,6 +26,8 @@ var current_enemy_life_state : int = enemy_life_state.Spawning
 var target : Node2D
 var desiredLoc = Vector2()
 
+var is_attacking := false
+
 func buff_enemy(buff_counter: int) -> void:
 	assert(buff_counter > 0)
 	health *= buff_counter

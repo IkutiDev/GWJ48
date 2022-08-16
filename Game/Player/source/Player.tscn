@@ -454,6 +454,7 @@ material = SubResource( 84 )
 position = Vector2( 0, -28 )
 frames = SubResource( 81 )
 animation = "block"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]

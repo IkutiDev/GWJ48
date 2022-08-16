@@ -19,9 +19,11 @@ func process(_delta: float) -> void:
 
 func enter(_msg: Dictionary = {}) -> void:
 	hurtbox.is_active = false
+	owner.is_attacking = true
 	owner.skin.play_animated_sprite("attack", 1)
 	owner.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 	
 func exit() -> void:
 	owner.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 	hurtbox.is_active = false
+	owner.is_attacking = false

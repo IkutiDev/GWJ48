@@ -31,8 +31,10 @@ func process(_delta: float) -> void:
 
 func enter(_msg: Dictionary = {}) -> void:
 	already_shot = false
+	owner.is_attacking = true
 	owner.skin.play_animated_sprite("attack", 1)
 	owner.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
 	
 func exit() -> void:
+	owner.is_attacking = false
 	owner.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")

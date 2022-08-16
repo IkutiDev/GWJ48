@@ -218,7 +218,6 @@ damage = 15
 health = 30
 score = 15
 speed = 100.0
-distance_to_attack = 35.0
 
 [node name="Skin" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, -17 )
@@ -226,8 +225,6 @@ position = Vector2( 0, -17 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "idle"
-frame = 3
-playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 anims/RESET = SubResource( 131 )
@@ -278,7 +275,7 @@ script = ExtResource( 15 )
 
 [node name="AttackEnemy" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
-start_frame = 1
+start_frame = 2
 end_frame = 4
 
 [node name="AttackCooldown" type="Timer" parent="StateMachine/AttackEnemy"]

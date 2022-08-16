@@ -27,7 +27,7 @@ func _on_Hitbox_got_hit(damage) -> void:
 	if hitbox.current_health <= 0:
 		return
 	_got_hit(damage)
-	if hitbox.current_health > 0:
+	if hitbox.current_health > 0 and not is_attacking:
 		state_machine.transition_to("HitEnemy")
 
 func _on_Hitbox_died() -> void:
