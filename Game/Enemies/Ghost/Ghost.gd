@@ -97,3 +97,4 @@ func _on_Hitbox_died() -> void:
 		return
 	_death()
 	skin.play_animated_sprite("death")
+	$Glow.visible = false
