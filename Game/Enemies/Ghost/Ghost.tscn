@@ -109,7 +109,7 @@ animations = [ {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
 "loop": true,
 "name": "float",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [ SubResource( 96 ), SubResource( 96 ), SubResource( 96 ) ],
 "loop": true,
@@ -187,7 +187,7 @@ fire_rate = 4.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "float"
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
