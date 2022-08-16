@@ -49,7 +49,11 @@ start_frame = 3
 [node name="Block" type="Node" parent="StateMachine"]
 script = ExtResource( 2 )
 
+[node name="RegainShieldTimer" type="Timer" parent="StateMachine/Block"]
+wait_time = 5.0
+
 [node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 1.2
 one_shot = true
 
 [connection signal="died" from="Hitbox" to="." method="_on_Hitbox_died"]

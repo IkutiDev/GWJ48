@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Player/source/States/Hook.gd" type="Script" id=1]
 [ext_resource path="res://Player/source/States/Air.gd" type="Script" id=2]
@@ -16,6 +16,25 @@
 [ext_resource path="res://Player/assets/blue/char_blue_2.png" type="Texture" id=14]
 [ext_resource path="res://Player/assets/shadow.png" type="Texture" id=15]
 [ext_resource path="res://Player/assets/blue/char_blue_1.png" type="Texture" id=16]
+
+[sub_resource type="Shader" id=83]
+code = "shader_type canvas_item;
+
+uniform float white_progress : hint_range(0,1) = 0;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta){
+    return start + (end - start) * delta;
+}
+
+void fragment(){
+    vec4 origin = texture(TEXTURE, UV);
+    COLOR.rgb = interpolate_vec3(origin.rgb, vec3(1,1,1), white_progress);
+    COLOR.a = origin.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=84]
+shader = SubResource( 83 )
+shader_param/white_progress = 0.0
 
 [sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 16 )
@@ -318,7 +337,7 @@ animations = [ {
 "frames": [ SubResource( 55 ), SubResource( 56 ) ],
 "loop": true,
 "name": "block",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 24 ) ],
 "loop": true,
@@ -368,13 +387,28 @@ animations = [ {
 "frames": [ SubResource( 73 ), SubResource( 74 ), SubResource( 75 ) ],
 "loop": true,
 "name": "startBlock",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
 "loop": true,
 "name": "walk",
 "speed": 15.0
 } ]
+
+[sub_resource type="Animation" id=86]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/white_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=82]
 tracks/0/type = "value"
@@ -390,6 +424,21 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=85]
+resource_name = "shield"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/white_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.5, 0.0 ]
+}
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.5, 6.5 )
 
@@ -401,15 +450,17 @@ script = ExtResource( 11 )
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
+material = SubResource( 84 )
 position = Vector2( 0, -28 )
 frames = SubResource( 81 )
-animation = "idle"
-frame = 3
+animation = "block"
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 root_node = NodePath("../AnimatedSprite")
+anims/RESET = SubResource( 86 )
 anims/hurt = SubResource( 82 )
+anims/shield = SubResource( 85 )
 
 [node name="Shadow" type="Sprite" parent="Skin"]
 show_behind_parent = true
@@ -421,12 +472,15 @@ texture = ExtResource( 15 )
 [node name="AudioPlayer" parent="." instance=ExtResource( 13 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1.5, -6.5 )
 shape = SubResource( 1 )
 
 [node name="PassThroughController" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="PlayerCombat" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 9 )

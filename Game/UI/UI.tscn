@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/bar_background.png" type="Texture" id=2]
 [ext_resource path="res://UI/bar.png" type="Texture" id=3]
 [ext_resource path="res://UI/health_bar.png" type="Texture" id=4]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/ShieldIcon.tscn" type="PackedScene" id=6]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -25,18 +26,36 @@ stretch_margin_right = 6
 
 [node name="Score" type="Label" parent="."]
 margin_left = 859.0
-margin_top = 65.0
-margin_right = 902.0
-margin_bottom = 79.0
+margin_top = 117.0
+margin_right = 933.0
+margin_bottom = 146.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "Glory:"
 
 [node name="ScoreDynamicValue" type="Label" parent="."]
 margin_left = 975.0
-margin_top = 65.0
-margin_right = 1049.0
-margin_bottom = 94.0
+margin_top = 117.0
+margin_right = 1170.0
+margin_bottom = 146.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "999999999999999"
+
+[node name="ShieldIcons" type="HBoxContainer" parent="."]
+margin_left = 854.0
+margin_top = 64.0
+margin_right = 1245.0
+margin_bottom = 110.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="ShieldIcon" parent="ShieldIcons" instance=ExtResource( 6 )]
+margin_left = 101.0
+margin_right = 147.0
+
+[node name="ShieldIcon2" parent="ShieldIcons" instance=ExtResource( 6 )]
+
+[node name="ShieldIcon3" parent="ShieldIcons" instance=ExtResource( 6 )]
+margin_left = 243.0
+margin_right = 289.0

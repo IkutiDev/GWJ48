@@ -115,6 +115,9 @@ smoothing_speed = 3.0
 unique_name_in_owner = true
 position = Vector2( -108, 75 )
 
+[node name="AnimatedSprite" parent="Player/Skin" index="0"]
+frame = 1
+
 [node name="Air" parent="Player/StateMachine/Move" index="2"]
 jump_impulse = 785.0
 
