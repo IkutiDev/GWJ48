@@ -17,23 +17,25 @@ func _toggled(button_pressed):
 		display_current_key()
 
 
-func _unhandled_key_input(event):
-	# Note that you can use the _input callback instead, especially if
-	# you want to work with gamepads.
-	remap_action_to(event)
-	pressed = false
+func _unhandled_input(event:InputEvent):
+	if pressed and (event.is_class("InputEventJoypadButton") or event.is_class("InputEventKey")):
+		remap_action_to(event)
+		pressed = false
 
 
-func remap_action_to(event):
+func remap_action_to(event:InputEvent):
 	# We first change the event in this game instance.
 	InputMap.action_erase_events(action)
 	InputMap.action_add_event(action, event)
 	# And then save it to the keymaps file
 	KeyPersistence.keymaps[action] = event
 	KeyPersistence.save_keymap()
-	text = "%s Key" % event.as_text()
+
 
 
 func display_current_key():
+#	if event.is_class("InputEventJoypadButton"):
+#		print("test")
+#		text = "%s Key" % "Button" + String(event.button_index)
 	var current_key = InputMap.get_action_list(action)[0].as_text()
 	text = "%s Key" % current_key

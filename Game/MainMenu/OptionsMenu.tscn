@@ -13,37 +13,37 @@ script = ExtResource( 3 )
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 margin_right = 978.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="AudioSettings" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 44.0
+margin_top = 24.0
 margin_right = 978.0
-margin_bottom = 249.0
+margin_bottom = 239.0
 size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_top = 253.0
+margin_top = 243.0
 margin_right = 978.0
-margin_bottom = 293.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 263.0
+rect_min_size = Vector2( 0, 20 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="KeyRebind" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 297.0
+margin_top = 267.0
 margin_right = 978.0
-margin_bottom = 676.0
+margin_bottom = 696.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-margin_top = 680.0
+margin_top = 700.0
 margin_right = 978.0
 margin_bottom = 720.0
-rect_min_size = Vector2( 0, 40 )
+rect_min_size = Vector2( 0, 20 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Node" type="Node" parent="."]

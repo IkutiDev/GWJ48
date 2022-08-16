@@ -4,6 +4,8 @@ onready var hurtbox: Hurtbox = $Hurtbox
 
 var velocity = Vector2.ZERO
 
+var attackMode = false
+
 export var mass:= 20.0
 
 func _on_AnimationPlayer_finished(anim_name: String) -> void:
@@ -35,9 +37,22 @@ func _physics_process(delta):
 	if not _is_enemy_alive():
 		return
 	._physics_process(delta)	
+	if attackMode:
+		return
 	velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
 	move_and_collide(velocity* delta)
+	$Skin.scale.x = -int(sign(target.global_position.x - global_position.x))
 
+func start_attack():
+	attackMode = true
+	$AttackAnimator.play("Explode")
+
+func resume_follow():
+	if $AttackRange.get_overlapping_bodies().size() > 0: #check if player is in range
+		$AttackAnimator.stop()
+		call_deferred("start_attack")
+	else:
+		attackMode = false
 
 func _on_Hurtbox_dealt_damage(damage) -> void:
 	pass # Replace with function body.
@@ -59,3 +74,11 @@ func _on_Hitbox_died() -> void:
 	_death()
 	hurtbox.is_active = false
 	skin.play_animation_player("death")
+
+
+func _on_AttackRange_body_entered(body):
+	if attackMode == false:
+		start_attack()
+	
+	pass # Replace with function body.
+

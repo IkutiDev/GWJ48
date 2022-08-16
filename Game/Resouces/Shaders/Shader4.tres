@@ -1,0 +1,70 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[sub_resource type="Shader" id=38]
+code = "shader_type canvas_item;
+
+uniform sampler2D texture1;
+uniform sampler2D texture2;
+
+uniform vec2 scorll1 = vec2(0.05,-0.05);
+uniform vec2 scorll2 = vec2(0.05,0.05);
+
+uniform float col1Bonus = 0.0;
+uniform float col2Bonus = 0.0;
+
+uniform sampler2D lifetimeGradient;
+uniform sampler2D overlapGradient;
+
+
+uniform float FPS = 8.0;
+uniform float sharpnes = 1.0;
+varying float lifetime;
+
+void vertex() {
+	lifetime = INSTANCE_CUSTOM.y;
+}
+
+void fragment(){
+	
+	float particleSeed = COLOR.r / (COLOR.r + COLOR.b + COLOR.g);
+	
+	float adjustedTime = round( (TIME+particleSeed) * FPS);
+	
+	float intesity = (col1Bonus + texture(texture1, UV + scorll1 * adjustedTime).r ) * ( col2Bonus + texture(texture2, UV + scorll2 * adjustedTime).r );
+	
+	vec4 overlapColor = texture(overlapGradient, vec2(intesity*3.0));
+	
+	vec4 lifetimeColor = texture(lifetimeGradient, vec2(lifetime));
+	COLOR = lifetimeColor * overlapColor;
+	COLOR.a *= min(1.0, intesity * sharpnes) * texture(TEXTURE,UV).a;
+
+
+
+}"
+
+[sub_resource type="Gradient" id=40]
+interpolation_mode = 2
+offsets = PoolRealArray( 0.353698, 0.88746, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.44855, 0.512179, 0.501574, 0.0985915, 0.388235, 0.458824, 0.447059, 0 )
+
+[sub_resource type="GradientTexture" id=41]
+gradient = SubResource( 40 )
+
+[sub_resource type="Gradient" id=42]
+interpolation_mode = 1
+offsets = PoolRealArray( 0.0932476, 0.170418, 0.511254, 0.807074, 0.897106, 1 )
+colors = PoolColorArray( 0, 0, 0, 0, 0.251207, 0, 0.362305, 1, 1, 0.317647, 0.317647, 0, 0.419608, 0.286275, 0.713726, 1, 0.0849609, 0.0817951, 0.0630569, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=43]
+gradient = SubResource( 42 )
+
+[resource]
+shader = SubResource( 38 )
+shader_param/scorll1 = Vector2( -0.05, 0.05 )
+shader_param/scorll2 = Vector2( 0.5, -0.1 )
+shader_param/col1Bonus = -0.429
+shader_param/col2Bonus = 0.107
+shader_param/FPS = 8.0
+shader_param/sharpnes = 2.0
+shader_param/lifetimeGradient = SubResource( 41 )
+shader_param/overlapGradient = SubResource( 43 )

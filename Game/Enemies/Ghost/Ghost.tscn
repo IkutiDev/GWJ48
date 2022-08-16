@@ -1,8 +1,11 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Enemies/Ghost/Ghost.gd" type="Script" id=1]
+[ext_resource path="res://Resouces/ShaderTextures/Noise4.png" type="Texture" id=2]
+[ext_resource path="res://Resouces/ShaderTextures/Glow.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Float.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Death.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/Ghost/ghostGradient.tres" type="Texture" id=6]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Appear.png" type="Texture" id=7]
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Hit.png" type="Texture" id=8]
 [ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
@@ -106,7 +109,7 @@ animations = [ {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
 "loop": true,
 "name": "float",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [ SubResource( 96 ), SubResource( 96 ), SubResource( 96 ) ],
 "loop": true,
@@ -142,6 +145,32 @@ tracks/0/keys = {
 
 [sub_resource type="CircleShape2D" id=108]
 
+[sub_resource type="Shader" id=109]
+code = "shader_type canvas_item;
+uniform vec2 scrollSpeed = vec2(1.0,1.0);
+uniform sampler2D texture2;
+uniform sampler2D gradient;
+uniform float FPS = 30.0;
+uniform float col1bonus = 0.0;
+uniform float col2bonus = 0.0;
+
+
+void fragment(){
+	float color1 = col1bonus + texture(TEXTURE, UV).r;
+	float color2 = col2bonus + texture(texture2, UV + scrollSpeed * round(TIME*(FPS)) ).r;
+	float energ = color1 * color2 ;
+	COLOR = texture(gradient, vec2(energ));
+}"
+
+[sub_resource type="ShaderMaterial" id=110]
+shader = SubResource( 109 )
+shader_param/scrollSpeed = Vector2( 0, 0.05 )
+shader_param/FPS = 12.0
+shader_param/col1bonus = 0.0
+shader_param/col2bonus = 0.0
+shader_param/texture2 = ExtResource( 2 )
+shader_param/gradient = ExtResource( 6 )
+
 [node name="Ghost" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 32
 collision_mask = 16
@@ -158,7 +187,7 @@ fire_rate = 4.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "float"
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
@@ -186,6 +215,13 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 modulate = Color( 1, 0, 0, 1 )
 shape = SubResource( 108 )
+
+[node name="Glow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.65098 )
+show_behind_parent = true
+material = SubResource( 110 )
+position = Vector2( 0, -9 )
+texture = ExtResource( 3 )
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]
