@@ -64,6 +64,7 @@ func _physics_process(delta):
 	._physics_process(delta)
 	velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
 	var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
+	$Skin.scale.x = int(sign(target.global_position.x - global_position.x))
 	cooldown -= delta
 	if cooldown < 0.0 and attackMode:
 		cooldown += fire_rate
