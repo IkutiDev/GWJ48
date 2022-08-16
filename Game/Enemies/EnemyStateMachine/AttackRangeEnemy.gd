@@ -19,11 +19,11 @@ func spawn_projectile():
 	var newProjectile : Projectile = projectile_scene.instance()
 	newProjectile.damage = owner.damage
 	newProjectile.global_position = owner.global_position
-	newProjectile.rotation = newProjectile.get_angle_to(owner.target.global_position)
 	var attackDir = owner.target.global_position - owner.global_position
 	attackDir = attackDir.normalized()
 	newProjectile.apply_central_impulse(attackDir * owner.projectile_speed) 
 	get_parent().add_child(newProjectile)
+	newProjectile.rotation = newProjectile.get_angle_to(owner.target.global_position)
 	
 func process(_delta: float) -> void:
 	if owner.skin.get_current_frame() == spawn_projectile_frame and not already_shot:
