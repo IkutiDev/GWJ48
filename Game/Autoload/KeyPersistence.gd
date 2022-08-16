@@ -32,7 +32,7 @@ func load_keymap() -> void:
 			keymaps[action] = temp_keymap[action]
 			# Whilst setting the keymap dictionary, we also set the
 			# correct InputMap event
-			InputMap.action_erase_events(action)
+			action_erase_without_mouse_input(action)
 			InputMap.action_add_event(action, keymaps[action])
 
 
@@ -43,3 +43,10 @@ func save_keymap() -> void:
 	file.open(keymaps_path, File.WRITE)
 	file.store_var(keymaps, true)
 	file.close()
+
+static func action_erase_without_mouse_input(action : String) -> void:
+	var inputEvents = InputMap.get_action_list(action)
+	
+	for i in inputEvents:
+		if not i is InputEventMouse:
+			InputMap.action_erase_event(action, i)

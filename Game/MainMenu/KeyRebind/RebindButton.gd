@@ -25,17 +25,16 @@ func _unhandled_input(event:InputEvent):
 
 func remap_action_to(event:InputEvent):
 	# We first change the event in this game instance.
-	InputMap.action_erase_events(action)
+	KeyPersistence.action_erase_without_mouse_input(action)
 	InputMap.action_add_event(action, event)
 	# And then save it to the keymaps file
 	KeyPersistence.keymaps[action] = event
 	KeyPersistence.save_keymap()
 
-
-
 func display_current_key():
-#	if event.is_class("InputEventJoypadButton"):
-#		print("test")
-#		text = "%s Key" % "Button" + String(event.button_index)
-	var current_key = InputMap.get_action_list(action)[0].as_text()
+	var current_key : String = "None"
+	for i in InputMap.get_action_list(action):
+		if i is InputEventKey or i is InputEventJoypadButton:
+			current_key = i.as_text()
+			break
 	text = "%s Key" % current_key
