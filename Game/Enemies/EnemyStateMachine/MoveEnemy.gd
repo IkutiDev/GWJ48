@@ -23,9 +23,6 @@ func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed_local, acceleration_local, decceleration_local, delta, 
 	get_move_direction(enemy.desiredLoc, owner.global_position, distance_to_player), max_fall_speed)
 	
-	if abs(abs(enemy.global_position.x) - abs(enemy.desiredLoc.x)) < 4 or abs(enemy.global_position.y - enemy.desiredLoc.y) > 200:
-		velocity = Vector2.ZERO
-	
 	if ledge_detector.get_overlapping_bodies().size() == 0:
 		velocity = Vector2.ZERO
 	
@@ -59,6 +56,6 @@ static func calculate_velocity(
 	return new_velocity
 
 static func get_move_direction(target: Vector2, global_position: Vector2, distance_to_player : Vector2) -> Vector2:
-	if abs(abs(global_position.x) - abs(target.x)) < distance_to_player.x or abs(global_position.y - target.y) > distance_to_player.y:
+	if abs(global_position.x- target.x) < distance_to_player.x or abs(global_position.y - target.y) > distance_to_player.y:
 		return Vector2.ZERO
 	return Vector2((target - global_position).normalized().x, 1.0)

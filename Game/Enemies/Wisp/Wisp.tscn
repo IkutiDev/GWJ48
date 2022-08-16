@@ -282,6 +282,8 @@ collision_mask = 16
 script = ExtResource( 4 )
 health = 10
 score = 10
+speed_difference_on_spawn_min = -5.0
+speed_difference_on_spawn_max = 15.0
 
 [node name="Skin" parent="." instance=ExtResource( 5 )]
 
@@ -290,7 +292,7 @@ position = Vector2( 2, -4 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 49 )
 animation = "float"
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]

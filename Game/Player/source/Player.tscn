@@ -453,9 +453,7 @@ script = ExtResource( 5 )
 material = SubResource( 84 )
 position = Vector2( 0, -28 )
 frames = SubResource( 81 )
-animation = "block"
-frame = 1
-playing = true
+animation = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 root_node = NodePath("../AnimatedSprite")
@@ -481,7 +479,6 @@ shape = SubResource( 1 )
 visible = false
 
 [node name="PlayerCombat" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 9 )

@@ -218,6 +218,8 @@ damage = 15
 health = 30
 score = 15
 speed = 100.0
+speed_difference_on_spawn_min = -25.0
+speed_difference_on_spawn_max = 25.0
 
 [node name="Skin" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, -17 )

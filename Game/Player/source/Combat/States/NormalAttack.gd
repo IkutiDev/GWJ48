@@ -7,8 +7,9 @@ onready var hurtbox: Hurtbox = $"../../Hurtbox"
 func _on_Skin_animation_finished(_anim_name: String) -> void:
 	_state_machine.transition_to("Idle")
 
-func unhandled_input(_event: InputEvent) -> void:
-	return
+func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("block") and owner.current_shield_charges > 0:
+		_state_machine.transition_to("Block")
 
 func physics_process(_delta: float) -> void:
 	return

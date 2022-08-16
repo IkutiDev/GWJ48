@@ -19,6 +19,9 @@ export var score : int = 20
 
 export var speed : float = 50.0
 
+export var speed_difference_on_spawn_min : float = 0.0
+export var speed_difference_on_spawn_max : float = 0.0
+
 export var distance_to_attack : float = 25.0
 
 var current_enemy_life_state : int = enemy_life_state.Spawning
@@ -42,6 +45,7 @@ func _ready() -> void:
 		target = get_tree().get_nodes_in_group("Player")[0]
 	
 	hitbox.current_health = health
+	speed = speed + rand_range(speed_difference_on_spawn_min, speed_difference_on_spawn_max)
 
 func _physics_process(delta):
 	if target == null :
