@@ -28,6 +28,8 @@ var buff_counter = 1
 
 var current_spawn_wait_time = 3
 
+var walker_spawn_offset : float = 16.0
+
 func _enter_tree() -> void:
 	for d in enemies_data:
 		assert(d is enemyData)
@@ -89,6 +91,8 @@ func spawn_enemy(data : enemyData):
 	var spawnPoint = validExits[randi()% int(min(2,validExits.size()))].global_position
 	newEnemy.global_position = spawnPoint
 	get_parent().add_child(newEnemy)
+	if data.walker:
+		newEnemy.global_position.y += walker_spawn_offset
 	allEnemies.push_back(newEnemy)
 	pass
 
