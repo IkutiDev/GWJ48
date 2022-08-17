@@ -44,7 +44,7 @@ func _on_Hitbox_died() -> void:
 
 
 func _on_Squeaks_finished():
-	$Squeaks.pitch_scale = 0.9 + randf()*0.4
-	yield(get_tree().create_timer(randf()), "timeout")
+	$Squeaks.pitch_scale = 0.7 + randf()*0.8
+	yield(get_tree().create_timer(1+randf()*3), "timeout")
 	$Squeaks.play()
 	pass # Replace with function body.
