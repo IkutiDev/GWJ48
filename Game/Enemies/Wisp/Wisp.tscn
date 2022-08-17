@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Combat/Hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resouces/ShaderTextures/Noise3.png" type="Texture" id=2]
-[ext_resource path="res://Resouces/ShaderTextures/Explosion2.png" type="Texture" id=3]
+[ext_resource path="res://Resouces/ShaderTextures/Explosion1.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/Wisp/Wisp.gd" type="Script" id=4]
 [ext_resource path="res://Player/source/Skin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/Wisp/assets/NoobGodoter'sSpritesheet.png" type="Texture" id=7]
@@ -163,7 +163,7 @@ void fragment(){
 
 [sub_resource type="Gradient" id=32]
 interpolation_mode = 1
-offsets = PoolRealArray( 0.0932476, 0.366559, 0.488746, 0.649518, 0.758842 )
+offsets = PoolRealArray( 0.0932476, 0.366559, 0.488746, 0.649518, 0.812903 )
 colors = PoolColorArray( 0.12549, 0, 0.145098, 0, 1, 0.0196078, 0.0196078, 0.462745, 0.959961, 0.410608, 0, 1, 1, 0.721569, 0.0470588, 1, 1, 0.968445, 0.632812, 1 )
 
 [sub_resource type="GradientTexture" id=50]
@@ -175,7 +175,7 @@ resource_local_to_scene = true
 shader = SubResource( 25 )
 shader_param/scrollSpeed = Vector2( 0.05, 0.1 )
 shader_param/FPS = 8.0
-shader_param/col1bonus = -0.476
+shader_param/col1bonus = 0.012
 shader_param/col2bonus = -0.4
 shader_param/texture2 = ExtResource( 2 )
 shader_param/gradient = SubResource( 50 )
@@ -185,7 +185,7 @@ radius = 26.0768
 
 [sub_resource type="Animation" id=53]
 resource_name = "Explode"
-length = 4.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hurtbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -193,10 +193,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.6, 1.3, 2, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.7, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true ]
+"values": [ false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Explode:material:shader_param/col2bonus")
@@ -205,10 +205,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.8, 2.3, 2.6, 3.2, 3.8 ),
-"transitions": PoolRealArray( 1, 2, 2, -0.5, -0.5, 2, 0.5, -0.5, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.7, 1, 1.4, 1.8, 2.3, 2.6, 3.2, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 2, 2, -0.5, -0.5, 2, 0.5, -0.5, 1 ),
 "update": 0,
-"values": [ -0.502, 0.2, 0.8, 0.4, 0.0, 0.8, 0.5, 0.0, -0.558 ]
+"values": [ -0.502, -0.502, 0.2, 0.8, 0.4, 0.0, 0.8, 0.5, 0.0, -0.558 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Skin/AnimatedSprite:playing")
@@ -229,7 +229,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 3.9 ),
+"times": PoolRealArray( 4.8 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -292,7 +292,7 @@ position = Vector2( 2, -4 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 49 )
 animation = "float"
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
