@@ -47,6 +47,8 @@ func _ready():
 func fire_bullet():
 	if not _is_enemy_alive():
 		return
+	$AttackSound.pitch_scale = 1.0 + randf()*0.5
+	$AttackSound.play()
 	var newBullet : GhostBullet = bulletScene.instance()
 	newBullet.damage = damage
 	newBullet.global_position = global_position
@@ -62,8 +64,9 @@ func _physics_process(delta):
 	if not _is_enemy_alive():
 		return
 	._physics_process(delta)
-	velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
-	var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
+	if !$StalkRange.get_overlapping_bodies().size()>0:
+		velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
+		var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	$Skin.scale.x = int(sign(target.global_position.x - global_position.x))
 	cooldown -= delta
 	if cooldown < 0.0 and attackMode:

@@ -37,7 +37,7 @@ func _on_Hitbox_died() -> void:
 	if not _is_enemy_alive():
 		return
 	_death()
-	$Squeaks.queue_free()
+	$Squeaks.stream_paused = true
 	state_machine.transition_to("DieEnemy")
 
 

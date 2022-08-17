@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Enemies/Ghost/Ghost.gd" type="Script" id=1]
 [ext_resource path="res://Resouces/ShaderTextures/Noise4.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Enemies/Ghost/assets/32x32Ghost_Hit.png" type="Texture" id=8]
 [ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/source/Skin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/Ghost/SFX_Ghost_Attack_02.wav" type="AudioStream" id=11]
 
 [sub_resource type="AtlasTexture" id=82]
 atlas = ExtResource( 5 )
@@ -171,6 +172,10 @@ shader_param/col2bonus = -0.02
 shader_param/texture2 = ExtResource( 2 )
 shader_param/gradient = ExtResource( 6 )
 
+[sub_resource type="CapsuleShape2D" id=111]
+radius = 15.0
+height = 214.0
+
 [node name="Ghost" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 32
 collision_mask = 16
@@ -189,6 +194,7 @@ fire_rate = 4.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "float"
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
@@ -198,7 +204,6 @@ root_node = NodePath("")
 shape = SubResource( 105 )
 
 [node name="AttackRange" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 monitorable = false
 
@@ -222,6 +227,18 @@ show_behind_parent = true
 material = SubResource( 110 )
 position = Vector2( 0, -8 )
 texture = ExtResource( 3 )
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+pitch_scale = 1.5
+bus = "Effects"
+
+[node name="StalkRange" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StalkRange"]
+rotation = 1.5708
+shape = SubResource( 111 )
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]
