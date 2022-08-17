@@ -248,6 +248,8 @@ speed_difference_on_spawn_max = 10.0
 distance_to_attack = 300.0
 projectile_speed = 300.0
 
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+
 [node name="Skin" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, -17 )
 scale = Vector2( -1, 1 )
@@ -256,6 +258,7 @@ scale = Vector2( -1, 1 )
 position = Vector2( 0, 4 )
 frames = SubResource( 104 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]

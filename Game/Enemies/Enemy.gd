@@ -10,6 +10,7 @@ enum enemy_life_state {Spawning = 0, Alive = 1, Dead = 2}
 
 onready var skin: CharacterSkin = $Skin
 onready var hitbox: Hitbox = $Hitbox
+onready var atkSound: AudioStreamPlayer2D = $AttackSound
 
 export var damage: int = 5
 

@@ -285,6 +285,8 @@ score = 10
 speed_difference_on_spawn_min = -5.0
 speed_difference_on_spawn_max = 15.0
 
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+
 [node name="Skin" parent="." instance=ExtResource( 5 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]

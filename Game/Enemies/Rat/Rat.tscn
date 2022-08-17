@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Enemies/Rat/Rat.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Rat/assets/48x48Rat_Idle.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Enemies/EnemyStateMachine/IdleEnemy.gd" type="Script" id=17]
 [ext_resource path="res://Enemies/EnemyStateMachine/AirEnemy.gd" type="Script" id=18]
 [ext_resource path="res://Enemies/Rat/Rat_Walk.wav" type="AudioStream" id=19]
+[ext_resource path="res://Enemies/Rat/Rat_Squeak.wav" type="AudioStream" id=20]
 
 [sub_resource type="AtlasTexture" id=134]
 atlas = ExtResource( 6 )
@@ -221,6 +222,10 @@ score = 15
 speed = 100.0
 speed_difference_on_spawn_min = -25.0
 speed_difference_on_spawn_max = 25.0
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 20 )
+bus = "Effects"
 
 [node name="Squeaks" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
