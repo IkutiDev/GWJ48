@@ -44,7 +44,7 @@ func play_footstep_SFX():
 			foot_steps.stream = rock_foot_steps[randi() % rock_foot_steps.size()]
 		Surface.SurfaceType.Gravel:
 			foot_steps.stream = gravel_foot_steps[randi() % gravel_foot_steps.size()]
-	
+	foot_steps.pitch_scale = 0.8 + randf()*0.25
 	foot_steps.play()
 
 func play_jump_SFX():
@@ -57,7 +57,7 @@ func play_jump_SFX():
 			jump.stream = rock_jumps[randi() % rock_jumps.size()]
 		Surface.SurfaceType.Gravel:
 			jump.stream = gravel_jumps[randi() % gravel_jumps.size()]
-	
+	jump.pitch_scale = 0.8 + randf()*0.25
 	jump.play()	
 	
 	jump_grunt.stream = null
@@ -73,19 +73,21 @@ func play_fall_SFX():
 			fall.stream = rock_falls[randi() % rock_falls.size()]
 		Surface.SurfaceType.Gravel:
 			fall.stream = gravel_falls[randi() % gravel_falls.size()]
-	
+	fall.pitch_scale = 0.8 + randf()*0.25
 	fall.play()		
 	
 func play_sword_swing_SFX():
 	swing.stream = null
 	
 	swing.stream = sword_swings[randi() % sword_swings.size()]
+	swing.pitch_scale = 0.8 + randf()*0.25
 	swing.play()
 	
 func play_pain_SFX():
 	pain.stream = null
 	
 	pain.stream = pain_grunts[randi() % pain_grunts.size()]
+	pain.pitch_scale = 0.8 + randf()*0.25
 	pain.play()
 	
 func play_death_SFX():

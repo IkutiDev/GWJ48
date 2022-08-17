@@ -4,6 +4,7 @@ onready var hurtbox: Area2D = $Hurtbox
 onready var state_machine: Node = $StateMachine
 
 func _ready():
+	
 	._ready()
 	hurtbox.damage = damage
 
@@ -36,4 +37,14 @@ func _on_Hitbox_died() -> void:
 	if not _is_enemy_alive():
 		return
 	_death()
+	$Squeaks.queue_free()
 	state_machine.transition_to("DieEnemy")
+
+
+
+
+func _on_Squeaks_finished():
+	$Squeaks.pitch_scale = 0.9 + randf()*0.4
+	yield(get_tree().create_timer(randf()), "timeout")
+	$Squeaks.play()
+	pass # Replace with function body.
