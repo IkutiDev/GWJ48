@@ -69,7 +69,8 @@ func _physics_process(delta):
 		var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	$Skin.scale.x = int(sign(target.global_position.x - global_position.x))
 	cooldown -= delta
-	if cooldown < 0.0 and attackMode:
+	cooldown = max(cooldown,0)
+	if cooldown < 0.1 and attackMode:
 		cooldown += fire_rate
 		fire_bullet()
 
