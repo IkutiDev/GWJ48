@@ -164,10 +164,10 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=110]
 shader = SubResource( 109 )
-shader_param/scrollSpeed = Vector2( 0, 0.05 )
-shader_param/FPS = 12.0
-shader_param/col1bonus = 0.0
-shader_param/col2bonus = 0.0
+shader_param/scrollSpeed = Vector2( 0.05, 0.1 )
+shader_param/FPS = 8.0
+shader_param/col1bonus = 0.316
+shader_param/col2bonus = -0.02
 shader_param/texture2 = ExtResource( 2 )
 shader_param/gradient = ExtResource( 6 )
 
@@ -189,7 +189,6 @@ fire_rate = 4.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "float"
-frame = 4
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
@@ -219,10 +218,9 @@ modulate = Color( 1, 0, 0, 1 )
 shape = SubResource( 108 )
 
 [node name="Glow" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.65098 )
 show_behind_parent = true
 material = SubResource( 110 )
-position = Vector2( 0, -9 )
+position = Vector2( 0, -8 )
 texture = ExtResource( 3 )
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
