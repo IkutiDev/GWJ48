@@ -3,14 +3,14 @@
 [ext_resource path="res://MainMenu/BasicButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/UI_Accept_00.wav" type="AudioStream" id=2]
 [ext_resource path="res://UI/UI_Hover_00.wav" type="AudioStream" id=3]
-[ext_resource path="res://UI/Fonts/default_font_a_absolute_empire.tres" type="DynamicFont" id=4]
+[ext_resource path="res://UI/theme/MenuTheme.tres" type="Theme" id=5]
 
 [node name="Button" type="Button"]
 margin_right = 62.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 4 )
+theme = ExtResource( 5 )
 text = "ABCDEF"
 script = ExtResource( 1 )
 

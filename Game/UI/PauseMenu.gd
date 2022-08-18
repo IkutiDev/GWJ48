@@ -11,11 +11,17 @@ func _input(event):
 		queue_free()
 
 func _on_Button2_pressed():
-	var value = get_tree().change_scene("res://MainMenu/MainMenu.tscn")
-	assert(value == OK)
+	var instance = preload("res://MainMenu/OptionsMenu.tscn").instance()
+	add_child(instance)
 	pass # Replace with function body.
 
 
 func _on_Button_pressed():
 	queue_free()
+	pass # Replace with function body.
+
+
+func _on_Button3_pressed() -> void:
+	var value = get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+	assert(value == OK)
 	pass # Replace with function body.

@@ -36,8 +36,6 @@ position = Vector2( 144, -1344 )
 [node name="Hole3" parent="Spawner/Exits" index="5" instance=ExtResource( 8 )]
 position = Vector2( 176, -160 )
 
-[node name="UI" parent="." instance=ExtResource( 10 )]
-
 [node name="Debug_UI" type="CanvasLayer" parent="."]
 scale = Vector2( 0.75, 0.75 )
 transform = Transform2D( 0.75, 0, 0, 0.75, 0, 0 )
@@ -103,6 +101,9 @@ margin_bottom = 876.0
 mouse_filter = 2
 reference_path = NodePath("../../../../Player/PlayerCombat")
 properties = PoolStringArray( "current_health", "invincible", "block_active" )
+
+[node name="UI" parent="." instance=ExtResource( 10 )]
+layer = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -108, 96 )

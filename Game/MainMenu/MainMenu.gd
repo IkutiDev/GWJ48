@@ -10,12 +10,12 @@ func _on_Start_pressed():
 
 
 func _on_Options_pressed():
-	var value = get_tree().change_scene("res://MainMenu/OptionsMenu.tscn")
-	assert(value == OK)
+	var instance = preload("res://MainMenu/OptionsMenu.tscn").instance()
+	get_parent().add_child(instance)
 	pass # Replace with function body.
 
 
 func _on_Credits_pressed():
-	var value = get_tree().change_scene("res://MainMenu/CreditsScreen.tscn")
-	assert(value == OK)
+	var instance = preload("res://MainMenu/CreditsScreen.tscn").instance()
+	get_parent().add_child(instance)
 	pass # Replace with function body.

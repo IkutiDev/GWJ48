@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://UI/theme/slider/slider_theme.tres" type="StyleBox" id=1]
+[ext_resource path="res://UI/assets/BlackCrusaderUI_el_04.png" type="Texture" id=2]
+[ext_resource path="res://UI/theme/button/Button_Normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/theme/button/Button_Pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://UI/Fonts/default_font_a_absolute_empire.tres" type="DynamicFont" id=5]
+
+[resource]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 5 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = ExtResource( 4 )
+Button/styles/normal = ExtResource( 3 )
+Button/styles/pressed = ExtResource( 4 )
+HSlider/icons/grabber = ExtResource( 2 )
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = ExtResource( 2 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = ExtResource( 1 )
