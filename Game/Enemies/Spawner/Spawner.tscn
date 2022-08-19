@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemies/Spawner/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://Enemies/Spawner/enemy_data/WispData.tres" type="Resource" id=4]
 [ext_resource path="res://Enemies/Spawner/enemy_data/RatData.tres" type="Resource" id=5]
 [ext_resource path="res://Enemies/Spawner/enemy_data/SkeletonArcherData.tres" type="Resource" id=6]
+[ext_resource path="res://UI/WaveCompletedPopup.tscn" type="PackedScene" id=7]
 
 [node name="Spawner" type="Node" groups=["Spawner"]]
 script = ExtResource( 1 )
+wave_completed_popup = ExtResource( 7 )
 enemies_data = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
 
 [node name="Exits" type="Node2D" parent="."]
@@ -24,13 +26,42 @@ rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 2 )
 text = "10.0"
 
+[node name="GameStartLabel" type="Label" parent="Overlay"]
+margin_left = 254.0
+margin_top = 11.0
+margin_right = 455.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "Game starts in: "
+
+[node name="WaveStartLabel" type="Label" parent="Overlay"]
+visible = false
+margin_left = 254.0
+margin_top = 11.0
+margin_right = 455.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "Wave starts in:"
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 
 [node name="WaveTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 3.0
+one_shot = true
+
+[node name="StartGameTimer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="PopupStartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
+[connection signal="timeout" from="StartGameTimer" to="." method="_on_StartGameTimer_timeout"]
+[connection signal="timeout" from="PopupStartTimer" to="." method="_on_PopupStartTimer_timeout"]
