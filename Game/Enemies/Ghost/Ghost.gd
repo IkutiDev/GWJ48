@@ -65,8 +65,9 @@ func _physics_process(delta):
 		return
 	._physics_process(delta)
 	if !$StalkRange.get_overlapping_bodies().size()>0:
-		velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
-		var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
+		velocity += -velocity * delta
+	velocity = Steering.follow(velocity,global_position,desiredLoc,speed,mass)
+	var _collision = move_and_collide((velocity + Vector2(0,wobble) )* delta)
 	$Skin.scale.x = int(sign(target.global_position.x - global_position.x))
 	cooldown -= delta
 	cooldown = max(cooldown,0)
