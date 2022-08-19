@@ -40,6 +40,8 @@ func spawn_finished() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
+	$Death.pitch_scale = 0.6 + randf()*0.2
+	$Death.stream = load("res://Enemies/Ghost/VO_Ghost_Death_0"+String(1+randi()%2)+".wav")
 	skin.play_animated_sprite("spawn")
 	var value = skin.connect("animated_sprite_finished", self, "_on_AnimatedSprite_finished")
 	assert(value == OK)
@@ -102,4 +104,5 @@ func _on_Hitbox_died() -> void:
 		return
 	_death()
 	skin.play_animated_sprite("death")
+	$Death.play()
 	$Glow.visible = false

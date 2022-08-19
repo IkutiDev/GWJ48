@@ -28,18 +28,18 @@ func _ready():
 func next_phase():
 	# get next phase from list and update list
 	# return next phase as String
-	currentPhase = allPhases[randi()%2]
+	currentPhase = allPhases[randi()%3]
 	energy -= 75
 	return currentPhase
 	pass
 
 func _process(delta):
-	$CanvasLayer/Label.text = $StateMachine._state_name
+	pass
+#	$CanvasLayer/Label.text = $StateMachine._state_name
 #func _input(event):
 #	if event.is_action_pressed("ui_accept"):
 #		if $PinJoint2D.softness == 0:
 #			$PinJoint2D.softness = 4
 #		else:
 #			$PinJoint2D.softness = 0
-
 

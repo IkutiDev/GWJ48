@@ -78,6 +78,14 @@ margin_right = 1280.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
+[node name="Boss" parent="." instance=ExtResource( 4 )]
+margin_left = 708.0
+margin_top = 609.0
+margin_right = 894.0
+margin_bottom = 669.0
+text = "boss test room"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Boss" to="." method="_on_Boss_pressed"]
