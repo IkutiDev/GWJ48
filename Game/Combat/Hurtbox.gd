@@ -5,7 +5,7 @@ signal dealt_damage(damage)
 
 export var attack_each_frame_active := true
 
-var damage: int = 0
+var damage: float = 0
 
 var targets_attacked : Array
 

@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/Projectile.gd"
 }, {
+"base": "Control",
+"class": "SleepWindow",
+"language": "GDScript",
+"path": "res://UI/SleepWindow.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -90,6 +95,7 @@ _global_script_class_icons={
 "MoveState": "",
 "Player": "",
 "Projectile": "",
+"SleepWindow": "",
 "State": "res://Editor/icons/state.svg",
 "StateMachine": "res://Editor/icons/state_machine.svg",
 "Surface": "",

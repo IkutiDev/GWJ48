@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/Fonts/default_font_morris_roman_big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/WaveCompletedPopup.gd" type="Script" id=2]
+[ext_resource path="res://UI/SleepWindow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/assets/BlackCrusaderUI_el_32.png" type="Texture" id=4]
+[ext_resource path="res://MainMenu/BasicButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=6]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 479, 478 )
+
+[node name="WaveCompletedPopup" type="PopupPanel"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -399.5
+margin_top = -255.5
+margin_right = 399.5
+margin_bottom = 255.5
+rect_min_size = Vector2( 700, 0 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+sleep_window = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 799.0
+margin_bottom = 511.0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 511.0
+rect_min_size = Vector2( 30, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 34.0
+margin_right = 743.0
+margin_bottom = 511.0
+
+[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_right = 709.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 29.0
+margin_right = 709.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 1 )
+text = "Wave Completed"
+align = 1
+
+[node name="Control3" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_top = 103.0
+margin_right = 709.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="KeepGoingLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 709.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 709, 0 )
+custom_fonts/font = ExtResource( 6 )
+text = "Keep fighting evil forces. 
+
+Next wave starts instantly, your health and mana are not restored.
+
+You will gain 1 stack of insomnia that increases the score and experience you gain, but also the damage you are dealt"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="SleepLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 132.0
+margin_right = 709.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 709, 0 )
+custom_fonts/font = ExtResource( 6 )
+text = "Go back to your house and gain a bit of respite.
+
+Your health and mana will be restored
+
+You will loose all stacks of insomnia
+
+You will be able to spend your experience points for skills to help you in a fight"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 325.0
+margin_right = 709.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 357.0
+margin_right = 709.0
+margin_bottom = 454.0
+rect_min_size = Vector2( 0, 97 )
+alignment = 1
+
+[node name="KeepGoingButton" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_right = 322.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 322, 60 )
+text = "Keep Fighting"
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 326.0
+margin_right = 383.553
+margin_bottom = 97.0
+rect_min_size = Vector2( 57.553, 0 )
+
+[node name="SleepButton" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 387.0
+margin_right = 709.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 322, 60 )
+text = "Go to sleep"
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+margin_left = 747.0
+margin_right = 774.08
+margin_bottom = 511.0
+rect_min_size = Vector2( 27.08, 0 )
+
+[connection signal="about_to_show" from="." to="." method="_on_WaveCompletedPopup_about_to_show"]
+[connection signal="tree_exiting" from="." to="." method="_on_WaveCompletedPopup_tree_exiting"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/KeepGoingButton" to="." method="_on_KeepGoingButton_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/HBoxContainer/KeepGoingButton" to="." method="_on_KeepGoingButton_mouse_entered"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/SleepButton" to="." method="_on_SleepButton_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/HBoxContainer/SleepButton" to="." method="_on_SleepButton_mouse_entered"]

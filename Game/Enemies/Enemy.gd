@@ -12,9 +12,9 @@ onready var skin: CharacterSkin = $Skin
 onready var hitbox: Hitbox = $Hitbox
 onready var atkSound: AudioStreamPlayer2D = $AttackSound
 
-export var damage: int = 5
+export var damage: float = 5.0
 
-export var health: int = 20
+export var health: float = 20.0
 
 export var score : int = 20
 
@@ -63,5 +63,5 @@ func _death() -> void:
 	# (#Ikuti) Add drop exp/stuff here
 	current_enemy_life_state = enemy_life_state.Dead
 
-func _got_hit(damage: int) -> void:
+func _got_hit(damage: float) -> void:
 	hitbox.current_health -= damage

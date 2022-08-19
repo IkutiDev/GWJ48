@@ -1,10 +1,16 @@
 extends Node
+onready var wave_start_label: Label = $Overlay/WaveStartLabel
+onready var game_start_label: Label = $Overlay/GameStartLabel
+
+export var wave_completed_popup : PackedScene
 
 export var buff_enemies_on_every_x_wave : int = 5
 export var minimal_spawn_timer : float = 0.5
 export var spawn_timer_increase_per_wave : float = 0.1
 
 export(Array, Resource) var enemies_data
+
+var popup_instance : Node
 
 #var enemyScenes = {
 #	enemyData.types.ghost : preload("res://Enemies/Ghost/Ghost.tscn")
@@ -28,7 +34,7 @@ var buff_counter = 1
 
 var current_spawn_wait_time = 3
 
-var walker_spawn_offset : float = 16.0
+var walker_spawn_offset : float = 9.0
 
 func _enter_tree() -> void:
 	for d in enemies_data:
@@ -51,6 +57,8 @@ func _exit_tree() -> void:
 func _process(_delta):
 	if $WaveTimer.time_left > 0:
 		$Overlay/Label.text = String("%.1f" % ($WaveTimer.time_left))
+	elif $StartGameTimer.time_left > 0:
+		$Overlay/Label.text = String("%.1f" % ($StartGameTimer.time_left))
 	else:
 		$Overlay/Label.text = ""
 
@@ -58,7 +66,7 @@ func record_death(enemy):
 	allEnemies.erase(enemy)
 	enemiesToKill -= 1
 	if enemiesToKill < 1:
-		$WaveTimer.start()
+		$PopupStartTimer.start()
 		SoundManager.play_song(1)
 
 func start_next_wave():
@@ -113,7 +121,25 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_WaveTimer_timeout():
+	wave_start_label.visible = false
 	start_next_wave()
 	pass # Replace with function body.
+
+func _on_StartGameTimer_timeout() -> void:
+	game_start_label.visible = false
+	_on_WaveTimer_timeout()
+
+func _on_WaveTimer_start() -> void:
+	wave_start_label.visible = true
+	popup_instance.disconnect("tree_exiting", self, "_on_WaveTimer_start")
+	$WaveTimer.start()
+
+func _on_PopupStartTimer_timeout() -> void:
+	popup_instance = wave_completed_popup.instance()
+	$Overlay.add_child(popup_instance)
+	popup_instance.connect("tree_exiting", self, "_on_WaveTimer_start")
+	(popup_instance as PopupPanel).popup_centered()
+
+
 
 

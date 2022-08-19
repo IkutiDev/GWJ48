@@ -11,9 +11,9 @@ onready var hurtbox: Hurtbox = $Hurtbox
 onready var invincibility_timer: Timer = $InvincibilityTimer
 onready var regain_shield_timer: Timer = $StateMachine/Block/RegainShieldTimer
 
-export var health: int = 100
+export var health: float = 100.0
 export var shield_charges: int = 3
-export var normal_attack_damage: int = 10
+export var normal_attack_damage: float = 10.0
 
 var current_health = health 
 var current_shield_charges = shield_charges

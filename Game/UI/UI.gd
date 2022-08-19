@@ -8,7 +8,7 @@ onready var player = $"%Player"
 
 var current_score = 0
 
-func _on_HealthUpdated(current_health: int):
+func _on_HealthUpdated(current_health: float):
 	$HP.value = current_health
 	
 func _on_ShieldRegained(shield_index: int):
