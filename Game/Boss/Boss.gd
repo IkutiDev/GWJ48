@@ -28,7 +28,7 @@ func _ready():
 func next_phase():
 	# get next phase from list and update list
 	# return next phase as String
-	currentPhase = allPhases[0]
+	currentPhase = allPhases[randi()%2]
 	energy -= 75
 	return currentPhase
 	pass

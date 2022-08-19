@@ -7,6 +7,7 @@ var dead = false
 var damage := 0
 
 func _ready():
+	$HitSound.pitch_scale = 1.0 + randf() * 0.6
 	hurtbox.damage = damage
 	$Explosion.rotation = randf()*2*PI
 
@@ -28,6 +29,7 @@ func _on_Hurtbox_dealt_damage(_damage) -> void:
 
 func pop():
 	$PopAnimator.play("Pop")
+	$HitSound.play()
 	hurtbox.is_active = false
 	call_deferred("enable_kinematic_mode")
 	linear_velocity = Vector2(0,0)
