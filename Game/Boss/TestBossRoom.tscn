@@ -27,6 +27,9 @@ position = Vector2( 256, -404 )
 [node name="Boss" parent="." instance=ExtResource( 2 )]
 position = Vector2( 113, -137 )
 
+[node name="StateMachine" parent="Boss" index="9"]
+initial_state = NodePath("Lazor")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 0, 15 )
 collision_layer = 2
@@ -43,6 +46,13 @@ polygon = PoolVector2Array( -200, -10, -200, 10, 200, 10, 200, -10 )
 position = Vector2( -22, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 22, 8 )
+pause_mode = 2
 current = true
 zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+smoothing_speed = 3.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[editable path="Boss"]

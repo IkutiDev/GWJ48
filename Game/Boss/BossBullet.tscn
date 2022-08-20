@@ -50,7 +50,7 @@ shader_param/gradient = SubResource( 111 )
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id=114]
-radius = 70.1142
+radius = 66.9104
 
 [node name="BossBullet" type="RigidBody2D"]
 collision_layer = 0
@@ -58,7 +58,6 @@ collision_mask = 0
 gravity_scale = 0.0
 can_sleep = false
 linear_damp = 2.0
-applied_torque = 20.0
 script = ExtResource( 2 )
 
 [node name="Glow" type="Sprite" parent="."]

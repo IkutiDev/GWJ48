@@ -12,7 +12,8 @@ func _on_OrphanTimer_timeout():
 
 func _on_ArmTimer_timeout():
 	$Glow.visible = true
-	applied_force = global_position.direction_to(player.global_position).normalized() * 1080
+	apply_torque_impulse(300)
+	applied_force = global_position.direction_to(player.global_position).normalized() * 1580
 	pass # Replace with function body.
 
 

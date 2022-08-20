@@ -14,6 +14,8 @@ func _ready():
 
 	$Name.text = busName
 	$HSlider.value = AudioServer.get_bus_volume_db(targetBus)
+	$Sample.bus = busName
+	print(busName," : ",$Sample.bus)
 	pass # Replace with function body.
 
 
@@ -24,5 +26,11 @@ func _ready():
 
 func _on_HSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(targetBus,value)
-	print(AudioServer.get_bus_name(targetBus)," : ",AudioServer.get_bus_volume_db(targetBus))
+	if !$Sample.playing:
+		$Sample.play()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	$Sample.volume_db = 0
 	pass # Replace with function body.

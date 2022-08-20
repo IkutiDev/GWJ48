@@ -12,6 +12,7 @@ var musicFolderPath = "res://Resouces/Music/"
 var current_song_id : int = -1
 
 func _ready():
+	randomize()
 #	var musicFolder = Directory.new()
 #	if musicFolder.open(musicFolderPath) == OK :
 #		musicFolder.list_dir_begin()
@@ -33,12 +34,12 @@ func play_song(ID):
 	if $MusicPlayer1.playing:
 		$MusicPlayer2.stream = nextSong
 		$DJ.play("Play2")
-		$MusicPlayer2.play(randi()%20)
+		$MusicPlayer2.play(randi() % int(max(0,$MusicPlayer2.stream.get_length()-10)))
 	else:
 		$MusicPlayer1.stream = nextSong
 		$DJ.play("Play1")
-		$MusicPlayer1.play(randi()%20)
-	print($MusicPlayer1.volume_db,$MusicPlayer2.volume_db)
+		$MusicPlayer1.play(randi() % int(max(0,$MusicPlayer1.stream.get_length()-10)))
+		print($MusicPlayer1.get_playback_position())
 	
 	pass
 

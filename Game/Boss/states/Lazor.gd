@@ -42,7 +42,7 @@ func track(delta):
 	if abs(significantAngle) < 0.02:
 		return
 	else:
-		owner.get_node("Laser").rotate(turnSpeed * delta * sign(significantAngle)) 
+		owner.get_node("Laser").rotate(turnSpeed * delta * sign(significantAngle) * max(0.7,-0.01 * owner.global_position.distance_to(owner.player.global_position) + 2.5)) 
 
 
 func exit():
@@ -56,6 +56,7 @@ func exit():
 
 func _on_BlastTimer_timeout():
 	turnSpeed = 0.62
+	yield(get_tree().create_timer(0.4),"timeout")
 	owner.get_node("Laser").width = 20
 	owner.get_node("Laser").get_node("Fire").play()
 	owner.get_node("Laser").get_node("Hurtbox").get_node("Shape").disabled = false

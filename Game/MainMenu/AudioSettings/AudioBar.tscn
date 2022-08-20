@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://MainMenu/AudioSettings/AudioBar.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Ambiance/HAL9K - Low Thump.wav" type="AudioStream" id=3]
 
 [node name="AudioBar" type="HBoxContainer"]
 margin_top = 64.0
@@ -25,6 +26,15 @@ margin_right = 864.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 500, 0 )
 min_value = -80.0
-max_value = 20.0
+max_value = 12.0
+
+[node name="Sample" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -80.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
