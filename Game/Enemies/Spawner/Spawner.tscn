@@ -63,6 +63,17 @@ rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 2 )
 text = "Enemies left:"
 
+[node name="MoonSummon" type="Label" parent="Overlay"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 254.0
+margin_top = 53.0
+margin_right = 765.0
+margin_bottom = 82.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "The Moon summons you to the tower's top"
+
 [node name="EnemiesLeftCountLabel" type="Label" parent="Overlay"]
 visible = false
 margin_left = 237.0

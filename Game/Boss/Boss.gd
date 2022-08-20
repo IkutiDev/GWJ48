@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var winScreenScene = preload("res://UI/WinScreen.tscn")
+
 var allPhases = ["Summon","Spray","Lazor"]
 
 var currentPhase
@@ -23,6 +25,7 @@ func _ready():
 		maxHP = HP
 	$Overlay/HealthBar.max_value = maxHP
 	$Overlay/HealthBar.value = HP
+	SoundManager.play_song(3)
 	
 	#Fetch the player
 	if get_tree().get_nodes_in_group("Player").size()>0:
@@ -48,14 +51,20 @@ func _process(delta):
 #		else:
 #			$PinJoint2D.softness = 0
 
-
+func boss_defeat():
+	
+	get_tree().get_nodes_in_group("Game")[0].add_child(winScreenScene.instance())
+	# 
+	pass
 
 func _on_Hitbox_got_hit(damage):
+	HP -= damage
+	if HP <= 0:
+		boss_defeat()
 	$Damage.stop()
 	$Damage.stream = load("res://Boss/SFX_Moon_Grunt_0"+String(randi()%2)+".wav")
 	$Damage.pitch_scale = 0.9 + randf()*0.15
 	$Damage.play()
 	$SuperAnimator.play("Damage")
-	HP -= damage
 	$Overlay/HealthBar.value = HP
 	pass # Replace with function body.

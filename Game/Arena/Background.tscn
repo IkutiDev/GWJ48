@@ -18,7 +18,7 @@ motion_offset = Vector2( -320, -300 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Moon" type="Sprite" parent="Sky"]
+[node name="Moon" type="Sprite" parent="Sky" groups=["Moon"]]
 texture = ExtResource( 1 )
 centered = false
 

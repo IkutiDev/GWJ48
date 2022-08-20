@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Arena/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arena/Walls.tscn" type="PackedScene" id=2]
@@ -6,9 +6,19 @@
 [ext_resource path="res://Arena/MerlonsSmall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Arena/Surface.gd" type="Script" id=5]
 [ext_resource path="res://Arena/Merlons.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Boss/BossSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Arena/PlatformSmall.tscn" type="PackedScene" id=9]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 448, 147 )
+
 [node name="Arena" type="Node2D"]
+
+[node name="BossSpawner" parent="." instance=ExtResource( 7 )]
+position = Vector2( 288, -1792 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BossSpawner"]
+shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0, 0, 0, 1 )
@@ -57,6 +67,9 @@ position = Vector2( 160, -1216 )
 
 [node name="Platform26" parent="." instance=ExtResource( 3 )]
 position = Vector2( 704, -960 )
+
+[node name="Platform27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 704, -1504 )
 
 [node name="Platform22" parent="." instance=ExtResource( 3 )]
 position = Vector2( 256, -1312 )

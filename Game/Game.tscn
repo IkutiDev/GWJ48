@@ -107,9 +107,9 @@ properties = PoolStringArray( "current_health", "invincible", "block_active" )
 [node name="UI" parent="." instance=ExtResource( 10 )]
 layer = 0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 pause_mode = 2
-position = Vector2( -108, 96 )
+position = Vector2( 402, -1523 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
@@ -117,7 +117,10 @@ smoothing_speed = 3.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( -108, 96 )
+position = Vector2( 402, -1523 )
+
+[node name="CollisionShape2D" parent="Player" index="2"]
+visible = true
 
 [node name="Air" parent="Player/StateMachine/Move" index="2"]
 jump_impulse = 785.0

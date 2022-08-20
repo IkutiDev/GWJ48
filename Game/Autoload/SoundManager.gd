@@ -1,6 +1,7 @@
 extends Node
 
 var songList = {
+	3 : preload("res://Resouces/Music/MUS_Moon_Boss.ogg"), # boss
 	2 : preload("res://Resouces/Music/MUS_Combat_Exploration_Variant.ogg"), # fight
 	1 : preload("res://Resouces/Music/MUS_Music_Pad_and_Melody.ogg"), # rest
 	0 : preload("res://Resouces/Music/MUS_Short_Loop.ogg") # main menu

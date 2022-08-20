@@ -26,6 +26,8 @@ var allowedEnemies : Array
 
 var waveCounter = 0
 
+var maxWave = 5
+
 var enemiesToSpawn = 0
 
 var enemiesToKill = 100
@@ -37,6 +39,8 @@ var buff_counter = 1.0
 var current_spawn_wait_time = 3
 
 var walker_spawn_offset : float = 9.0
+
+var bossReady = false
 
 func _enter_tree() -> void:
 	for d in enemies_data:
@@ -73,9 +77,24 @@ func record_death(enemy):
 	if enemiesToKill < 1:
 		$Overlay/EnemieLeftLabel.visible = false
 		$Overlay/EnemiesLeftCountLabel.visible = false
-		$PopupStartTimer.start()
-		SoundManager.play_song(1)
 		$AmbianceDJ.inBattle = false
+		SoundManager.play_song(1)
+		if waveCounter >= maxWave:
+			no_more_waves()
+			return
+		$PopupStartTimer.start()
+		
+		
+
+func boss_started():
+	$AmbianceDJ.inBattle = true
+	$Overlay/MoonSummon.visible = false
+	pass
+
+func no_more_waves():
+	$Overlay/MoonSummon.visible = true
+	bossReady = true
+	pass
 
 func start_next_wave():
 	SoundManager.play_song(2)
