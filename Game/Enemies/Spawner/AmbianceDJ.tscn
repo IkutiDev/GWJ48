@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resouces/Ambiance/Owl_Hoot/AMB_Spot_Night_Out_Of_Town_Owl_Hoot_03.wav" type="AudioStream" id=1]
 [ext_resource path="res://Resouces/Ambiance/AMB_Castle.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Enemies/Spawner/AmbianceDJ.gd" type="Script" id=3]
 [ext_resource path="res://Resouces/Ambiance/SFX_Crash.wav" type="AudioStream" id=4]
+[ext_resource path="res://Resouces/Ambiance/UI_Plop_00.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "23"
@@ -64,7 +65,13 @@ bus = "Ambience"
 
 [node name="EffectTimer" type="Timer" parent="."]
 
+[node name="Plop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 1.88
+bus = "Ambience"
+
 [connection signal="finished" from="Background" to="." method="_on_Background_finished"]
 [connection signal="finished" from="Hoot" to="." method="_on_Hoot_finished"]
 [connection signal="finished" from="Impact" to="." method="_on_Impact_finished"]
 [connection signal="timeout" from="EffectTimer" to="." method="_on_EffectTimer_timeout"]
+[connection signal="finished" from="Plop" to="." method="_on_Plop_finished"]
