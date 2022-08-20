@@ -16,12 +16,7 @@ func _on_Hoot_finished():
 	pass # Replace with function body.
 
 func _on_Impact_finished():
-	$Impact.pitch_scale = 0.55 + randf() * 0.3
-	if randi()%2 == 1:
-		$Impact.stream = load("res://Resouces/Ambiance/HAL9K - Glass Hit 1.wav")
-	else:
-		$Impact.stream = load("res://Resouces/Ambiance/HAL9K - Low Thump.wav")
-		
+	$Impact.pitch_scale = 0.75 + randf() * 0.9
 	pass # Replace with function body.
 
 func _on_EffectTimer_timeout():

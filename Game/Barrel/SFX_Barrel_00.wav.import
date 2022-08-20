@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/HAL9K - Low Thump.wav-2e8607e4e3deeacd4dfe569f039417f0.sample"
+path="res://.import/SFX_Barrel_00.wav-06f38fc7f0705627a7dd6157a3aa3e90.sample"
 
 [deps]
 
-source_file="res://Resouces/Ambiance/HAL9K - Low Thump.wav"
-dest_files=[ "res://.import/HAL9K - Low Thump.wav-2e8607e4e3deeacd4dfe569f039417f0.sample" ]
+source_file="res://Barrel/SFX_Barrel_00.wav"
+dest_files=[ "res://.import/SFX_Barrel_00.wav-06f38fc7f0705627a7dd6157a3aa3e90.sample" ]
 
 [params]
 

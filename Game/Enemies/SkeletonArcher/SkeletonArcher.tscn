@@ -1,9 +1,10 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Enemies/SkeletonArcher/SkeletonArcher.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/SkeletonArcher/assets/Archer Skeleton.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/EnemyStateMachine/AttackRangeEnemy.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/SkeletonArcher/Arrow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/SkeletonArcher/SFX_Skeleton_Death_00.wav" type="AudioStream" id=5]
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=8]
 [ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/source/Skin.tscn" type="PackedScene" id=10]
@@ -239,8 +240,6 @@ extents = Vector2( 5, 16.5 )
 collision_layer = 32
 collision_mask = 26
 script = ExtResource( 1 )
-damage = 15
-health = 40
 score = 50
 experience = 25
 speed = 40.0
@@ -248,6 +247,11 @@ speed_difference_on_spawn_min = -25.0
 speed_difference_on_spawn_max = 10.0
 distance_to_attack = 300.0
 projectile_speed = 300.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 2.35
+bus = "Effects"
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
 

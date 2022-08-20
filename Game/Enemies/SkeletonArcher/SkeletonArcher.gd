@@ -34,4 +34,6 @@ func _on_Hitbox_died() -> void:
 	if not _is_enemy_alive():
 		return
 	_death()
+	$Death.pitch_scale = 1.3 + randf()
+	$Death.play()
 	state_machine.transition_to("DieEnemy")

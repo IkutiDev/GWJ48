@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/HAL9K - Glass Hit 1.wav-31054bd57f91857c6e7ef3f8877b6629.sample"
+path="res://.import/SFX_Skeleton_Death_00.wav-36ed1fff0fe9bc5bb4cd13f6b596e21d.sample"
 
 [deps]
 
-source_file="res://Resouces/Ambiance/HAL9K - Glass Hit 1.wav"
-dest_files=[ "res://.import/HAL9K - Glass Hit 1.wav-31054bd57f91857c6e7ef3f8877b6629.sample" ]
+source_file="res://Enemies/SkeletonArcher/SFX_Skeleton_Death_00.wav"
+dest_files=[ "res://.import/SFX_Skeleton_Death_00.wav-36ed1fff0fe9bc5bb4cd13f6b596e21d.sample" ]
 
 [params]
 

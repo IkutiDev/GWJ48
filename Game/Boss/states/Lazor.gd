@@ -42,7 +42,7 @@ func track(delta):
 	if abs(significantAngle) < 0.02:
 		return
 	else:
-		owner.get_node("Laser").rotate(turnSpeed * delta * sign(significantAngle) * max(0.7,-0.01 * owner.global_position.distance_to(owner.player.global_position) + 2.5)) 
+		owner.get_node("Laser").rotate(turnSpeed * delta * sign(significantAngle) * max(0.19,-0.07 * owner.global_position.distance_to(owner.player.global_position) + 4.5)) 
 
 
 func exit():
