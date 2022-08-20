@@ -3,18 +3,21 @@ extends Panel
 
 onready var info_panel: PanelContainer = $BuffIcon/InfoPanel
 onready var buff_icon: TextureRect = $BuffIcon
-onready var label: Label = $BuffIcon/Label
+onready var label: Label = $Label
 onready var title_label: Label = $BuffIcon/InfoPanel/VBoxContainer/Title
 onready var description_label: Label = $BuffIcon/InfoPanel/VBoxContainer/Description
 
 export var show_stacks_label : bool = false
+export var hide_on_zero_stacks : bool = true
 
 var buff_stack := 0
 
 func set_buff_stack(current_buff_stack: int):
 	buff_stack = current_buff_stack
 	label.text = "x" + str(buff_stack)
-	if buff_stack >= 1:
+	if not hide_on_zero_stacks:
+		visible = true
+	elif buff_stack >= 1:
 		visible = true
 	else:
 		visible = false

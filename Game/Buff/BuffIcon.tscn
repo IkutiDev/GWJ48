@@ -60,12 +60,12 @@ text = "For each stack increases exp and glory gain.
 But also increaes how much damage you take."
 autowrap = true
 
-[node name="Label" type="Label" parent="BuffIcon"]
-visible = false
-margin_left = 33.0
-margin_top = -9.5
-margin_right = 74.0
-margin_bottom = 19.5
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -15.0
+margin_right = 26.0
+margin_bottom = 29.0
 custom_fonts/font = ExtResource( 3 )
 text = "x9"
 

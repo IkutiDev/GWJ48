@@ -118,9 +118,6 @@ visible = false
 rect_min_size = Vector2( 53, 53 )
 show_stacks_label = true
 
-[node name="Label" parent="BuffsIcons/Insomnia/BuffIcon" index="1"]
-text = "x1"
-
 [node name="DMGUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_left = 78.0
@@ -140,9 +137,6 @@ text = "Sharper Swing"
 [node name="Description" parent="BuffsIcons/DMGUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
 margin_bottom = 72.0
 text = "For each stack gain a moderate damage increase on meele attacks"
-
-[node name="Label" parent="BuffsIcons/DMGUp/BuffIcon" index="1"]
-text = "x1"
 
 [node name="HPUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
@@ -164,9 +158,6 @@ text = "Hearty Heart"
 margin_bottom = 69.0
 text = "For each stack gain a health increase"
 
-[node name="Label" parent="BuffsIcons/HPUp/BuffIcon" index="1"]
-text = "x1"
-
 [node name="ShieldUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_left = 234.0
@@ -187,9 +178,6 @@ text = "Shields Up!"
 margin_bottom = 72.0
 text = "For each stack gain another charge for shield skill"
 
-[node name="Label" parent="BuffsIcons/ShieldUp/BuffIcon" index="1"]
-text = "x1"
-
 [node name="PowerAttack" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_left = 312.0
@@ -204,9 +192,6 @@ text = "Mighty Blow"
 
 [node name="Description" parent="BuffsIcons/PowerAttack/BuffIcon/InfoPanel/VBoxContainer" index="1"]
 text = "Allows for player to do heavy attack. Hold your attack keybind for longer to do a more powerful attack"
-
-[node name="Label" parent="BuffsIcons/PowerAttack/BuffIcon" index="1"]
-text = "x1"
 
 [node name="TripleJump" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
@@ -226,9 +211,6 @@ text = "Fly like a Bird"
 [node name="Description" parent="BuffsIcons/TripleJump/BuffIcon/InfoPanel/VBoxContainer" index="1"]
 margin_bottom = 72.0
 text = "Allows you to do a third jump without touching the ground"
-
-[node name="Label" parent="BuffsIcons/TripleJump/BuffIcon" index="1"]
-text = "x1"
 
 [node name="JumpUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
@@ -252,9 +234,6 @@ text = "Light as a feather"
 margin_bottom = 69.0
 text = "For each stack gain more power to your jumps"
 
-[node name="Label" parent="BuffsIcons/JumpUp/BuffIcon" index="1"]
-text = "x1"
-
 [node name="SpeedUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_left = 156.0
@@ -276,9 +255,6 @@ text = "Quick Footed"
 [node name="Description" parent="BuffsIcons/SpeedUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
 margin_bottom = 69.0
 text = "For each stack gain more movement speed"
-
-[node name="Label" parent="BuffsIcons/SpeedUp/BuffIcon" index="1"]
-text = "x1"
 
 [node name="ManaUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
@@ -302,9 +278,6 @@ text = "Magic Whirlwind"
 margin_bottom = 69.0
 text = "For each stack gain a mana increase"
 
-[node name="Label" parent="BuffsIcons/ManaUp/BuffIcon" index="1"]
-text = "x1"
-
 [node name="ManaRegenUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_left = 312.0
@@ -327,9 +300,6 @@ text = "Unstable Current"
 margin_bottom = 69.0
 text = "For each stack gain a mana regen increase"
 
-[node name="Label" parent="BuffsIcons/ManaRegenUp/BuffIcon" index="1"]
-text = "x1"
-
 [node name="SpellDamageUp" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_top = 126.0
@@ -348,9 +318,6 @@ text = "Phantom Strength"
 [node name="Description" parent="BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
 margin_bottom = 90.0
 text = "Gain short buff that doubles any of your damage after casting the spell"
-
-[node name="Label" parent="BuffsIcons/SpellDamageUp/BuffIcon" index="1"]
-text = "x1"
 
 [node name="ManaShield" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
@@ -373,9 +340,6 @@ text = "Mana shield"
 margin_bottom = 90.0
 text = "For short duration after casting the spell, decrease mana instead of health on enemy hits"
 
-[node name="Label" parent="BuffsIcons/ManaShield/BuffIcon" index="1"]
-text = "x1"
-
 [node name="Fireballs" parent="BuffsIcons" instance=ExtResource( 7 )]
 visible = false
 margin_left = 156.0
@@ -397,9 +361,6 @@ text = "Fireballs!!"
 [node name="Description" parent="BuffsIcons/Fireballs/BuffIcon/InfoPanel/VBoxContainer" index="1"]
 margin_bottom = 90.0
 text = "For each stack gain a fireball projectile that will shoot in random direction when casting the spell"
-
-[node name="Label" parent="BuffsIcons/Fireballs/BuffIcon" index="1"]
-text = "x1"
 
 [editable path="BuffsIcons/Insomnia"]
 [editable path="BuffsIcons/DMGUp"]

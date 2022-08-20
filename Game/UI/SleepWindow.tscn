@@ -1,9 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://UI/SleepWindow.gd" type="Script" id=1]
 [ext_resource path="res://MainMenu/BasicButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman_big.tres" type="DynamicFont" id=3]
-[ext_resource path="res://UI/twinkle twinkle.wav" type="AudioStream" id=4]
+[ext_resource path="res://Buff/assets/SpellBookPage09_101.png" type="Texture" id=4]
+[ext_resource path="res://Buff/assets/SpellBook01_25.png" type="Texture" id=5]
+[ext_resource path="res://Buff/assets/SpellBookPage09_add_003.png" type="Texture" id=6]
+[ext_resource path="res://Buff/assets/SpellBook01_48.PNG" type="Texture" id=7]
+[ext_resource path="res://Buff/assets/SpellBook01_76.PNG" type="Texture" id=8]
+[ext_resource path="res://Buff/assets/SpellBook01_26.png" type="Texture" id=9]
+[ext_resource path="res://Buff/assets/SpellBookPage09_109.png" type="Texture" id=10]
+[ext_resource path="res://Buff/assets/SpellBookPage09_34.PNG" type="Texture" id=11]
+[ext_resource path="res://Buff/assets/SpellBookPage09_66.PNG" type="Texture" id=12]
+[ext_resource path="res://Buff/assets/SpellBook01_77.PNG" type="Texture" id=13]
+[ext_resource path="res://Buff/assets/SpellBookPage09_105.png" type="Texture" id=14]
+[ext_resource path="res://Buff/assets/SpellBookPage09_39.PNG" type="Texture" id=15]
+[ext_resource path="res://Buff/BuffIcon.tscn" type="PackedScene" id=16]
+[ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeIn"
@@ -40,6 +53,7 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+dmg_up_costs = [ 20, 60, 180, 360, 500 ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -126,15 +140,549 @@ margin_right = 259.0
 margin_bottom = 126.0
 text = "Back"
 
-[node name="GoodNight" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-volume_db = -2.0
-pitch_scale = 0.75
-autoplay = true
-bus = "Ambience"
+[node name="ExperienceStaticLabel" type="Label" parent="SkillTreeWindow"]
+margin_left = 394.0
+margin_top = 51.0
+margin_right = 709.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 3 )
+text = "Experience:"
+
+[node name="ExperienceDynamicLabel" type="Label" parent="SkillTreeWindow"]
+margin_left = 731.0
+margin_top = 51.0
+margin_right = 1062.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 3 )
+text = "999999999"
+
+[node name="BuffsIcons" type="GridContainer" parent="SkillTreeWindow"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -466.0
+margin_top = -161.0
+margin_right = 596.0
+margin_bottom = 213.0
+custom_constants/vseparation = 120
+custom_constants/hseparation = 60
+columns = 6
+
+[node name="DMGUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+margin_right = 127.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/DMGUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 8 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/DMGUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 79.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/DMGUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Sharper Swing"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/DMGUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 72.0
+text = "For each stack gain a moderate damage increase on meele attacks"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/DMGUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="dmgup_Button" parent="SkillTreeWindow/BuffsIcons/DMGUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="dmgup_CostLabel" type="Label" parent="SkillTreeWindow/BuffsIcons/DMGUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.2
+margin_top = -30.0
+margin_right = -56.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "Cost:"
+
+[node name="dmgup_CostLabelDynamic" type="Label" parent="SkillTreeWindow/BuffsIcons/DMGUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -61.2
+margin_top = -30.0
+margin_right = -22.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "999"
+
+[node name="HPUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_left = 187.0
+margin_right = 314.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/HPUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 6 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/HPUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/HPUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Hearty Heart"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/HPUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain a health increase"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/HPUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/HPUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="CostLabel" type="Label" parent="SkillTreeWindow/BuffsIcons/HPUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.2
+margin_top = -30.0
+margin_right = -56.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "Cost:"
+
+[node name="CostLabelDynamic" type="Label" parent="SkillTreeWindow/BuffsIcons/HPUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -61.2
+margin_top = -30.0
+margin_right = -22.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "999"
+
+[node name="ShieldUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_left = 374.0
+margin_right = 501.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/ShieldUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 7 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/ShieldUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 79.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/ShieldUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Shields Up!"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/ShieldUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 72.0
+text = "For each stack gain another charge for shield skill"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/ShieldUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/ShieldUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="PowerAttack" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_left = 561.0
+margin_right = 688.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/PowerAttack" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 13 )
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/PowerAttack/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Mighty Blow"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/PowerAttack/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+text = "Allows for player to do heavy attack. Hold your attack keybind for longer to do a more powerful attack"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/PowerAttack" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/PowerAttack" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="TripleJump" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_left = 561.0
+margin_right = 688.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/TripleJump" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 4 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/TripleJump/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 79.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/TripleJump/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Fly like a Bird"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/TripleJump/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 72.0
+text = "Allows you to do a third jump without touching the ground"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/TripleJump" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/TripleJump" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="JumpUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_left = 748.0
+margin_right = 875.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/JumpUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 10 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/JumpUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/JumpUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Light as a feather"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/JumpUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain more power to your jumps"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/JumpUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/JumpUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="SpeedUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_left = 935.0
+margin_right = 1062.2
+margin_bottom = 127.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/SpeedUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 15 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/SpeedUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/SpeedUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Quick Footed"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/SpeedUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain more movement speed"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/SpeedUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/SpeedUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="ManaUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_top = 247.0
+margin_right = 127.2
+margin_bottom = 374.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/ManaUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 14 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/ManaUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/ManaUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Magic Whirlwind"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/ManaUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain a mana increase"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/ManaUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/ManaUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="ManaRegenUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_top = 247.0
+margin_right = 127.2
+margin_bottom = 374.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/ManaRegenUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 12 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/ManaRegenUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/ManaRegenUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Unstable Current"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/ManaRegenUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain a mana regen increase"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/ManaRegenUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/ManaRegenUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="SpellDamageUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_top = 247.0
+margin_right = 127.2
+margin_bottom = 374.2
+rect_min_size = Vector2( 127.2, 127.2 )
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/SpellDamageUp" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 97.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Phantom Strength"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 90.0
+text = "Gain short buff that doubles any of your damage after casting the spell"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/SpellDamageUp" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/SpellDamageUp" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="ManaShield" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_top = 247.0
+margin_right = 127.2
+margin_bottom = 374.2
+rect_min_size = Vector2( 127.2, 127.2 )
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/ManaShield" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 11 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/ManaShield/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 97.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/ManaShield/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Mana shield"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/ManaShield/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 90.0
+text = "For short duration after casting the spell, decrease mana instead of health on enemy hits"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/ManaShield" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/ManaShield" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
+
+[node name="Fireballs" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
+visible = false
+margin_top = 247.0
+margin_right = 127.2
+margin_bottom = 374.2
+rect_min_size = Vector2( 127.2, 127.2 )
+show_stacks_label = true
+hide_on_zero_stacks = false
+
+[node name="BuffIcon" parent="SkillTreeWindow/BuffsIcons/Fireballs" index="0"]
+margin_left = -58.8
+margin_top = -58.8
+margin_right = 58.8
+margin_bottom = 58.8
+rect_min_size = Vector2( 117.6, 117.6 )
+texture = ExtResource( 9 )
+
+[node name="VBoxContainer" parent="SkillTreeWindow/BuffsIcons/Fireballs/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 97.0
+
+[node name="Title" parent="SkillTreeWindow/BuffsIcons/Fireballs/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Fireballs!!"
+
+[node name="Description" parent="SkillTreeWindow/BuffsIcons/Fireballs/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 90.0
+text = "For each stack gain a fireball projectile that will shoot in random direction when casting the spell"
+
+[node name="Label" parent="SkillTreeWindow/BuffsIcons/Fireballs" index="1"]
+custom_fonts/font = ExtResource( 3 )
+
+[node name="Button" parent="SkillTreeWindow/BuffsIcons/Fireballs" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200012
+margin_right = 0.0
+margin_bottom = 59.8
+text = "Buy"
 
 [connection signal="tree_entered" from="." to="." method="_on_SleepWindow_tree_entered"]
 [connection signal="animation_finished" from="Fader" to="." method="_on_Fader_animation_finished"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/WakeUpButton" to="." method="_on_WakeUpButton_button_down"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/SpendExpButton" to="." method="_on_SpendExpButton_button_down"]
 [connection signal="button_down" from="SkillTreeWindow/Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="SkillTreeWindow/BuffsIcons/DMGUp/dmgup_Button" to="." method="_on_dmgup_Button_button_down"]
+
+[editable path="SkillTreeWindow/BuffsIcons/DMGUp"]
+[editable path="SkillTreeWindow/BuffsIcons/HPUp"]
+[editable path="SkillTreeWindow/BuffsIcons/ShieldUp"]
+[editable path="SkillTreeWindow/BuffsIcons/PowerAttack"]
+[editable path="SkillTreeWindow/BuffsIcons/TripleJump"]
+[editable path="SkillTreeWindow/BuffsIcons/JumpUp"]
+[editable path="SkillTreeWindow/BuffsIcons/SpeedUp"]
+[editable path="SkillTreeWindow/BuffsIcons/ManaUp"]
+[editable path="SkillTreeWindow/BuffsIcons/ManaRegenUp"]
+[editable path="SkillTreeWindow/BuffsIcons/SpellDamageUp"]
+[editable path="SkillTreeWindow/BuffsIcons/ManaShield"]
+[editable path="SkillTreeWindow/BuffsIcons/Fireballs"]

@@ -42,6 +42,7 @@ scale = Vector2( 0.75, 0.75 )
 transform = Transform2D( 0.75, 0, 0, 0.75, 0, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Debug_UI"]
+visible = false
 anchor_bottom = 1.0
 margin_right = 440.0
 mouse_filter = 2

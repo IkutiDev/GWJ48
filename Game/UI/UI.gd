@@ -7,6 +7,12 @@ onready var experience_dynamic_value: Label = $ExperienceDynamicValue
 onready var shield_icons: HBoxContainer = $ShieldIcons
 
 onready var insomnia: BuffIcon = $BuffsIcons/Insomnia
+onready var dmgup: Panel = $BuffsIcons/DMGUp
+onready var hpup: Panel = $BuffsIcons/HPUp
+onready var shield_up: Panel = $BuffsIcons/ShieldUp
+onready var triple_jump: Panel = $BuffsIcons/TripleJump
+onready var speed_up: Panel = $BuffsIcons/SpeedUp
+onready var jump_up: Panel = $BuffsIcons/JumpUp
 
 
 onready var buff_manager: BuffManager = $"../BuffManager"
@@ -34,6 +40,12 @@ func _on_ExperienceUpdated(total_experience: int):
 
 func _on_InsomniaUpdated(total_insomnia_stacks: int):
 	insomnia.set_buff_stack(total_insomnia_stacks)
+	
+func _on_DamageBuffUpdated(total_stacks: int):
+	dmgup.set_buff_stack(total_stacks)
+	
+func _on_HealthBuffUpdated(total_stacks: int):
+	hpup.set_buff_stack(total_stacks)
 
 func _ready() -> void:
 	yield(player, "ready")
@@ -45,6 +57,10 @@ func _ready() -> void:
 	value = buff_manager.connect("update_experience", self, "_on_ExperienceUpdated")
 	assert(value == OK)
 	value = buff_manager.connect("update_insomnia", self, "_on_InsomniaUpdated")
+	assert(value == OK)
+	value = buff_manager.connect("update_dmg_up", self, "_on_DamageBuffUpdated")
+	assert(value == OK)
+	value = buff_manager.connect("update_hp_up", self, "_on_HealthBuffUpdated")
 	assert(value == OK)
 	_on_HealthUpdated(player.get_current_health())
 	score_dynamic_value.text = str(current_score)

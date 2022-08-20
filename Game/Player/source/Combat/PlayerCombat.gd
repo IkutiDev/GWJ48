@@ -23,6 +23,10 @@ var block_active := false
 
 var blocked_this_frame := false
 
+func update_max_health(stacks : int)-> void:
+	health = health + (50 * stacks)
+func update_damage(stacks: int) -> void:
+	hurtbox.damage = (normal_attack_damage + (10 * stacks))
 func _on_InvincibilityTimer_time_out()-> void:
 	invincible = false
 	blocked_this_frame = false
@@ -33,9 +37,14 @@ func _on_RegainShieldTimer_time_out() -> void:
 		current_shield_charges += 1
 
 func _ready() -> void:
+	yield(player, "ready")
 	hitbox.current_health = health
 	hurtbox.damage = normal_attack_damage
 	var value = invincibility_timer.connect("timeout", self, "_on_InvincibilityTimer_time_out")
+	assert(value == OK)
+	value = player.buff_manager.connect("update_hp_up", self, "update_max_health")
+	assert(value == OK)
+	value = player.buff_manager.connect("update_dmg_up", self, "update_damage")
 	assert(value == OK)
 	regain_shield_timer.connect("timeout", self, "_on_RegainShieldTimer_time_out")
 
