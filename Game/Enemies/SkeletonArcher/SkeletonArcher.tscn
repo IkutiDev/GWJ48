@@ -242,6 +242,7 @@ script = ExtResource( 1 )
 damage = 15
 health = 40
 score = 50
+experience = 25
 speed = 40.0
 speed_difference_on_spawn_min = -25.0
 speed_difference_on_spawn_max = 10.0

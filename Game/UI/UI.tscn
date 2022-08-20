@@ -42,6 +42,24 @@ rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "999999999999999"
 
+[node name="Experience" type="Label" parent="."]
+margin_left = 859.0
+margin_top = 162.0
+margin_right = 933.0
+margin_bottom = 191.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 5 )
+text = "Experience:"
+
+[node name="ExperienceDynamicValue" type="Label" parent="."]
+margin_left = 1062.0
+margin_top = 162.0
+margin_right = 1199.0
+margin_bottom = 191.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 5 )
+text = "9999999999"
+
 [node name="ShieldIcons" type="HBoxContainer" parent="."]
 margin_left = 854.0
 margin_top = 64.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/Spawner/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
@@ -9,9 +9,26 @@
 [ext_resource path="res://UI/WaveCompletedPopup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Spawner/AmbianceDJ.tscn" type="PackedScene" id=8]
 
+[sub_resource type="Animation" id=1]
+resource_name = "show"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.811765, 0.12549, 0.12549, 0 ), Color( 0.811765, 0.12549, 0.12549, 1 ), Color( 0.811765, 0.12549, 0.12549, 1 ), Color( 0.811765, 0.12549, 0.12549, 0 ) ]
+}
+
 [node name="Spawner" type="Node" groups=["Spawner"]]
 script = ExtResource( 1 )
 wave_completed_popup = ExtResource( 7 )
+buff_enemies_on_every_x_wave = 3
 enemies_data = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
 
 [node name="Exits" type="Node2D" parent="."]
@@ -36,6 +53,26 @@ rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 2 )
 text = "Game starts in: "
 
+[node name="EnemieLeftLabel" type="Label" parent="Overlay"]
+visible = false
+margin_left = 3.0
+margin_top = 55.0
+margin_right = 157.0
+margin_bottom = 84.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "Enemies left:"
+
+[node name="EnemiesLeftCountLabel" type="Label" parent="Overlay"]
+visible = false
+margin_left = 237.0
+margin_top = 56.0
+margin_right = 280.0
+margin_bottom = 85.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "999"
+
 [node name="WaveStartLabel" type="Label" parent="Overlay"]
 visible = false
 margin_left = 254.0
@@ -45,6 +82,19 @@ margin_bottom = 40.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 2 )
 text = "Wave starts in:"
+
+[node name="WarningLabel" type="Label" parent="Overlay"]
+margin_left = 304.0
+margin_top = 53.0
+margin_right = 700.0
+margin_bottom = 82.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0.811765, 0.12549, 0.12549, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Moon light empowers the enemies"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Overlay/WarningLabel"]
+anims/show = SubResource( 1 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0

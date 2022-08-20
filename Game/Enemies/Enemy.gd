@@ -3,7 +3,6 @@ class_name Enemy, "res://Editor/icons/monster.svg"
 """
 General class for all enemies
 """
-
 const FLOOR_NORMAL: = Vector2.UP
 
 enum enemy_life_state {Spawning = 0, Alive = 1, Dead = 2}
@@ -17,6 +16,8 @@ export var damage: float = 5.0
 export var health: float = 20.0
 
 export var score : int = 20
+
+export var experience : int = 20
 
 export var speed : float = 50.0
 
@@ -32,11 +33,14 @@ var desiredLoc = Vector2()
 
 var is_attacking := false
 
-func buff_enemy(buff_counter: int) -> void:
+var experience_orb_scene = preload("res://Collectible/Experience/ExperienceOrb.tscn")
+
+func buff_enemy(buff_counter: float) -> void:
 	assert(buff_counter > 0)
-	health *= buff_counter
-	damage *= buff_counter / 2
-	score *= buff_counter / 2
+	health *= buff_counter * 0.8
+	damage *= buff_counter * 0.6
+	score *= buff_counter * 0.75
+	experience *= buff_counter * 0.75
 
 func _ready() -> void:
 	#Find the reference to target, as in the Player, from the group. 
@@ -60,7 +64,14 @@ func _is_enemy_alive() -> bool:
 func _death() -> void:
 	Events.emit_signal("score_gained", score)
 	Events.emit_signal("spawner_record_death", self)
-	# (#Ikuti) Add drop exp/stuff here
+	var exp_orb_instance = experience_orb_scene.instance()
+	get_tree().root.add_child(exp_orb_instance)
+	exp_orb_instance.global_position = global_position
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var x_value : float = rng.randf_range(-50.0, 50.0)
+	exp_orb_instance.apply_central_impulse(Vector2(x_value, -100))
+	exp_orb_instance.activate_exp_orb(experience)
 	current_enemy_life_state = enemy_life_state.Dead
 
 func _got_hit(damage: float) -> void:

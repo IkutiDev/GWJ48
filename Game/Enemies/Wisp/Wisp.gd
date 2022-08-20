@@ -23,7 +23,7 @@ func spawn_finished() -> void:
 	current_enemy_life_state = enemy_life_state.Alive
 	hurtbox.is_active = true
 
-func buff_enemy(buff_counter: int) -> void:
+func buff_enemy(buff_counter: float) -> void:
 	.buff_enemy(buff_counter)
 
 func _ready() -> void:

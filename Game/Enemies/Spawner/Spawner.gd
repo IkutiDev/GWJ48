@@ -30,7 +30,9 @@ var enemiesToSpawn = 0
 
 var enemiesToKill = 100
 
-var buff_counter = 1
+var current_enemies_counter : int = 0
+
+var buff_counter = 1.0
 
 var current_spawn_wait_time = 3
 
@@ -66,7 +68,11 @@ func _process(_delta):
 func record_death(enemy):
 	allEnemies.erase(enemy)
 	enemiesToKill -= 1
+	current_enemies_counter -= 1
+	$Overlay/EnemiesLeftCountLabel.text = str(current_enemies_counter)
 	if enemiesToKill < 1:
+		$Overlay/EnemieLeftLabel.visible = false
+		$Overlay/EnemiesLeftCountLabel.visible = false
 		$PopupStartTimer.start()
 		SoundManager.play_song(1)
 		$AmbianceDJ.inBattle = false
@@ -77,10 +83,14 @@ func start_next_wave():
 	waveCounter += 1
 	current_spawn_wait_time -= spawn_timer_increase_per_wave
 	if waveCounter % buff_enemies_on_every_x_wave == 0:
-		buff_counter +=1
+		buff_counter +=1.0
+		$Overlay/WarningLabel/AnimationPlayer.play("show")
 	enemiesToSpawn = 5 + pow(2, (waveCounter/4)) + waveCounter
 	enemiesToKill = enemiesToSpawn
 	allowedEnemies.clear()
+	$Overlay/EnemiesLeftCountLabel.text = str(current_enemies_counter)
+	$Overlay/EnemieLeftLabel.visible = true
+	$Overlay/EnemiesLeftCountLabel.visible = true
 	for d in enemies_data:
 		if (d as enemyData).start_wave <= waveCounter:
 			allowedEnemies.append(d)
@@ -90,7 +100,7 @@ func start_next_wave():
 
 func spawn_enemy(data : enemyData):
 	var newEnemy : Enemy = data.enemy_scene.instance()
-	if buff_counter > 1:
+	if buff_counter > 1.0:
 		newEnemy.buff_enemy(buff_counter)
 	var validExits = []
 	if data.walker:
@@ -105,6 +115,8 @@ func spawn_enemy(data : enemyData):
 	if data.walker:
 		newEnemy.global_position.y += walker_spawn_offset
 	allEnemies.push_back(newEnemy)
+	current_enemies_counter += 1
+	$Overlay/EnemiesLeftCountLabel.text = str(current_enemies_counter)
 	pass
 
 func is_a_closer(a,b): # is a not a closer! is a me! Mario!

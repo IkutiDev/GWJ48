@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Arena/Arena.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/source/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Enemies/Spawner/Hole.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Spawner/Gate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://BuffManager.gd" type="Script" id=11]
 
 [node name="Game" type="Node" groups=["Game"]]
 script = ExtResource( 6 )
@@ -123,6 +124,9 @@ jump_impulse = 785.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="BuffManager" type="Node" parent="."]
+script = ExtResource( 11 )
 
 [editable path="Spawner"]
 [editable path="Player"]
