@@ -8,7 +8,7 @@ extends State
 # locate landing spot with $GroundDetector
 # wait for x time or untill y damage is dealt
 
-var duration = 10
+var duration = 7
 
 var time = 0
 
@@ -16,7 +16,7 @@ var landingSpot
 
 var startingHP
 
-var earlyWake = 0.15
+var earlyWake = 0.1
 
 func enter(_msg: Dictionary = {}):
 	owner.get_node("GroundDetector").force_raycast_update()

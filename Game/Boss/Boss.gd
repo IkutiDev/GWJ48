@@ -14,11 +14,16 @@ var speed = 200
 
 var mass = 100
 
-var maxHP = 3000
+var maxHP = 300
 
-export var HP = 3000
+export var HP = 300
 
 func _ready():
+	if HP > maxHP:
+		maxHP = HP
+	$Overlay/HealthBar.max_value = maxHP
+	$Overlay/HealthBar.value = HP
+	
 	#Fetch the player
 	if get_tree().get_nodes_in_group("Player").size()>0:
 		#This will break if we have more than 1 entity in player group so we do assert here to have a sanity check
@@ -43,3 +48,14 @@ func _process(delta):
 #		else:
 #			$PinJoint2D.softness = 0
 
+
+
+func _on_Hitbox_got_hit(damage):
+	$Damage.stop()
+	$Damage.stream = load("res://Boss/SFX_Moon_Grunt_0"+String(randi()%2)+".wav")
+	$Damage.pitch_scale = 0.9 + randf()*0.15
+	$Damage.play()
+	$SuperAnimator.play("Damage")
+	HP -= damage
+	$Overlay/HealthBar.value = HP
+	pass # Replace with function body.
