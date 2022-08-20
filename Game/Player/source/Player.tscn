@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://Player/source/States/Hook.gd" type="Script" id=1]
 [ext_resource path="res://Player/source/States/Air.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Player/assets/blue/char_blue_2.png" type="Texture" id=14]
 [ext_resource path="res://Player/assets/shadow.png" type="Texture" id=15]
 [ext_resource path="res://Player/assets/blue/char_blue_1.png" type="Texture" id=16]
+[ext_resource path="res://Player/source/States/Freeze.gd" type="Script" id=17]
 
 [sub_resource type="Shader" id=83]
 code = "shader_type canvas_item;
@@ -107,6 +108,10 @@ region = Rect2( 168, 224, 56, 56 )
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 16 )
 region = Rect2( 224, 224, 56, 56 )
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 16 )
+region = Rect2( 56, 336, 56, 56 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 16 )
@@ -349,6 +354,11 @@ animations = [ {
 "name": "fall",
 "speed": 10.0
 }, {
+"frames": [ SubResource( 87 ) ],
+"loop": true,
+"name": "freeze",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": true,
 "name": "hurt",
@@ -453,7 +463,7 @@ script = ExtResource( 5 )
 material = SubResource( 84 )
 position = Vector2( 0, -28 )
 frames = SubResource( 81 )
-animation = "idle"
+animation = "freeze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 root_node = NodePath("../AnimatedSprite")
@@ -483,6 +493,9 @@ visible = false
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 9 )
 initial_state = NodePath("Spawn")
+
+[node name="Freeze" type="Node" parent="StateMachine"]
+script = ExtResource( 17 )
 
 [node name="Spawn" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )

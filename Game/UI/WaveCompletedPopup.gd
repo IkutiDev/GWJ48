@@ -15,6 +15,9 @@ func _on_KeepGoingButton_mouse_entered() -> void:
 func _on_KeepGoingButton_button_down() -> void:
 	var buffManager =  get_node("/root/Game/BuffManager") as BuffManager
 	buffManager._on_IncreaseInsomnia()
+	_close_popup()
+
+func _close_popup():
 	queue_free()
 
 func _on_SleepButton_mouse_entered() -> void:
@@ -26,7 +29,7 @@ func _on_SleepButton_button_down() -> void:
 	sleep_button.disabled = true
 	visible = false
 	var instance : SleepWindow = sleep_window.instance()
-	instance.connect("SleepWindowClosed", self, "_on_KeepGoingButton_button_down")
+	instance.connect("SleepWindowClosed", self, "_close_popup")
 	get_parent().add_child(instance)
 	get_parent().move_child(instance, 0)
 
