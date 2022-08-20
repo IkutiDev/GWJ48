@@ -13,6 +13,7 @@ func _toggled(button_pressed):
 	if button_pressed:
 		text = "... Key"
 		release_focus()
+		$Click.play()
 	else:
 		display_current_key()
 
@@ -38,3 +39,9 @@ func display_current_key():
 			current_key = i.as_text()
 			break
 	text = "%s Key" % current_key
+
+
+
+func _on_RebindButton_mouse_entered():
+	$Hover.play()
+	pass # Replace with function body.

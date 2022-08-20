@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MainMenu/KeyRebind/RebindButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/theme/MenuTheme.tres" type="Theme" id=2]
+[ext_resource path="res://UI/UI_Accept_00.wav" type="AudioStream" id=3]
+[ext_resource path="res://UI/UI_Hover_00.wav" type="AudioStream" id=4]
 
 [node name="RebindButton" type="Button"]
 margin_top = 700.0
@@ -11,3 +13,17 @@ rect_min_size = Vector2( 250, 0 )
 theme = ExtResource( 2 )
 toggle_mode = true
 script = ExtResource( 1 )
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_RebindButton_mouse_entered"]
