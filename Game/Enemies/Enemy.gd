@@ -67,11 +67,7 @@ func _death() -> void:
 	var exp_orb_instance = experience_orb_scene.instance()
 	get_tree().root.add_child(exp_orb_instance)
 	exp_orb_instance.global_position = global_position
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var x_value : float = rng.randf_range(-50.0, 50.0)
-	exp_orb_instance.apply_central_impulse(Vector2(x_value, -100))
-	exp_orb_instance.activate_exp_orb(experience)
+	exp_orb_instance.activate(experience)
 	current_enemy_life_state = enemy_life_state.Dead
 
 func _got_hit(damage: float) -> void:
