@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/bar_background.png" type="Texture" id=2]
@@ -6,6 +6,19 @@
 [ext_resource path="res://UI/health_bar.png" type="Texture" id=4]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/ShieldIcon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Buff/BuffIcon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Buff/assets/SpellBook01_77.PNG" type="Texture" id=8]
+[ext_resource path="res://Buff/assets/SpellBookPage09_add_003.png" type="Texture" id=9]
+[ext_resource path="res://Buff/assets/SpellBook01_48.PNG" type="Texture" id=10]
+[ext_resource path="res://Buff/assets/SpellBook01_76.PNG" type="Texture" id=11]
+[ext_resource path="res://Buff/assets/SpellBookPage09_101.png" type="Texture" id=12]
+[ext_resource path="res://Buff/assets/SpellBookPage09_109.png" type="Texture" id=13]
+[ext_resource path="res://Buff/assets/SpellBookPage09_39.PNG" type="Texture" id=14]
+[ext_resource path="res://Buff/assets/SpellBook01_25.png" type="Texture" id=15]
+[ext_resource path="res://Buff/assets/SpellBook01_26.png" type="Texture" id=16]
+[ext_resource path="res://Buff/assets/SpellBookPage09_34.PNG" type="Texture" id=17]
+[ext_resource path="res://Buff/assets/SpellBookPage09_66.PNG" type="Texture" id=18]
+[ext_resource path="res://Buff/assets/SpellBookPage09_105.png" type="Texture" id=19]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -24,47 +37,61 @@ nine_patch_stretch = true
 stretch_margin_left = 6
 stretch_margin_right = 6
 
+[node name="Mana" type="TextureProgress" parent="."]
+margin_left = 854.0
+margin_top = 69.0
+margin_right = 1245.0
+margin_bottom = 115.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+texture_progress_offset = Vector2( 5, 0 )
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_right = 6
+
 [node name="Score" type="Label" parent="."]
 margin_left = 859.0
-margin_top = 117.0
+margin_top = 176.0
 margin_right = 933.0
-margin_bottom = 146.0
+margin_bottom = 205.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "Glory:"
 
 [node name="ScoreDynamicValue" type="Label" parent="."]
 margin_left = 975.0
-margin_top = 117.0
+margin_top = 176.0
 margin_right = 1170.0
-margin_bottom = 146.0
+margin_bottom = 205.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "999999999999999"
 
 [node name="Experience" type="Label" parent="."]
 margin_left = 859.0
-margin_top = 162.0
-margin_right = 933.0
-margin_bottom = 191.0
+margin_top = 221.0
+margin_right = 992.0
+margin_bottom = 250.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "Experience:"
 
 [node name="ExperienceDynamicValue" type="Label" parent="."]
 margin_left = 1062.0
-margin_top = 162.0
+margin_top = 221.0
 margin_right = 1199.0
-margin_bottom = 191.0
+margin_bottom = 250.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "9999999999"
 
 [node name="ShieldIcons" type="HBoxContainer" parent="."]
 margin_left = 854.0
-margin_top = 64.0
+margin_top = 123.0
 margin_right = 1245.0
-margin_bottom = 110.0
+margin_bottom = 169.0
 custom_constants/separation = 25
 alignment = 1
 
@@ -77,3 +104,313 @@ margin_right = 147.0
 [node name="ShieldIcon3" parent="ShieldIcons" instance=ExtResource( 6 )]
 margin_left = 243.0
 margin_right = 289.0
+
+[node name="BuffsIcons" type="GridContainer" parent="."]
+margin_top = 105.0
+margin_right = 391.0
+margin_bottom = 151.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 25
+columns = 5
+
+[node name="Insomnia" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="Label" parent="BuffsIcons/Insomnia/BuffIcon" index="1"]
+text = "x1"
+
+[node name="DMGUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 78.0
+margin_right = 131.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/DMGUp" index="0"]
+texture = ExtResource( 11 )
+
+[node name="VBoxContainer" parent="BuffsIcons/DMGUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 79.0
+
+[node name="Title" parent="BuffsIcons/DMGUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Sharper Swing"
+
+[node name="Description" parent="BuffsIcons/DMGUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 72.0
+text = "For each stack gain a moderate damage increase on meele attacks"
+
+[node name="Label" parent="BuffsIcons/DMGUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="HPUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 156.0
+margin_right = 209.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/HPUp" index="0"]
+texture = ExtResource( 9 )
+
+[node name="VBoxContainer" parent="BuffsIcons/HPUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="BuffsIcons/HPUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Hearty Heart"
+
+[node name="Description" parent="BuffsIcons/HPUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain a health increase"
+
+[node name="Label" parent="BuffsIcons/HPUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="ShieldUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 234.0
+margin_right = 287.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/ShieldUp" index="0"]
+texture = ExtResource( 10 )
+
+[node name="VBoxContainer" parent="BuffsIcons/ShieldUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 79.0
+
+[node name="Title" parent="BuffsIcons/ShieldUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Shields Up!"
+
+[node name="Description" parent="BuffsIcons/ShieldUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 72.0
+text = "For each stack gain another charge for shield skill"
+
+[node name="Label" parent="BuffsIcons/ShieldUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="PowerAttack" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 312.0
+margin_right = 365.0
+rect_min_size = Vector2( 53, 53 )
+
+[node name="BuffIcon" parent="BuffsIcons/PowerAttack" index="0"]
+texture = ExtResource( 8 )
+
+[node name="Title" parent="BuffsIcons/PowerAttack/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Mighty Blow"
+
+[node name="Description" parent="BuffsIcons/PowerAttack/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+text = "Allows for player to do heavy attack. Hold your attack keybind for longer to do a more powerful attack"
+
+[node name="Label" parent="BuffsIcons/PowerAttack/BuffIcon" index="1"]
+text = "x1"
+
+[node name="TripleJump" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_top = 63.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 53, 53 )
+
+[node name="BuffIcon" parent="BuffsIcons/TripleJump" index="0"]
+texture = ExtResource( 12 )
+
+[node name="VBoxContainer" parent="BuffsIcons/TripleJump/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 79.0
+
+[node name="Title" parent="BuffsIcons/TripleJump/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Fly like a Bird"
+
+[node name="Description" parent="BuffsIcons/TripleJump/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 72.0
+text = "Allows you to do a third jump without touching the ground"
+
+[node name="Label" parent="BuffsIcons/TripleJump/BuffIcon" index="1"]
+text = "x1"
+
+[node name="JumpUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 78.0
+margin_top = 63.0
+margin_right = 131.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/JumpUp" index="0"]
+texture = ExtResource( 13 )
+
+[node name="VBoxContainer" parent="BuffsIcons/JumpUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="BuffsIcons/JumpUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Light as a feather"
+
+[node name="Description" parent="BuffsIcons/JumpUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain more power to your jumps"
+
+[node name="Label" parent="BuffsIcons/JumpUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="SpeedUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 156.0
+margin_top = 63.0
+margin_right = 209.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/SpeedUp" index="0"]
+texture = ExtResource( 14 )
+
+[node name="VBoxContainer" parent="BuffsIcons/SpeedUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="BuffsIcons/SpeedUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Quick Footed"
+
+[node name="Description" parent="BuffsIcons/SpeedUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain more movement speed"
+
+[node name="Label" parent="BuffsIcons/SpeedUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="ManaUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 234.0
+margin_top = 63.0
+margin_right = 287.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/ManaUp" index="0"]
+texture = ExtResource( 19 )
+
+[node name="VBoxContainer" parent="BuffsIcons/ManaUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="BuffsIcons/ManaUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Magic Whirlwind"
+
+[node name="Description" parent="BuffsIcons/ManaUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain a mana increase"
+
+[node name="Label" parent="BuffsIcons/ManaUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="ManaRegenUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 312.0
+margin_top = 63.0
+margin_right = 365.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/ManaRegenUp" index="0"]
+texture = ExtResource( 18 )
+
+[node name="VBoxContainer" parent="BuffsIcons/ManaRegenUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 78.0
+
+[node name="Title" parent="BuffsIcons/ManaRegenUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Unstable Current"
+
+[node name="Description" parent="BuffsIcons/ManaRegenUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 69.0
+text = "For each stack gain a mana regen increase"
+
+[node name="Label" parent="BuffsIcons/ManaRegenUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="SpellDamageUp" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_top = 126.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 53, 53 )
+
+[node name="BuffIcon" parent="BuffsIcons/SpellDamageUp" index="0"]
+texture = ExtResource( 15 )
+
+[node name="VBoxContainer" parent="BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 97.0
+
+[node name="Title" parent="BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Phantom Strength"
+
+[node name="Description" parent="BuffsIcons/SpellDamageUp/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 90.0
+text = "Gain short buff that doubles any of your damage after casting the spell"
+
+[node name="Label" parent="BuffsIcons/SpellDamageUp/BuffIcon" index="1"]
+text = "x1"
+
+[node name="ManaShield" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 78.0
+margin_top = 126.0
+margin_right = 131.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 53, 53 )
+
+[node name="BuffIcon" parent="BuffsIcons/ManaShield" index="0"]
+texture = ExtResource( 17 )
+
+[node name="VBoxContainer" parent="BuffsIcons/ManaShield/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 97.0
+
+[node name="Title" parent="BuffsIcons/ManaShield/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Mana shield"
+
+[node name="Description" parent="BuffsIcons/ManaShield/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 90.0
+text = "For short duration after casting the spell, decrease mana instead of health on enemy hits"
+
+[node name="Label" parent="BuffsIcons/ManaShield/BuffIcon" index="1"]
+text = "x1"
+
+[node name="Fireballs" parent="BuffsIcons" instance=ExtResource( 7 )]
+visible = false
+margin_left = 156.0
+margin_top = 126.0
+margin_right = 209.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 53, 53 )
+show_stacks_label = true
+
+[node name="BuffIcon" parent="BuffsIcons/Fireballs" index="0"]
+texture = ExtResource( 16 )
+
+[node name="VBoxContainer" parent="BuffsIcons/Fireballs/BuffIcon/InfoPanel" index="0"]
+margin_bottom = 97.0
+
+[node name="Title" parent="BuffsIcons/Fireballs/BuffIcon/InfoPanel/VBoxContainer" index="0"]
+text = "Fireballs!!"
+
+[node name="Description" parent="BuffsIcons/Fireballs/BuffIcon/InfoPanel/VBoxContainer" index="1"]
+margin_bottom = 90.0
+text = "For each stack gain a fireball projectile that will shoot in random direction when casting the spell"
+
+[node name="Label" parent="BuffsIcons/Fireballs/BuffIcon" index="1"]
+text = "x1"
+
+[editable path="BuffsIcons/Insomnia"]
+[editable path="BuffsIcons/DMGUp"]
+[editable path="BuffsIcons/HPUp"]
+[editable path="BuffsIcons/ShieldUp"]
+[editable path="BuffsIcons/PowerAttack"]
+[editable path="BuffsIcons/TripleJump"]
+[editable path="BuffsIcons/JumpUp"]
+[editable path="BuffsIcons/SpeedUp"]
+[editable path="BuffsIcons/ManaUp"]
+[editable path="BuffsIcons/ManaRegenUp"]
+[editable path="BuffsIcons/SpellDamageUp"]
+[editable path="BuffsIcons/ManaShield"]
+[editable path="BuffsIcons/Fireballs"]

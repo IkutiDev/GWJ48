@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Buff/assets/insomnia.png" type="Texture" id=1]
+[ext_resource path="res://UI/Fonts/default_font_morris_roman_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Buff/BuffIcon.gd" type="Script" id=4]
+
+[node name="BuffIconBackground" type="Panel"]
+margin_right = 53.0
+margin_bottom = 53.0
+mouse_filter = 1
+script = ExtResource( 4 )
+
+[node name="BuffIcon" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -23.0
+margin_right = 23.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 46, 46 )
+size_flags_vertical = 4
+texture = ExtResource( 1 )
+expand = true
+
+[node name="InfoPanel" type="PanelContainer" parent="BuffIcon"]
+visible = false
+margin_left = 32.0
+margin_top = 30.0
+margin_right = 182.0
+margin_bottom = 115.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuffIcon/InfoPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 167.0
+margin_bottom = 115.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="BuffIcon/InfoPanel/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 0, 17 )
+custom_fonts/font = ExtResource( 2 )
+text = "Insomnia"
+align = 1
+valign = 1
+
+[node name="Description" type="Label" parent="BuffIcon/InfoPanel/VBoxContainer"]
+margin_top = 21.0
+margin_right = 160.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 160, 48 )
+custom_fonts/font = ExtResource( 2 )
+text = "For each stack increases exp and glory gain.
+
+But also increaes how much damage you take."
+autowrap = true
+
+[node name="Label" type="Label" parent="BuffIcon"]
+visible = false
+margin_left = 33.0
+margin_top = -9.5
+margin_right = 74.0
+margin_bottom = 19.5
+custom_fonts/font = ExtResource( 3 )
+text = "x9"
+
+[connection signal="mouse_entered" from="BuffIcon" to="." method="_on_BuffIcon_mouse_entered"]
+[connection signal="mouse_exited" from="BuffIcon" to="." method="_on_BuffIcon_mouse_exited"]

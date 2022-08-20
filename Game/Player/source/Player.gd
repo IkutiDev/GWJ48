@@ -14,6 +14,8 @@ onready var player_combat: Node2D = $PlayerCombat
 onready var pass_through_controller: Area2D = $PassThroughController
 onready var audio_player: Node2D = $AudioPlayer
 
+onready var buff_manager: BuffManager = $"%BuffManager"
+
 const FLOOR_NORMAL: = Vector2.UP
 
 var is_active: = true setget set_is_active

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=8 format=2]
 
 [ext_resource path="res://UI/theme/slider/slider_theme.tres" type="StyleBox" id=1]
 [ext_resource path="res://UI/assets/BlackCrusaderUI_el_04.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 423, 62 )
+
+[sub_resource type="StyleBoxTexture" id=2]
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
@@ -30,3 +32,4 @@ HSlider/icons/tick = null
 HSlider/styles/grabber_area = null
 HSlider/styles/grabber_area_highlight = null
 HSlider/styles/slider = ExtResource( 1 )
+Panel/styles/panel = SubResource( 2 )

@@ -13,6 +13,8 @@ func _on_KeepGoingButton_mouse_entered() -> void:
 	keep_going_label.visible = true
 
 func _on_KeepGoingButton_button_down() -> void:
+	var buffManager =  get_node("/root/Game/BuffManager") as BuffManager
+	buffManager._on_IncreaseInsomnia()
 	queue_free()
 
 func _on_SleepButton_mouse_entered() -> void:
