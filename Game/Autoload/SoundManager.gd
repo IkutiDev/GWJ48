@@ -39,7 +39,7 @@ func play_song(ID):
 		$MusicPlayer1.stream = nextSong
 		$DJ.play("Play1")
 		$MusicPlayer1.play(randi() % int(max(0,$MusicPlayer1.stream.get_length()-10)))
-		print($MusicPlayer1.get_playback_position())
+
 	
 	pass
 

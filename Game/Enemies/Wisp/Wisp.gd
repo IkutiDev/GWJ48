@@ -73,6 +73,8 @@ func _on_Hitbox_died() -> void:
 		return
 	_death()
 	hurtbox.is_active = false
+	$Death.pitch_scale = 0.7 + randf()*0.25
+	$Death.play()
 	skin.play_animation_player("death")
 
 

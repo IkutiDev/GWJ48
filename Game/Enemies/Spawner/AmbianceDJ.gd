@@ -11,7 +11,8 @@ func _ready():
 
 func _on_Hoot_finished():
 	$Hoot.pitch_scale = 0.85 + randf() * 0.15
-	$Hoot.stream = load("res://Resouces/Ambiance/Owl_Hoot/AMB_Spot_Night_Out_Of_Town_Owl_Hoot_0"+ String(1+randi()%4)+".wav")
+	$Hoot.stream = load("res://Resouces/Ambiance/Owl_Hoot/AMB_Spot_Night_Out_Of_Town_Owl_Hoot_0"+ String(randi()%4)+".wav")
+
 	pass # Replace with function body.
 
 func _on_Impact_finished():
@@ -24,11 +25,11 @@ func _on_Impact_finished():
 	pass # Replace with function body.
 
 func _on_EffectTimer_timeout():
-	print("test")
 	if inBattle:
 		$Impact.play()
 	else:
 		$Hoot.play()
+	$EffectTimer.start(8+randi()%7)
 	pass # Replace with function body.
 
 

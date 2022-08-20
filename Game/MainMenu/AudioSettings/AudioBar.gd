@@ -15,7 +15,7 @@ func _ready():
 	$Name.text = busName
 	$HSlider.value = AudioServer.get_bus_volume_db(targetBus)
 	$Sample.bus = busName
-	print(busName," : ",$Sample.bus)
+
 	pass # Replace with function body.
 
 
