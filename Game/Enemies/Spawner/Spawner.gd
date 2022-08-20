@@ -46,6 +46,7 @@ func _ready():
 	current_spawn_wait_time = $SpawnTimer.wait_time
 	Events.connect("spawner_record_death", self, "record_death")
 	SoundManager.play_song(1)
+	$AmbianceDJ.inBattle = false
 	allExits = $Exits.get_children()
 	for z in allExits:
 		if !z.antialiased:
@@ -68,9 +69,11 @@ func record_death(enemy):
 	if enemiesToKill < 1:
 		$PopupStartTimer.start()
 		SoundManager.play_song(1)
+		$AmbianceDJ.inBattle = false
 
 func start_next_wave():
 	SoundManager.play_song(2)
+	$AmbianceDJ.inBattle = true
 	waveCounter += 1
 	current_spawn_wait_time -= spawn_timer_increase_per_wave
 	if waveCounter % buff_enemies_on_every_x_wave == 0:

@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Resouces/Ambiance/Owl_Hoot/AMB_Spot_Night_Out_Of_Town_Owl_Hoot_03.wav" type="AudioStream" id=1]
+[ext_resource path="res://Resouces/Ambiance/AMB_Castle.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Enemies/Spawner/AmbianceDJ.gd" type="Script" id=3]
+[ext_resource path="res://Resouces/Ambiance/HAL9K - Glass Hit 1.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "23"
+length = 23.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.9, 4.5, 7.1, 10.5, 13.2, 17.2, 19.8, 22 ),
+"transitions": PoolRealArray( 1, 2, -2, 0.5, -2, -0.5, 2, 1, -0.5 ),
+"update": 0,
+"values": [ -4.0, -16.0, -6.0, -6.0, -12.0, -6.0, -16.0, -5.0, -14.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="AmbianceDJ" type="Node"]
+pause_mode = 2
+script = ExtResource( 3 )
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 0.45
+autoplay = true
+bus = "Ambience"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+autoplay = "23"
+anims/23 = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Hoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Ambience"
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -9.0
+pitch_scale = 0.85
+bus = "Ambience"
+
+[node name="EffectTimer" type="Timer" parent="."]
+
+[connection signal="finished" from="Background" to="." method="_on_Background_finished"]
+[connection signal="finished" from="Hoot" to="." method="_on_Hoot_finished"]
+[connection signal="finished" from="Impact" to="." method="_on_Impact_finished"]
+[connection signal="timeout" from="EffectTimer" to="." method="_on_EffectTimer_timeout"]

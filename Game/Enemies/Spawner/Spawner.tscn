@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemies/Spawner/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Enemies/Spawner/enemy_data/RatData.tres" type="Resource" id=5]
 [ext_resource path="res://Enemies/Spawner/enemy_data/SkeletonArcherData.tres" type="Resource" id=6]
 [ext_resource path="res://UI/WaveCompletedPopup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/Spawner/AmbianceDJ.tscn" type="PackedScene" id=8]
 
 [node name="Spawner" type="Node" groups=["Spawner"]]
 script = ExtResource( 1 )
@@ -60,6 +61,8 @@ autostart = true
 [node name="PopupStartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="AmbianceDJ" parent="." instance=ExtResource( 8 )]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]

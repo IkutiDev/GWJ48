@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/HAL9K - Glass Hit 1.wav-abe67c704109f147664b64206052a70d.sample"
+path="res://.import/HAL9K - Glass Hit 1.wav-31054bd57f91857c6e7ef3f8877b6629.sample"
 
 [deps]
 
-source_file="res://Ambiance/HAL9K - Glass Hit 1.wav"
-dest_files=[ "res://.import/HAL9K - Glass Hit 1.wav-abe67c704109f147664b64206052a70d.sample" ]
+source_file="res://Resouces/Ambiance/HAL9K - Glass Hit 1.wav"
+dest_files=[ "res://.import/HAL9K - Glass Hit 1.wav-31054bd57f91857c6e7ef3f8877b6629.sample" ]
 
 [params]
 
