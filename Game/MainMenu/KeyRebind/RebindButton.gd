@@ -35,9 +35,10 @@ func remap_action_to(event:InputEvent):
 func display_current_key():
 	var current_key : String = "None"
 	for i in InputMap.get_action_list(action):
-		if i is InputEventKey or i is InputEventJoypadButton:
+		if i is InputEventJoypadButton :
+			current_key = "GAMEPAD "+String(i.button_index)
+		if i is InputEventKey:
 			current_key = i.as_text()
-			break
 	text = "%s Key" % current_key
 
 
