@@ -31,7 +31,3 @@ func _on_SleepButton_button_down() -> void:
 
 func _on_WaveCompletedPopup_tree_exiting() -> void:
 	get_tree().paused = false
-
-
-func _on_WaveCompletedPopup_about_to_show() -> void:
-	get_tree().paused = true

@@ -141,7 +141,8 @@ func _on_PopupStartTimer_timeout() -> void:
 	popup_instance = wave_completed_popup.instance()
 	$Overlay.add_child(popup_instance)
 	popup_instance.connect("tree_exiting", self, "_on_WaveTimer_start")
-	(popup_instance as PopupPanel).popup_centered()
+	(popup_instance as PopupPanel).show()
+	get_tree().paused = true
 
 
 
