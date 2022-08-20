@@ -1,6 +1,9 @@
 extends State
 
 func unhandled_input(event: InputEvent) -> void:
+	if owner.player.state_machine._state_name == "Freeze":
+		return
+	
 	if event.is_action_pressed("attack"):
 		_state_machine.transition_to("NormalAttack")
 	elif event.is_action_pressed("block") and owner.current_shield_charges > 0:

@@ -38,7 +38,6 @@ position = Vector2( 144, -1344 )
 position = Vector2( 176, -160 )
 
 [node name="Debug_UI" type="CanvasLayer" parent="."]
-visible = false
 scale = Vector2( 0.75, 0.75 )
 transform = Transform2D( 0.75, 0, 0, 0.75, 0, 0 )
 
@@ -53,7 +52,7 @@ script = ExtResource( 4 )
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 424.0
-margin_bottom = 704.0
+margin_bottom = 892.0
 
 [node name="DebugPanel2" parent="Debug_UI/MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0

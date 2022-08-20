@@ -13,7 +13,7 @@ var buff_stack := 0
 
 func set_buff_stack(current_buff_stack: int):
 	buff_stack = current_buff_stack
-	label.text = str(buff_stack)
+	label.text = "x" + str(buff_stack)
 	if buff_stack >= 1:
 		visible = true
 	else:
