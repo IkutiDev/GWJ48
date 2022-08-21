@@ -16,6 +16,7 @@ var mode = 1 # 1 for Barrel / 2 for Crate
 var unBroken = true
 
 func _ready():
+	Events.connect("player_slept", self, "_on_Slept")
 	randomize()
 	un_brake()
 	if randi()%2 == 0:
@@ -65,6 +66,6 @@ func un_repair():
 	pass
 
 
-func _on_TestTimer_timeout():
+func _on_Slept():
 	un_brake()
 	pass # Replace with function body.

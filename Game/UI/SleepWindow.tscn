@@ -53,12 +53,12 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-dmg_up_costs = [ 40, 80, 120, 200, 300 ]
-hp_up_costs = [ 30, 70, 150, 200, 250 ]
-shield_up_costs = [ 60, 120 ]
-triple_jump_cost = [ 100 ]
-jump_up_costs = [ 50, 100, 100 ]
-speed_up_costs = [ 30, 60, 60 ]
+dmg_up_costs = [ 30, 150, 300, 400, 440 ]
+hp_up_costs = [ 30, 100, 200, 250, 300 ]
+shield_up_costs = [ 100, 200 ]
+triple_jump_cost = [ 250 ]
+jump_up_costs = [ 50, 50, 50 ]
+speed_up_costs = [ 30, 30, 30 ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -129,6 +129,7 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="SkillTreeWindow" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

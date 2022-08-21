@@ -47,7 +47,7 @@ var spell_active := false
 var blocked_this_frame := false
 
 func update_max_health(stacks : int)-> void:
-	health = base_health + (25 * stacks)
+	health = base_health + (50 * stacks)
 func update_damage(stacks: int) -> void:
 	normal_attack_hurtbox.damage = (normal_attack_base_damage + (10 * stacks))
 	shield_break_hurtbox.damage = (shield_break_base_damage + (7.5 * stacks))

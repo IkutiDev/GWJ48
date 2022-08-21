@@ -368,11 +368,10 @@ extents = Vector2( 20.5, 30.5 )
 collision_layer = 32
 collision_mask = 26
 script = ExtResource( 1 )
-damage = 30.0
-health = 50.0
-score = 40
-experience = 30
-speed = 150.0
+damage = 20.0
+health = 80.0
+score = 35
+speed = 140.0
 speed_difference_on_spawn_max = 30.0
 distance_to_attack = 35.0
 attack_sounds = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]
@@ -405,7 +404,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 3, 0 )
 frames = SubResource( 104 )
 animation = "idle"
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]

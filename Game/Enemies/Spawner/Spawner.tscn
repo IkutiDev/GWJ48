@@ -30,7 +30,9 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 wave_completed_popup = ExtResource( 7 )
 buff_enemies_on_every_x_wave = 3
+spawn_timer_increase_per_wave = 0.35
 enemies_data = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ) ]
+enemies_in_wave = [ 7, 10, 13, 16, 18, 22, 25 ]
 
 [node name="Exits" type="Node2D" parent="."]
 
