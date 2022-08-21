@@ -50,7 +50,7 @@ func _enter_tree() -> void:
 func _ready():
 	yield(owner, "ready")
 	if Events.testMode:
-		maxWave = 2
+		maxWave = 1
 	current_spawn_wait_time = $SpawnTimer.wait_time
 	Events.connect("spawner_record_death", self, "record_death")
 	SoundManager.play_song(1)

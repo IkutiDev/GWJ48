@@ -455,7 +455,7 @@ extents = Vector2( 8.5, 6.5 )
 [sub_resource type="CircleShape2D" id=88]
 radius = 163.689
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["OGPlayer"]]
 collision_mask = 10
 script = ExtResource( 11 )
 
