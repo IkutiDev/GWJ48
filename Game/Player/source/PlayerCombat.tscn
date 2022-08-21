@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Player/source/Combat/States/Block.gd" type="Script" id=2]
@@ -15,6 +15,9 @@ extents = Vector2( 6.5, 14 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 17.5, 14 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 24.5, 25.5 )
+
 [node name="PlayerCombat" type="Node2D"]
 script = ExtResource( 7 )
 
@@ -26,15 +29,26 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -0.5, -16 )
 shape = SubResource( 2 )
 
-[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+[node name="NormalAttackHurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
 collision_layer = 16
 collision_mask = 32
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalAttackHurtbox"]
 modulate = Color( 1, 0.572549, 0, 1 )
 position = Vector2( 11.5, -20 )
 shape = SubResource( 3 )
+
+[node name="ShieldBreakHurtbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 16
+collision_mask = 32
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldBreakHurtbox"]
+modulate = Color( 1, 0.572549, 0, 1 )
+position = Vector2( -3.5, -15.5 )
+shape = SubResource( 4 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -60,6 +74,9 @@ script = ExtResource( 2 )
 [node name="RegainShieldTimer" type="Timer" parent="StateMachine/Block"]
 wait_time = 5.0
 
+[node name="ShieldBreakTimer" type="Timer" parent="StateMachine/Block"]
+one_shot = true
+
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 1.2
 one_shot = true
@@ -67,3 +84,4 @@ one_shot = true
 [connection signal="died" from="Hitbox" to="." method="_on_Hitbox_died"]
 [connection signal="got_hit" from="Hitbox" to="." method="_on_Hitbox_got_hit"]
 [connection signal="timeout" from="StateMachine/Spell/SpellDurationTimer" to="." method="_on_SpellDurationTimer_timeout"]
+[connection signal="timeout" from="StateMachine/Block/ShieldBreakTimer" to="." method="_on_ShieldBreakTimer_timeout"]

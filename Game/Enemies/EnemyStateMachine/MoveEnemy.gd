@@ -5,6 +5,7 @@ export var max_fall_speed: = 1500.0
 export var acceleration_default: = Vector2(100000, 3000.0)
 export var decceleration_default: = Vector2(500, 3000.0)
 export var distance_to_player: = Vector2(4, 200)
+export var can_fall_from_edges : = false
 
 var acceleration_local: = acceleration_default
 var decceleration_local: = decceleration_default
@@ -23,7 +24,7 @@ func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed_local, acceleration_local, decceleration_local, delta, 
 	get_move_direction(enemy.desiredLoc, owner.global_position, distance_to_player), max_fall_speed)
 	
-	if ledge_detector.get_overlapping_bodies().size() == 0:
+	if ledge_detector.get_overlapping_bodies().size() == 0 and not can_fall_from_edges:
 		velocity = Vector2.ZERO
 	
 	velocity = enemy.move_and_slide(velocity, enemy.FLOOR_NORMAL)

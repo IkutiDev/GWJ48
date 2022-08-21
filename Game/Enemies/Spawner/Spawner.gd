@@ -26,7 +26,7 @@ var allowedEnemies : Array
 
 var waveCounter = 0
 
-var maxWave = 5
+var maxWave = 7
 
 var enemiesToSpawn = 0
 
