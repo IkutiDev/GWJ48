@@ -48,8 +48,9 @@ radius = 6.0
 
 [node name="ExperienceOrb" type="RigidBody2D"]
 pause_mode = 2
-collision_layer = 0
-collision_mask = 10
+collision_layer = 256
+collision_mask = 266
+can_sleep = false
 script = ExtResource( 31 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -59,7 +60,7 @@ shape = SubResource( 2 )
 position = Vector2( 0, -4 )
 rotation = 1.5708
 frames = SubResource( 1 )
-frame = 23
+frame = 25
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

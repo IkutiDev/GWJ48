@@ -229,6 +229,8 @@ block={
 2d_physics/layer_5="PlayerAttack"
 2d_physics/layer_6="Enemy"
 2d_physics/layer_7="EnemyAttack"
+2d_physics/layer_8="EyeBall"
+2d_physics/layer_9="Loot"
 
 [physics]
 
