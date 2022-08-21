@@ -25,10 +25,14 @@ margin_bottom = 591.0
 custom_fonts/font = ExtResource( 3 )
 text = "A game made by:
 
-Ktosox
-Ikuti  
-Therankofjedimaster
-"
+Ktosox:
+Game  / Level design + programming
+
+Ikuti:
+Programming and designing
+
+Therankofjedimaster:
+ Music and sound effects"
 align = 1
 
 [node name="Label2" type="Label" parent="."]
