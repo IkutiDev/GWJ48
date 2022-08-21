@@ -50,7 +50,7 @@ func _enter_tree() -> void:
 func _ready():
 	yield(owner, "ready")
 	if Events.testMode:
-		maxWave = 3
+		maxWave = 2
 	current_spawn_wait_time = $SpawnTimer.wait_time
 	Events.connect("spawner_record_death", self, "record_death")
 	SoundManager.play_song(1)
@@ -83,9 +83,6 @@ func record_death(enemy):
 		$Overlay/EnemiesLeftCountLabel.visible = false
 		$AmbianceDJ.inBattle = false
 		SoundManager.play_song(1)
-		if waveCounter >= maxWave:
-			no_more_waves()
-			return
 		$PopupStartTimer.start()
 		
 		
@@ -175,7 +172,10 @@ func _on_WaveTimer_start() -> void:
 func _on_PopupStartTimer_timeout() -> void:
 	popup_instance = wave_completed_popup.instance()
 	$Overlay.add_child(popup_instance)
-	popup_instance.connect("tree_exiting", self, "_on_WaveTimer_start")
+	if waveCounter >= maxWave:
+		no_more_waves()
+	else:
+		popup_instance.connect("tree_exiting", self, "_on_WaveTimer_start")
 	(popup_instance as PopupPanel).show()
 	get_tree().paused = true
 

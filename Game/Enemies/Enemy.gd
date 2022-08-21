@@ -35,6 +35,8 @@ var is_attacking := false
 
 var experience_orb_scene = preload("res://Collectible/Experience/ExperienceOrb.tscn")
 
+var goldCoinScene = preload("res://Collectible/Gold/GoldCoin.tscn")
+
 func buff_enemy(buff_counter: float) -> void:
 	assert(buff_counter > 0)
 	health *= buff_counter * 0.8
@@ -62,7 +64,13 @@ func _is_enemy_alive() -> bool:
 	return current_enemy_life_state == enemy_life_state.Alive
 
 func _death() -> void:
-	Events.emit_signal("score_gained", score)
+
+	while score > 0 :
+		var newCoin = goldCoinScene.instance()
+		newCoin.global_position = global_position
+		get_tree().root.add_child(newCoin)
+		newCoin.activate(7)
+		score -= 7
 	Events.emit_signal("spawner_record_death", self)
 	var exp_orb_instance = experience_orb_scene.instance()
 	get_tree().root.add_child(exp_orb_instance)
