@@ -60,12 +60,13 @@ func un_repair():
 				var HPpot = healthScene.instance()
 				get_tree().root.add_child(HPpot)
 				HPpot.global_position = global_position + Vector2(0,-30)
-				HPpot.activate(10)
+				HPpot.activate(35)
 	$SmashAnimator.play(String(mode))
 	$TestTimer.start()
 	pass
 
 
 func _on_Slept():
-	un_brake()
+	if !unBroken:
+		un_brake()
 	pass # Replace with function body.

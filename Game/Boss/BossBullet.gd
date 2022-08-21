@@ -4,7 +4,7 @@ extends RigidBody2D
 var player : Node2D
 
 func _ready():
-	$Hurtbox.damage = 17
+	$Hurtbox.damage = 24
 
 func _on_OrphanTimer_timeout():
 	queue_free()

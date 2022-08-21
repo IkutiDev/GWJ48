@@ -16,7 +16,7 @@ var turnSpeed
 
 func enter(_msg: Dictionary = {}):
 	time = 0
-	turnSpeed = 1.9
+	turnSpeed = 2.4
 	$BlastTimer.start()
 	owner.get_node("Laser").look_at(owner.player.global_position)
 	owner.get_node("Laser").visible = true
@@ -66,7 +66,7 @@ func exit():
 
 
 func _on_BlastTimer_timeout():
-	turnSpeed = 1.34
+	turnSpeed = 1.57
 	yield(get_tree().create_timer(0.4),"timeout")
 	owner.get_node("Laser").width = 20
 	owner.get_node("Laser").get_node("Fire").play()

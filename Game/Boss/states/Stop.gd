@@ -4,7 +4,7 @@ extends State
 	STOP
 """
 
-var duration = 1.5 # how long this state lasts - in seconds
+var duration = 1.2 # how long this state lasts - in seconds
 
 var time = 0 # time since phase started
 

@@ -21,7 +21,7 @@ func enter(_msg: Dictionary = {}):
 
 func physics_process(delta):
 	ghostTimer += delta
-	if ghostTimer > 0.8:
+	if ghostTimer > 0.45:
 		ghostTimer = 0
 		spawn_ghost()
 		if ghostsSpawned >= ghostMax:

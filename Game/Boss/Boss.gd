@@ -24,7 +24,7 @@ export var HP = 1800
 
 func _ready():
 
-	$Laser/Hurtbox.damage = 9
+	$Laser/Hurtbox.damage = 17
 	if HP > maxHP:
 		maxHP = HP
 	$Overlay/HealthBar.max_value = maxHP
