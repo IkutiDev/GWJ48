@@ -133,21 +133,9 @@ bus = "Music"
 volume_db = -80.0
 bus = "Music"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
-margin_left = 1021.0
-margin_top = 11.0
-margin_right = 1122.0
-margin_bottom = 64.0
-focus_mode = 0
-enabled_focus_mode = 0
-
 [node name="DJ" type="AnimationPlayer" parent="."]
 anims/Play1 = SubResource( 1 )
 anims/Play2 = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 
-[connection signal="item_selected" from="CanvasLayer/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="animation_finished" from="DJ" to="." method="_on_DJ_animation_finished"]

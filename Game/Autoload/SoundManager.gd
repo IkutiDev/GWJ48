@@ -1,6 +1,7 @@
 extends Node
 
 var songList = {
+	4 : preload("res://Resouces/Music/twinkle twinkle.ogg"), # sleep menu
 	3 : preload("res://Resouces/Music/MUS_Moon_Boss.ogg"), # boss
 	2 : preload("res://Resouces/Music/MUS_Combat_Exploration_Variant.ogg"), # fight
 	1 : preload("res://Resouces/Music/MUS_Music_Pad_and_Melody.ogg"), # rest
@@ -14,17 +15,7 @@ var current_song_id : int = -1
 
 func _ready():
 	randomize()
-#	var musicFolder = Directory.new()
-#	if musicFolder.open(musicFolderPath) == OK :
-#		musicFolder.list_dir_begin()
-#		var songName = musicFolder.get_next()
-#		var ID = 0
-#		while songName != "":
-#			if !musicFolder.current_is_dir() and !songName.ends_with("import"):
-#				songList[ID] = songName
-#				$CanvasLayer/OptionButton.add_item(songName,ID)
-#				ID += 1
-#			songName = musicFolder.get_next()
+
 	pass
 
 func play_song(ID):
@@ -44,11 +35,6 @@ func play_song(ID):
 	
 	pass
 
-
-func _on_OptionButton_item_selected(index):
-	play_song(index)
-
-	pass # Replace with function body.
 
 
 func _on_DJ_animation_finished(anim_name):

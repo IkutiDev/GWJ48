@@ -16,11 +16,12 @@ var speed = 200
 
 var mass = 100
 
-var maxHP = 300
+var maxHP = 1300
 
-export var HP = 300
+export var HP = 1300
 
 func _ready():
+	$Laser/Hurtbox.damage = 7
 	if HP > maxHP:
 		maxHP = HP
 	$Overlay/HealthBar.max_value = maxHP

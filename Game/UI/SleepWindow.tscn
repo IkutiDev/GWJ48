@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://UI/SleepWindow.gd" type="Script" id=1]
 [ext_resource path="res://MainMenu/BasicButton.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://Buff/assets/SpellBookPage09_39.PNG" type="Texture" id=15]
 [ext_resource path="res://Buff/BuffIcon.tscn" type="PackedScene" id=16]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=17]
-[ext_resource path="res://UI/twinkle twinkle.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeIn"
@@ -667,13 +666,6 @@ margin_top = -0.200012
 margin_right = 0.0
 margin_bottom = 59.8
 text = "Buy"
-
-[node name="GoodNight" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
-volume_db = -2.0
-pitch_scale = 0.75
-autoplay = true
-bus = "Ambience"
 
 [connection signal="tree_entered" from="." to="." method="_on_SleepWindow_tree_entered"]
 [connection signal="animation_finished" from="Fader" to="." method="_on_Fader_animation_finished"]

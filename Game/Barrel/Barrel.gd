@@ -38,7 +38,7 @@ func un_repair():
 	$Blocker.disabled = true
 	$Smash.pitch_scale = 0.7 + randf() * 0.9
 	$Smash.play()
-	var lotto = randi()%28
+	var lotto = randi()%22
 	var loot = 0
 	for k in lootTable.keys():
 		if lotto > k :

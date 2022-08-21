@@ -16,7 +16,7 @@ var landingSpot
 
 var startingHP
 
-var earlyWake = 0.1
+var earlyWake = 0.08
 
 func enter(_msg: Dictionary = {}):
 	owner.get_node("GroundDetector").force_raycast_update()

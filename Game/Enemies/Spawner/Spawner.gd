@@ -26,7 +26,7 @@ var allowedEnemies : Array
 
 var waveCounter = 0
 
-var maxWave = 5
+var maxWave = 3
 
 var enemiesToSpawn = 0
 
@@ -70,6 +70,8 @@ func _process(_delta):
 		$Overlay/Label.text = ""
 
 func record_death(enemy):
+	if bossReady: # the boss part of the game has already started, so this should be skipped
+		return
 	allEnemies.erase(enemy)
 	enemiesToKill -= 1
 	current_enemies_counter -= 1

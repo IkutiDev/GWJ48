@@ -3,7 +3,7 @@
 [ext_resource path="res://Collectible/Gold/GoldCoin.gd" type="Script" id=1]
 [ext_resource path="res://Resouces/Particles/Glow.png" type="Texture" id=2]
 [ext_resource path="res://Resouces/Particles/BigPoint.png" type="Texture" id=3]
-[ext_resource path="res://Collectible/SFX_Plink_03.wav" type="AudioStream" id=4]
+[ext_resource path="res://Collectible/SFX_Plink_01.wav" type="AudioStream" id=4]
 
 [sub_resource type="PhysicsMaterial" id=4]
 friction = 0.7
@@ -48,5 +48,8 @@ texture = ExtResource( 2 )
 
 [node name="Ding" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-pitch_scale = 2.4
+pitch_scale = 2.6
 bus = "Effects"
+__meta__ = {
+"_editor_description_": ""
+}

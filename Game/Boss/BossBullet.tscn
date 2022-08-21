@@ -90,7 +90,6 @@ shape = SubResource( 2 )
 
 [node name="Whiz" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-pitch_scale = 1.84
 bus = "Effects"
 
 [node name="WhizDetector" type="Area2D" parent="."]

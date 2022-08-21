@@ -25,7 +25,7 @@ func physics_process(delta):
 		ghostTimer = 0
 		spawn_ghost()
 		if ghostsSpawned >= ghostMax:
-			_state_machine.transition_to("Stop")
+			_state_machine.transition_to("Stop",{"duration":3.0})
 
 func exit():
 	pass

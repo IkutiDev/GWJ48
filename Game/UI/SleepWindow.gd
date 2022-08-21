@@ -19,6 +19,8 @@ signal SleepWindowShowed()
 signal SleepWindowClosed()
 
 func _ready() -> void:
+	print("test")
+	SoundManager.play_song(4)
 	player = get_node("/root/Game/Player")
 	buff_manager = get_node("/root/Game/BuffManager")
 	dmgup.set_buff_stack(buff_manager.dmg_up_stacks)
@@ -32,6 +34,9 @@ func check_if_max_stacks_dmg_up() -> bool:
 		dmgup__cost_label_dynamic.visible = false
 		return true
 	return false
+
+func _exit_tree():
+	SoundManager.play_song(1)
 
 func _on_Fader_animation_finished(anim_name: String) -> void:
 	if anim_name == "FadeIn":

@@ -18,7 +18,7 @@ func spawn_projectile():
 	already_shot = true
 	var newProjectile : Projectile = projectile_scene.instance()
 	newProjectile.damage = owner.damage
-	newProjectile.global_position = owner.global_position
+	newProjectile.global_position = owner.global_position + Vector2(0,-12)
 	var attackDir = target_position_on_enter - owner.global_position
 	attackDir = attackDir.normalized()
 	newProjectile.apply_central_impulse(attackDir * owner.projectile_speed) 
