@@ -7,7 +7,10 @@ signal shield_increased(shield_charges)
 
 onready var player: Player = $".."
 onready var hitbox: Hitbox = $Hitbox
-onready var hurtbox: Hurtbox = $Hurtbox
+onready var normal_attack_hurtbox: Hurtbox = $NormalAttackHurtbox
+onready var shield_break_hurtbox: Hurtbox = $ShieldBreakHurtbox
+onready var shield_break_timer: Timer = $StateMachine/Block/ShieldBreakTimer
+
 
 onready var invincibility_timer: Timer = $InvincibilityTimer
 onready var regain_shield_timer: Timer = $StateMachine/Block/RegainShieldTimer
@@ -19,6 +22,10 @@ export var health: float = 100.0
 export var mana: float = 50.0
 export var shield_charges: int = 3
 export var normal_attack_damage: float = 10.0
+export var shield_break_damage: float = 7.5
+
+onready var normal_attack_base_damage: float = normal_attack_damage
+onready var shield_break_base_damage: float = shield_break_damage
 
 onready var base_health = health
 onready var base_mana = mana
@@ -42,7 +49,8 @@ var blocked_this_frame := false
 func update_max_health(stacks : int)-> void:
 	health = base_health + (25 * stacks)
 func update_damage(stacks: int) -> void:
-	hurtbox.damage = (normal_attack_damage + (10 * stacks))
+	normal_attack_hurtbox.damage = (normal_attack_base_damage + (10 * stacks))
+	shield_break_hurtbox.damage = (shield_break_base_damage + (7.5 * stacks))
 func update_max_shield_charges(stacks : int)-> void:
 	shield_charges = base_shield_charges + stacks
 	emit_signal("shield_increased", shield_charges)
@@ -64,13 +72,14 @@ func _on_RegainShieldTimer_time_out() -> void:
 		current_shield_charges += 1
 
 func regain_all_shield_charges() -> void:
-	current_shield_charges = shield_charges - 1
-	emit_signal("shield_regained", current_shield_charges)
+	current_shield_charges = shield_charges
+	emit_signal("shield_regained", current_shield_charges - 1)
 
 func _ready() -> void:
 	yield(player, "ready")
 	hitbox.current_health = health
-	hurtbox.damage = normal_attack_damage
+	normal_attack_hurtbox.damage = normal_attack_damage
+	shield_break_hurtbox.damage = shield_break_damage
 	var value = invincibility_timer.connect("timeout", self, "_on_InvincibilityTimer_time_out")
 	assert(value == OK)
 	value = player.buff_manager.connect("update_hp_up", self, "update_max_health")
@@ -93,6 +102,8 @@ func _on_Hitbox_got_hit(damage) -> void:
 	if block_active:
 		blocked_this_frame = true
 		player.skin.play_animation_player("shield")
+		shield_break_hurtbox.is_active = true
+		shield_break_timer.start()
 		current_shield_charges -= 1
 		emit_signal("shield_lost", current_shield_charges)
 		player.audio_player.play_shield_hit_SFX()
@@ -119,3 +130,7 @@ func _process(delta: float) -> void:
 func _on_SpellDurationTimer_timeout() -> void:
 	spell_active = false
 	spell_animation_player.stop()
+
+
+func _on_ShieldBreakTimer_timeout() -> void:
+	shield_break_hurtbox.is_active = false

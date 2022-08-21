@@ -283,7 +283,6 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, 4 )
 frames = SubResource( 104 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
