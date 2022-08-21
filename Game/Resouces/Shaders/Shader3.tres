@@ -1,4 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_10.png" type="Texture" id=1]
 
 [sub_resource type="Shader" id=42]
 code = "shader_type canvas_item;
@@ -18,9 +20,8 @@ void fragment(){
 }"
 
 [sub_resource type="Gradient" id=32]
-interpolation_mode = 1
-offsets = PoolRealArray( 0.0932476, 0.366559, 0.488746, 0.649518, 0.758842 )
-colors = PoolColorArray( 0.12549, 0, 0.145098, 0, 1, 0.0196078, 0.0196078, 0.462745, 0.959961, 0.410608, 0, 1, 1, 0.721569, 0.0470588, 1, 1, 0.968445, 0.632812, 1 )
+offsets = PoolRealArray( 0.0932476, 0.304469, 0.488746, 0.73743 )
+colors = PoolColorArray( 0.12549, 0, 0.145098, 0, 0.615234, 0.615234, 0.615234, 0.462745, 0.87433, 0.517456, 0.919922, 1, 0.671196, 0.824492, 0.830078, 1 )
 
 [sub_resource type="GradientTexture" id=33]
 gradient = SubResource( 32 )
@@ -32,4 +33,5 @@ shader_param/scrollSpeed = Vector2( 0.05, 0.1 )
 shader_param/FPS = 8.0
 shader_param/col1bonus = 0.111
 shader_param/col2bonus = 0.118
+shader_param/texture2 = ExtResource( 1 )
 shader_param/gradient = SubResource( 33 )
