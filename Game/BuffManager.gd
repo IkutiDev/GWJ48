@@ -6,11 +6,17 @@ signal update_insomnia(total_stacks)
 signal update_dmg_up(total_stacks)
 signal update_hp_up(total_stacks)
 signal update_shield_up(total_stacks)
+signal update_triple_jump(total_stacks)
+signal update_jump_up(total_stacks)
+signal update_speed_up(total_stacks)
 
 var insomnia_stacks = 0
 var dmg_up_stacks = 0
 var hp_up_stacks = 0
 var shield_up_stacks = 0
+var triple_jump_stack = 0
+var jump_up_stacks = 0
+var speed_up_stacks = 0
 var total_experience = 0
 
 func _ready() -> void:
@@ -35,6 +41,18 @@ func _on_IncreaseHP():
 func _on_IncreaseShield():
 	shield_up_stacks += 1
 	emit_signal("update_shield_up", shield_up_stacks)
+	
+func _on_AddTripleJump():
+	triple_jump_stack = 1
+	emit_signal("update_triple_jump", triple_jump_stack)
+	
+func _on_IncreaseJumpPower():
+	jump_up_stacks += 1
+	emit_signal("update_jump_up", jump_up_stacks)
+	
+func _on_IncreaseSpeed():
+	speed_up_stacks += 1
+	emit_signal("update_speed_up", speed_up_stacks)
 
 func _on_IncreaseInsomnia():
 	insomnia_stacks += 1

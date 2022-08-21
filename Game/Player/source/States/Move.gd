@@ -14,10 +14,20 @@ export var max_fall_speed: = 1500.0
 export var acceleration_default: = Vector2(100000, 3000.0)
 export var decceleration_default: = Vector2(500, 3000.0)
 
+
+onready var max_speed_base: = max_speed_default
 var acceleration_local: = acceleration_default
 var decceleration_local: = decceleration_default
 var max_speed_local: = max_speed_default
 var velocity: = Vector2.ZERO
+
+func update_max_speed(stacks : int)-> void:
+	max_speed_default = max_speed_base + (Vector2(17.0, 0.0) * stacks)
+
+func _ready() -> void:
+	yield(owner, "ready")
+	var value = owner.buff_manager.connect("update_speed_up", self, "update_max_speed")
+	assert(value == OK)
 
 func _on_Hook_hooked_onto_target(target_global_position: Vector2) -> void:
 	var to_target: Vector2 = target_global_position - owner.global_position

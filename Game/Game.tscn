@@ -159,7 +159,7 @@ position = Vector2( 24, 96 )
 visible = true
 
 [node name="Air" parent="Player/StateMachine/Move" index="2"]
-jump_impulse = 785.0
+jump_impulse = 800
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")

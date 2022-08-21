@@ -6,10 +6,25 @@ onready var jump_delay: Timer = $JumpDelay
 
 export var acceleration_x: = 5000.0
 export var max_jump_count: = 2
-export var jump_impulse: = 800.0
+export var jump_impulse := 800
 export var add_to_jump_count_on_fall: = true
 
+onready var base_jump_impulse := jump_impulse
+
 var _jump_count: = 0
+
+func update_triple_jump(stacks : int)-> void:
+	if stacks >= 1:
+		max_jump_count = 3
+func update_max_jump_impulse(stacks : int)-> void:
+	jump_impulse = base_jump_impulse + (33 * stacks)
+
+func _ready() -> void:
+	yield(owner, "ready")
+	var value = owner.buff_manager.connect("update_jump_up", self, "update_max_jump_impulse")
+	assert(value == OK)
+	value = owner.buff_manager.connect("update_triple_jump", self, "update_triple_jump")
+	assert(value == OK)
 
 func _on_CheckPlayerFallingAfterDelay_timer_finished() -> void:
 	if _jump_count == 0 and add_to_jump_count_on_fall:

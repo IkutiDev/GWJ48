@@ -1,6 +1,6 @@
 extends State
 
-export var max_sprint_speed: = 1000.0
+#export var max_sprint_speed: = 3000.0
 export var default_footstep_sound_speed := 0.5
 export var sprint_footstep_sound_speed := 0.2
 onready var foot_steps_timer: Timer = $FootStepsTimer
@@ -13,7 +13,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	var move := get_parent() as MoveState
-	move.max_speed_local.x = max_sprint_speed if Input.is_action_pressed("sprint") else move.max_speed_default.x
+	move.max_speed_local.x = (move.max_speed_default.x * 1.5) if Input.is_action_pressed("sprint") else move.max_speed_default.x
 	foot_steps_timer.wait_time = sprint_footstep_sound_speed if Input.is_action_pressed("sprint") else default_footstep_sound_speed
 	if owner.is_on_floor():
 		if move.DECCELERATION_ENABLED and move.velocity.length() < 1.0 and move.get_move_direction(owner.player_combat.block_active).x == 0:

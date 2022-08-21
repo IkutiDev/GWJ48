@@ -57,6 +57,15 @@ func _on_HealthBuffUpdated(total_stacks: int):
 
 func _on_ShieldBuffUpdated(total_stacks: int):
 	shield_up.set_buff_stack(total_stacks)
+	
+func _on_TripleJumpAdded(total_stacks: int):
+	triple_jump.set_buff_stack(total_stacks)
+	
+func _on_JumpUpAdded(total_stacks: int):
+	jump_up.set_buff_stack(total_stacks)
+	
+func _on_SpeedUpAdded(total_stacks: int):
+	speed_up.set_buff_stack(total_stacks)
 
 func _ready() -> void:
 	yield(player, "ready")
@@ -75,6 +84,12 @@ func _ready() -> void:
 	value = buff_manager.connect("update_hp_up", self, "_on_HealthBuffUpdated")
 	assert(value == OK)
 	value = buff_manager.connect("update_shield_up", self, "_on_ShieldBuffUpdated")
+	assert(value == OK)
+	value = buff_manager.connect("update_triple_jump", self, "_on_TripleJumpAdded")
+	assert(value == OK)
+	value = buff_manager.connect("update_jump_up", self, "_on_JumpUpAdded")
+	assert(value == OK)
+	value = buff_manager.connect("update_speed_up", self, "_on_SpeedUpAdded")
 	assert(value == OK)
 	_on_HealthUpdated(player.get_current_health())
 	score_dynamic_value.text = str(current_score)

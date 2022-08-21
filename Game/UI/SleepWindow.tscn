@@ -56,6 +56,9 @@ script = ExtResource( 1 )
 dmg_up_costs = [ 40, 80, 120, 200, 300 ]
 hp_up_costs = [ 30, 70, 150, 200, 250 ]
 shield_up_costs = [ 60, 120 ]
+triple_jump_cost = [ 100 ]
+jump_up_costs = [ 50, 100, 100 ]
+speed_up_costs = [ 30, 60, 60 ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -163,9 +166,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -466.0
+margin_left = -527.0
 margin_top = -161.0
-margin_right = 596.0
+margin_right = 535.0
 margin_bottom = 213.0
 custom_constants/vseparation = 120
 custom_constants/hseparation = 60
@@ -379,7 +382,6 @@ margin_bottom = 59.8
 text = "Buy"
 
 [node name="TripleJump" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
-visible = false
 margin_left = 561.0
 margin_right = 688.2
 margin_bottom = 127.2
@@ -407,7 +409,7 @@ text = "Allows you to do a third jump without touching the ground"
 [node name="Label" parent="SkillTreeWindow/BuffsIcons/TripleJump" index="1"]
 custom_fonts/font = ExtResource( 3 )
 
-[node name="Button" parent="SkillTreeWindow/BuffsIcons/TripleJump" instance=ExtResource( 2 )]
+[node name="triple_jump_Button" parent="SkillTreeWindow/BuffsIcons/TripleJump" instance=ExtResource( 2 )]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -416,10 +418,29 @@ margin_right = 0.0
 margin_bottom = 59.8
 text = "Buy"
 
+[node name="triple_jump_shieldup_CostLabel" type="Label" parent="SkillTreeWindow/BuffsIcons/TripleJump"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.2
+margin_top = -30.0
+margin_right = -56.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "Cost:"
+
+[node name="triple_jump_shieldup_CostLabelDynamic" type="Label" parent="SkillTreeWindow/BuffsIcons/TripleJump"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -61.2
+margin_top = -30.0
+margin_right = -22.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "999"
+
 [node name="JumpUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
-visible = false
-margin_left = 561.0
-margin_right = 688.2
+margin_left = 748.0
+margin_right = 875.2
 margin_bottom = 127.2
 rect_min_size = Vector2( 127.2, 127.2 )
 show_stacks_label = true
@@ -446,7 +467,7 @@ text = "For each stack gain more power to your jumps"
 [node name="Label" parent="SkillTreeWindow/BuffsIcons/JumpUp" index="1"]
 custom_fonts/font = ExtResource( 3 )
 
-[node name="Button" parent="SkillTreeWindow/BuffsIcons/JumpUp" instance=ExtResource( 2 )]
+[node name="jumpup_Button" parent="SkillTreeWindow/BuffsIcons/JumpUp" instance=ExtResource( 2 )]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -455,10 +476,29 @@ margin_right = 0.0
 margin_bottom = 59.8
 text = "Buy"
 
+[node name="jumpup_CostLabel" type="Label" parent="SkillTreeWindow/BuffsIcons/JumpUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.2
+margin_top = -30.0
+margin_right = -56.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "Cost:"
+
+[node name="jumpup_CostLabelDynamic" type="Label" parent="SkillTreeWindow/BuffsIcons/JumpUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -61.2
+margin_top = -30.0
+margin_right = -22.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "999"
+
 [node name="SpeedUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
-visible = false
-margin_left = 561.0
-margin_right = 688.2
+margin_left = 935.0
+margin_right = 1062.2
 margin_bottom = 127.2
 rect_min_size = Vector2( 127.2, 127.2 )
 show_stacks_label = true
@@ -485,7 +525,7 @@ text = "For each stack gain more movement speed"
 [node name="Label" parent="SkillTreeWindow/BuffsIcons/SpeedUp" index="1"]
 custom_fonts/font = ExtResource( 3 )
 
-[node name="Button" parent="SkillTreeWindow/BuffsIcons/SpeedUp" instance=ExtResource( 2 )]
+[node name="speedup_Button" parent="SkillTreeWindow/BuffsIcons/SpeedUp" instance=ExtResource( 2 )]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -493,6 +533,26 @@ margin_top = -0.200012
 margin_right = 0.0
 margin_bottom = 59.8
 text = "Buy"
+
+[node name="speedup_CostLabel" type="Label" parent="SkillTreeWindow/BuffsIcons/SpeedUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.2
+margin_top = -30.0
+margin_right = -56.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "Cost:"
+
+[node name="speedup_CostLabelDynamic" type="Label" parent="SkillTreeWindow/BuffsIcons/SpeedUp"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -61.2
+margin_top = -30.0
+margin_right = -22.2
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 17 )
+text = "999"
 
 [node name="ManaUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
 visible = false
@@ -695,6 +755,9 @@ text = "Buy"
 [connection signal="button_down" from="SkillTreeWindow/BuffsIcons/DMGUp/dmgup_Button" to="." method="_on_dmgup_Button_button_down"]
 [connection signal="button_down" from="SkillTreeWindow/BuffsIcons/HPUp/hpup_Button" to="." method="_on_hpup_Button_button_down"]
 [connection signal="button_down" from="SkillTreeWindow/BuffsIcons/ShieldUp/shieldup_Button" to="." method="_on_shieldup_Button_button_down"]
+[connection signal="button_down" from="SkillTreeWindow/BuffsIcons/TripleJump/triple_jump_Button" to="." method="_on_triple_jump_Button_button_down"]
+[connection signal="button_down" from="SkillTreeWindow/BuffsIcons/JumpUp/jumpup_Button" to="." method="_on_jumpup_Button_button_down"]
+[connection signal="button_down" from="SkillTreeWindow/BuffsIcons/SpeedUp/speedup_Button" to="." method="_on_speedup_Button_button_down"]
 
 [editable path="SkillTreeWindow/BuffsIcons/DMGUp"]
 [editable path="SkillTreeWindow/BuffsIcons/HPUp"]

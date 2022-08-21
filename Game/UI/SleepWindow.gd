@@ -20,10 +20,28 @@ onready var shieldup__cost_label: Label = $SkillTreeWindow/BuffsIcons/ShieldUp/s
 onready var shieldup__cost_label_dynamic: Label = $SkillTreeWindow/BuffsIcons/ShieldUp/shieldup_CostLabelDynamic
 onready var shield_up: BuffIcon = $SkillTreeWindow/BuffsIcons/ShieldUp
 
+onready var triple_jump__button: Button = $SkillTreeWindow/BuffsIcons/TripleJump/triple_jump_Button
+onready var triple_jump_shieldup__cost_label: Label = $SkillTreeWindow/BuffsIcons/TripleJump/triple_jump_shieldup_CostLabel
+onready var triple_jump_shieldup__cost_label_dynamic: Label = $SkillTreeWindow/BuffsIcons/TripleJump/triple_jump_shieldup_CostLabelDynamic
+onready var triple_jump: BuffIcon = $SkillTreeWindow/BuffsIcons/TripleJump
+
+onready var jumpup__button: Button = $SkillTreeWindow/BuffsIcons/JumpUp/jumpup_Button
+onready var jumpup__cost_label: Label = $SkillTreeWindow/BuffsIcons/JumpUp/jumpup_CostLabel
+onready var jumpup__cost_label_dynamic: Label = $SkillTreeWindow/BuffsIcons/JumpUp/jumpup_CostLabelDynamic
+onready var jump_up: BuffIcon = $SkillTreeWindow/BuffsIcons/JumpUp
+
+onready var speedup__button: Button = $SkillTreeWindow/BuffsIcons/SpeedUp/speedup_Button
+onready var speedup__cost_label: Label = $SkillTreeWindow/BuffsIcons/SpeedUp/speedup_CostLabel
+onready var speedup__cost_label_dynamic: Label = $SkillTreeWindow/BuffsIcons/SpeedUp/speedup_CostLabelDynamic
+onready var speed_up: BuffIcon = $SkillTreeWindow/BuffsIcons/SpeedUp
+
 
 export(Array, int) var dmg_up_costs : Array
 export(Array, int) var hp_up_costs : Array
 export(Array, int) var shield_up_costs : Array
+export(Array, int) var triple_jump_cost : Array
+export(Array, int) var jump_up_costs : Array
+export(Array, int) var speed_up_costs : Array
 
 var player : Player
 var buff_manager : BuffManager
@@ -45,6 +63,15 @@ func _ready() -> void:
 	shield_up.set_buff_stack(buff_manager.shield_up_stacks)
 	if not check_if_max_stacks_shield_up():
 		shieldup__cost_label_dynamic.text = str(shield_up_costs[buff_manager.shield_up_stacks])
+	triple_jump.set_buff_stack(buff_manager.triple_jump_stack)
+	if not check_if_max_stacks_triple_jump():
+		triple_jump_shieldup__cost_label_dynamic.text = str(triple_jump_cost[buff_manager.triple_jump_stack])
+	jump_up.set_buff_stack(buff_manager.jump_up_stacks)
+	if not check_if_max_stacks_jump_up():
+		jumpup__cost_label_dynamic.text = str(jump_up_costs[buff_manager.jump_up_stacks])
+	speed_up.set_buff_stack(buff_manager.speed_up_stacks)
+	if not check_if_max_stacks_speed_up():
+		speedup__cost_label_dynamic.text = str(speed_up_costs[buff_manager.speed_up_stacks])
 
 func check_if_max_stacks_dmg_up() -> bool:
 	if buff_manager.dmg_up_stacks == dmg_up_costs.size():
@@ -67,6 +94,30 @@ func check_if_max_stacks_shield_up() -> bool:
 		shieldup__button.disabled = true
 		shieldup__cost_label.visible = false
 		shieldup__cost_label_dynamic.visible = false
+		return true
+	return false
+
+func check_if_max_stacks_triple_jump() -> bool:
+	if buff_manager.triple_jump_stack == triple_jump_cost.size():
+		triple_jump__button.disabled = true
+		triple_jump_shieldup__cost_label.visible = false
+		triple_jump_shieldup__cost_label_dynamic.visible = false
+		return true
+	return false
+
+func check_if_max_stacks_jump_up() -> bool:
+	if buff_manager.jump_up_stacks == jump_up_costs.size():
+		jumpup__button.disabled = true
+		jumpup__cost_label.visible = false
+		jumpup__cost_label_dynamic.visible = false
+		return true
+	return false
+
+func check_if_max_stacks_speed_up() -> bool:
+	if buff_manager.speed_up_stacks == speed_up_costs.size():
+		speedup__button.disabled = true
+		speedup__cost_label.visible = false
+		speedup__cost_label_dynamic.visible = false
 		return true
 	return false
 
@@ -131,3 +182,30 @@ func _on_shieldup_Button_button_down() -> void:
 		shield_up.set_buff_stack(buff_manager.shield_up_stacks)
 		if not check_if_max_stacks_shield_up():
 			shieldup__cost_label_dynamic.text = str(shield_up_costs[buff_manager.shield_up_stacks])
+
+
+func _on_triple_jump_Button_button_down() -> void:
+	if triple_jump_cost[buff_manager.triple_jump_stack] <=  buff_manager.total_experience:
+		Spend_experience(triple_jump_cost[buff_manager.triple_jump_stack])
+		buff_manager._on_AddTripleJump()
+		triple_jump.set_buff_stack(buff_manager.triple_jump_stack)
+		if not check_if_max_stacks_triple_jump():
+			triple_jump_shieldup__cost_label_dynamic.text = str(triple_jump_cost[buff_manager.triple_jump_stack])
+
+
+func _on_jumpup_Button_button_down() -> void:
+	if jump_up_costs[buff_manager.jump_up_stacks] <=  buff_manager.total_experience:
+		Spend_experience(jump_up_costs[buff_manager.jump_up_stacks])
+		buff_manager._on_IncreaseJumpPower()
+		jump_up.set_buff_stack(buff_manager.jump_up_stacks)
+		if not check_if_max_stacks_jump_up():
+			jumpup__cost_label_dynamic.text = str(jump_up_costs[buff_manager.jump_up_stacks])
+
+
+func _on_speedup_Button_button_down() -> void:
+	if speed_up_costs[buff_manager.speed_up_stacks] <=  buff_manager.total_experience:
+		Spend_experience(speed_up_costs[buff_manager.speed_up_stacks])
+		buff_manager._on_IncreaseSpeed()
+		speed_up.set_buff_stack(buff_manager.speed_up_stacks)
+		if not check_if_max_stacks_speed_up():
+			speedup__cost_label_dynamic.text = str(speed_up_costs[buff_manager.speed_up_stacks])
