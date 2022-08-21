@@ -1,40 +1,94 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://UI/Fonts/default_font_deutsch_gothic_bigger.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/win_screen_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/WinScreen.gd" type="Script" id=2]
 [ext_resource path="res://UI/theme/MenuTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Resouces/Fonts/livingstone/Livingst.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 76
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 6
+extra_spacing_space = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/normal_font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Glory:custom_fonts/normal_font:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 76 ]
+}
 
 [node name="WinScreen" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 2 )
 
-[node name="Title" type="Label" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -336.0
-margin_right = -960.0
-margin_bottom = -276.0
-rect_min_size = Vector2( 0, 60 )
-rect_scale = Vector2( 4, 4 )
-custom_fonts/font = ExtResource( 1 )
-text = "YOU ARE A WINRAR!"
-align = 1
-valign = 1
-
-[node name="Glory" type="Label" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -124.0
-margin_bottom = -110.0
-text = "You"
-align = 1
-
 [node name="Back" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 1, 1, 1, 0.345098 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -348.0
+margin_bottom = -158.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]YOU DEFEATED
+THE [color=red][wave amp=50 freq=5]MOON DEMON!
+"
+text = "YOU DEFEATED
+THE MOON DEMON!
+"
+scroll_active = false
+
+[node name="Glory" type="RichTextLabel" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -102.0
+margin_bottom = -10.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Your finall score is:[shake level=9] [color=yellow]999"
+text = "Your finall score is: 999"
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Glory"]
+root_node = NodePath("../../Title")
+autoplay = "New Anim"
+playback_speed = 1.6
+"anims/New Anim" = SubResource( 2 )
+anims/RESET = SubResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5

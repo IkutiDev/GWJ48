@@ -42,6 +42,7 @@ func _on_ShieldLost(shield_index: int):
 func _on_ScoreUpdated(score_to_add: int):
 	current_score += score_to_add * (buff_manager.insomnia_stacks + 1)
 	score_dynamic_value.text = str(current_score)
+	Events.score = current_score
 
 func _on_ExperienceUpdated(total_experience: int):
 	experience_dynamic_value.text = str(total_experience)

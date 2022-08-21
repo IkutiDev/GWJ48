@@ -2,7 +2,8 @@ extends CanvasLayer
 
 func _enter_tree():
 	get_tree().paused = true
-	$Glory.text = "You obtained " + String(100) + " glory in this run!" 
+	$Glory.bbcode_text = "[center]Your finall score is:[shake level=9] [color=yellow]" + String(Events.score)
+
 
 func _on_Button_pressed():
 	var value = get_tree().change_scene("res://Game.tscn")
