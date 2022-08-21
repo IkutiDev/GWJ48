@@ -28,6 +28,7 @@ func _on_SleepButton_button_down() -> void:
 	keep_going_button.disabled = true
 	sleep_button.disabled = true
 	visible = false
+	Events.emit_signal("player_slept")
 	var instance : SleepWindow = sleep_window.instance()
 	instance.connect("SleepWindowClosed", self, "_close_popup")
 	get_parent().add_child(instance)
