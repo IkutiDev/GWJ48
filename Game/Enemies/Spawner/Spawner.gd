@@ -9,6 +9,7 @@ export var minimal_spawn_timer : float = 0.5
 export var spawn_timer_increase_per_wave : float = 0.1
 
 export(Array, Resource) var enemies_data
+export(Array, int) var enemies_in_wave
 
 var popup_instance : Node
 
@@ -105,7 +106,7 @@ func start_next_wave():
 	if waveCounter % buff_enemies_on_every_x_wave == 0:
 		buff_counter +=1.0
 		$Overlay/WarningLabel/AnimationPlayer.play("show")
-	enemiesToSpawn = 5 + pow(2, (waveCounter/4)) + waveCounter
+	enemiesToSpawn = enemies_in_wave[waveCounter-1]
 	enemiesToKill = enemiesToSpawn
 	allowedEnemies.clear()
 	$Overlay/EnemiesLeftCountLabel.text = str(current_enemies_counter)
