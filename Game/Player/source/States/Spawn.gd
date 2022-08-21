@@ -16,6 +16,8 @@ func enter(_msg: Dictionary = {}) -> void:
 	owner.player_combat.emit_signal("health_changed", owner.player_combat.hitbox.current_health)
 	owner.position = _start_position
 	owner.buff_manager._on_ClearInsomnia()
+	if _msg.has("afterSleep"):
+		owner.audio_player.play_spawn_SFX()
 	# To force is_on_floor in spawn state, to not have falling state right after spawn
 	owner.move_and_slide(Vector2.DOWN, owner.FLOOR_NORMAL)
 	owner.skin.play_animated_sprite("spawn")

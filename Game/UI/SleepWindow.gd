@@ -88,7 +88,7 @@ func _on_SleepWindow_tree_entered() -> void:
 func _on_WakeUpButton_button_down() -> void:
 	wake_up_button.disabled = true
 	spend_exp_button.disabled = true
-	player.state_machine.transition_to("Spawn")
+	player.state_machine.transition_to("Spawn", {"afterSleep":true})
 	var buffManager =  get_node("/root/Game/BuffManager") as BuffManager
 	buffManager._on_ClearInsomnia()
 	$Fader.play("FadeOut")

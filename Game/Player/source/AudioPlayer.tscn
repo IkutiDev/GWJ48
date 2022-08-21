@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=2]
+[gd_scene load_steps=126 format=2]
 
 [ext_resource path="res://Player/source/AudioPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Player/assets/Audio/Wood_Steps/FLY_Wood_Step_018.wav" type="AudioStream" id=2]
@@ -116,6 +116,14 @@
 [ext_resource path="res://Player/assets/Audio/Death/VO_Death_00.wav" type="AudioStream" id=114]
 [ext_resource path="res://Player/assets/Audio/Death/VO_Death_02.wav" type="AudioStream" id=115]
 [ext_resource path="res://Player/assets/Audio/Death/VO_Death_03.wav" type="AudioStream" id=116]
+[ext_resource path="res://Player/assets/Audio/Spawn/SFX_Respawn_00.wav" type="AudioStream" id=117]
+[ext_resource path="res://UI/UI_Error_00.wav" type="AudioStream" id=118]
+[ext_resource path="res://Player/assets/Audio/Shield/SFX_Shield_Bounce.wav" type="AudioStream" id=119]
+[ext_resource path="res://Player/assets/Audio/Shield/SFX_Sheath_01.wav" type="AudioStream" id=120]
+[ext_resource path="res://Player/assets/Audio/Shield/SFX_Unsheath_01.wav" type="AudioStream" id=121]
+[ext_resource path="res://Player/assets/Audio/Shield/SFX_Unsheath_02.wav" type="AudioStream" id=122]
+[ext_resource path="res://Player/assets/Audio/Shield/SFX_Unsheath_00.wav" type="AudioStream" id=123]
+[ext_resource path="res://Player/assets/Audio/Shield/SFX_Sheath_00.wav" type="AudioStream" id=124]
 
 [sub_resource type="RayShape2D" id=1]
 
@@ -134,6 +142,8 @@ gravel_falls = [ ExtResource( 88 ), ExtResource( 85 ) ]
 sword_swings = [ ExtResource( 107 ), ExtResource( 109 ), ExtResource( 110 ) ]
 pain_grunts = [ ExtResource( 108 ), ExtResource( 111 ), ExtResource( 112 ) ]
 death_sounds = [ ExtResource( 114 ), ExtResource( 113 ), ExtResource( 115 ), ExtResource( 116 ) ]
+sheath_sounds = [ ExtResource( 124 ), ExtResource( 120 ) ]
+unsheath_sounds = [ ExtResource( 123 ), ExtResource( 121 ), ExtResource( 122 ) ]
 
 [node name="SurfaceDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -161,4 +171,29 @@ bus = "Effects"
 bus = "Effects"
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
+bus = "Effects"
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 117 )
+volume_db = -10.0
+bus = "Effects"
+
+[node name="ShieldUnsheath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 123 )
+volume_db = 5.0
+bus = "Effects"
+
+[node name="ShieldSheath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 124 )
+volume_db = 5.0
+bus = "Effects"
+
+[node name="ShieldHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 119 )
+volume_db = -5.0
+bus = "Effects"
+
+[node name="ShieldError" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 118 )
+volume_db = -10.0
 bus = "Effects"

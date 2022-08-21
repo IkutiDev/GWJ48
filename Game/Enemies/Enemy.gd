@@ -26,6 +26,8 @@ export var speed_difference_on_spawn_max : float = 0.0
 
 export var distance_to_attack : float = 25.0
 
+export(Array, Resource) var attack_sounds
+
 var current_enemy_life_state : int = enemy_life_state.Spawning
 
 var target : Node2D
