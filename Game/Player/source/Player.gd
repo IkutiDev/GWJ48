@@ -38,6 +38,9 @@ func flip_direction(move_direction : float) -> void:
 func get_current_health() -> float:
 	return player_combat.current_health
 	
+func get_max_health() -> float:
+	return player_combat.health
+	
 func freeze_player(freeze: bool):
 	if freeze:
 		state_machine.transition_to("Freeze")

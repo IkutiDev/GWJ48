@@ -5,10 +5,12 @@ signal update_experience(total_experience)
 signal update_insomnia(total_stacks)
 signal update_dmg_up(total_stacks)
 signal update_hp_up(total_stacks)
+signal update_shield_up(total_stacks)
 
 var insomnia_stacks = 0
 var dmg_up_stacks = 0
 var hp_up_stacks = 0
+var shield_up_stacks = 0
 var total_experience = 0
 
 func _ready() -> void:
@@ -29,6 +31,10 @@ func _on_IncreaseDamage():
 func _on_IncreaseHP():
 	hp_up_stacks += 1
 	emit_signal("update_hp_up", hp_up_stacks)
+	
+func _on_IncreaseShield():
+	shield_up_stacks += 1
+	emit_signal("update_shield_up", shield_up_stacks)
 
 func _on_IncreaseInsomnia():
 	insomnia_stacks += 1

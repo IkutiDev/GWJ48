@@ -105,6 +105,16 @@ margin_right = 147.0
 margin_left = 243.0
 margin_right = 289.0
 
+[node name="ShieldIcon4" parent="ShieldIcons" instance=ExtResource( 6 )]
+visible = false
+margin_left = 279.0
+margin_right = 325.0
+
+[node name="ShieldIcon5" parent="ShieldIcons" instance=ExtResource( 6 )]
+visible = false
+margin_left = 314.0
+margin_right = 360.0
+
 [node name="BuffsIcons" type="GridContainer" parent="."]
 margin_top = 105.0
 margin_right = 391.0

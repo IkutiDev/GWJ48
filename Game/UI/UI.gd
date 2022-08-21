@@ -21,11 +21,15 @@ onready var player = $"%Player"
 var current_score = 0
 
 func _on_HealthUpdated(current_health: float):
-	$HP.value = current_health
+	$HP.value = ((current_health)/ player.get_max_health())*100
 	
 func _on_ShieldRegained(shield_index: int):
 	var animation_player : AnimationPlayer = shield_icons.get_child(shield_index).get_node("AnimationPlayer")
 	animation_player.play("regain")
+
+func _on_ShieldIncreased(shield_charges: int):
+	for i in shield_charges:
+		(shield_icons.get_child(i) as Control).visible = true
 
 func _on_ShieldLost(shield_index: int):
 	var animation_player : AnimationPlayer = shield_icons.get_child(shield_index).get_node("AnimationPlayer")
@@ -47,11 +51,15 @@ func _on_DamageBuffUpdated(total_stacks: int):
 func _on_HealthBuffUpdated(total_stacks: int):
 	hpup.set_buff_stack(total_stacks)
 
+func _on_ShieldBuffUpdated(total_stacks: int):
+	shield_up.set_buff_stack(total_stacks)
+
 func _ready() -> void:
 	yield(player, "ready")
 	player.player_combat.connect("health_changed", self, "_on_HealthUpdated")
 	player.player_combat.connect("shield_lost", self, "_on_ShieldLost")
 	player.player_combat.connect("shield_regained", self, "_on_ShieldRegained")
+	player.player_combat.connect("shield_increased",self, "_on_ShieldIncreased")
 	var value = Events.connect("score_gained", self, "_on_ScoreUpdated")
 	assert(value == OK)
 	value = buff_manager.connect("update_experience", self, "_on_ExperienceUpdated")
@@ -61,6 +69,8 @@ func _ready() -> void:
 	value = buff_manager.connect("update_dmg_up", self, "_on_DamageBuffUpdated")
 	assert(value == OK)
 	value = buff_manager.connect("update_hp_up", self, "_on_HealthBuffUpdated")
+	assert(value == OK)
+	value = buff_manager.connect("update_shield_up", self, "_on_ShieldBuffUpdated")
 	assert(value == OK)
 	_on_HealthUpdated(player.get_current_health())
 	score_dynamic_value.text = str(current_score)
