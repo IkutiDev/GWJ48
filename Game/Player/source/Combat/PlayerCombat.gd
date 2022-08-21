@@ -79,6 +79,7 @@ func _on_Hitbox_got_hit(damage) -> void:
 		player.skin.play_animation_player("shield")
 		current_shield_charges -= 1
 		emit_signal("shield_lost", current_shield_charges)
+		player.audio_player.play_shield_hit_SFX()
 		return
 	player.skin.play_animation_player("hurt")
 	hitbox.current_health -= (damage * (player.buff_manager.insomnia_stacks + 1))

@@ -27,9 +27,13 @@ func spawn_projectile():
 	
 func process(_delta: float) -> void:
 	if owner.skin.get_current_frame() == spawn_projectile_frame and not already_shot:
+		owner.atkSound.play()
 		spawn_projectile()
 
 func enter(_msg: Dictionary = {}) -> void:
+	if owner.attack_sounds.size() > 0:
+		owner.atkSound.stream = null
+		owner.atkSound.stream = owner.attack_sounds[randi() % owner.attack_sounds.size()]
 	already_shot = false
 	target_position_on_enter = owner.target.global_position
 	owner.is_attacking = true

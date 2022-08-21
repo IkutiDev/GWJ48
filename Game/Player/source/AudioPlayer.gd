@@ -9,6 +9,11 @@ onready var fall: AudioStreamPlayer2D = $Fall
 onready var swing: AudioStreamPlayer2D = $Swing
 onready var pain: AudioStreamPlayer2D = $Pain
 onready var death: AudioStreamPlayer2D = $Death
+onready var spawn: AudioStreamPlayer2D = $Spawn
+onready var shield_unsheath: AudioStreamPlayer2D = $ShieldUnsheath
+onready var shield_sheath: AudioStreamPlayer2D = $ShieldSheath
+onready var shield_hit: AudioStreamPlayer2D = $ShieldHit
+onready var shield_error: AudioStreamPlayer2D = $ShieldError
 
 
 export(Array, Resource) var wood_foot_steps
@@ -28,6 +33,9 @@ export(Array, Resource) var sword_swings
 export(Array, Resource) var pain_grunts
 
 export(Array, Resource) var death_sounds
+
+export(Array, Resource) var sheath_sounds
+export(Array, Resource) var unsheath_sounds
 
 var currentSurfaceType : int = Surface.SurfaceType.Air
 
@@ -95,6 +103,27 @@ func play_death_SFX():
 	
 	death.stream = death_sounds[randi() % death_sounds.size()]
 	death.play()
+
+func play_shield_hit_SFX():
+	shield_hit.play()
+	
+func play_shield_unsheath_SFX():
+	shield_unsheath.stream = null
+	
+	shield_unsheath.stream = unsheath_sounds[randi() % unsheath_sounds.size()]
+	shield_unsheath.play()
+
+func play_shield_sheath_SFX():
+	shield_sheath.stream = null
+	
+	shield_sheath.stream = sheath_sounds[randi() % sheath_sounds.size()]
+	shield_sheath.play()
+
+func play_shield_error_SFX():
+	shield_error.play()
+
+func play_spawn_SFX():
+	spawn.play()
 	
 	
 func find_current_surface_type() -> int:

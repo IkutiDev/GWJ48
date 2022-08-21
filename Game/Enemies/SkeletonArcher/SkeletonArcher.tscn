@@ -1,14 +1,17 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Enemies/SkeletonArcher/SkeletonArcher.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/SkeletonArcher/assets/Archer Skeleton.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/EnemyStateMachine/AttackRangeEnemy.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/SkeletonArcher/Arrow.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/SkeletonArcher/SFX_Skeleton_Death_00.wav" type="AudioStream" id=5]
+[ext_resource path="res://Enemies/SkeletonArcher/SFX_Archers_Shot_01.wav" type="AudioStream" id=6]
+[ext_resource path="res://Enemies/SkeletonArcher/SFX_Archers_Shot_00.wav" type="AudioStream" id=7]
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=8]
 [ext_resource path="res://Combat/Hitbox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/source/Skin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemies/EnemyStateMachine/SpawnEnemy.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/SkeletonArcher/SFX_Archers_Shot_02.wav" type="AudioStream" id=12]
 [ext_resource path="res://Enemies/EnemyStateMachine/MoveEnemy.gd" type="Script" id=13]
 [ext_resource path="res://Enemies/EnemyStateMachine/HitEnemy.gd" type="Script" id=14]
 [ext_resource path="res://Enemies/EnemyStateMachine/DieEnemy.gd" type="Script" id=15]
@@ -246,6 +249,7 @@ speed = 40.0
 speed_difference_on_spawn_min = -25.0
 speed_difference_on_spawn_max = 10.0
 distance_to_attack = 300.0
+attack_sounds = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 12 ) ]
 projectile_speed = 300.0
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
@@ -263,7 +267,6 @@ scale = Vector2( -1, 1 )
 position = Vector2( 0, 4 )
 frames = SubResource( 104 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
