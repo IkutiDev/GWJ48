@@ -27,8 +27,8 @@ void fragment(){
 }"
 
 [sub_resource type="Gradient" id=32]
-offsets = PoolRealArray( 0.0932476, 0.343575, 0.488746, 0.874302 )
-colors = PoolColorArray( 0.12549, 0, 0.145098, 0, 0.615234, 0.615234, 0.615234, 0.462745, 0.770508, 0.383161, 0.156509, 1, 0.663803, 0.827059, 0.833008, 1 )
+offsets = PoolRealArray( 0.128492, 0.480447, 0.611732, 0.874302 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.615234, 0.615234, 0.615234, 0.462745, 0.509804, 0.819608, 0.917647, 1, 0.605469, 0, 0.127716, 1 )
 
 [sub_resource type="GradientTexture" id=33]
 gradient = SubResource( 32 )
