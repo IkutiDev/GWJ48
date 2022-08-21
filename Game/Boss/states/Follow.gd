@@ -5,7 +5,7 @@ extends State
 	FOLLOW
 """
 
-var duration = 9 # how long this state lasts - in seconds
+var duration = 6 # how long this state lasts - in seconds
 
 var time = 0 # time since phase started
 

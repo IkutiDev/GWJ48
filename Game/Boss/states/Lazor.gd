@@ -16,7 +16,7 @@ var turnSpeed
 
 func enter(_msg: Dictionary = {}):
 	time = 0
-	turnSpeed = 1.4
+	turnSpeed = 1.9
 	$BlastTimer.start()
 	owner.get_node("Laser").look_at(owner.player.global_position)
 	owner.get_node("Laser").visible = true
@@ -24,6 +24,7 @@ func enter(_msg: Dictionary = {}):
 	owner.get_node("Laser").get_node("Hurtbox").get_node("Shape").disabled = true
 	owner.get_node("Laser").width = 2
 	owner.get_node("Laser").get_node("Charge").play()
+	owner.get_node("Pupil").modulate.a = 0
 	
 	pass
 
@@ -51,12 +52,12 @@ func track(delta):
 func distance_bonus():
 	var origin = owner.global_position
 	var point = owner.player.global_position
-	return max(0.2, -0.019 * origin.distance_to(point) + 3.0)
+	return max(0.2, -0.016 * origin.distance_to(point) + 2.0)
 	
 
 
 func exit():
-
+	owner.get_node("Pupil").modulate.a = 1
 	owner.get_node("Laser").get_node("Hurtbox").get_node("Shape").disabled = true
 	owner.get_node("Laser").visible = false
 	pass
@@ -65,7 +66,7 @@ func exit():
 
 
 func _on_BlastTimer_timeout():
-	turnSpeed = 0.72
+	turnSpeed = 1.34
 	yield(get_tree().create_timer(0.4),"timeout")
 	owner.get_node("Laser").width = 20
 	owner.get_node("Laser").get_node("Fire").play()

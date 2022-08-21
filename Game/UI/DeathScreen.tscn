@@ -53,8 +53,8 @@ margin_bottom = -50.0
 rect_min_size = Vector2( 0, 60 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
-bbcode_text = "[center][shake rate=100 level=15]GAME OVER[/shake]"
-text = "[center][shake rate=100 level=15]GAME OVER[/shake]"
+bbcode_text = "[center][shake rate=100 level=9]GAME OVER[/shake]"
+text = "GAME OVER"
 scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Back/Label"]

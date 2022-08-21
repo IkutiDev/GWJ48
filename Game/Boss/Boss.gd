@@ -4,6 +4,8 @@ var winScreenScene = preload("res://UI/WinScreen.tscn")
 
 var allPhases = ["Summon","Spray","Lazor"]
 
+var lastPhase = -1
+
 var currentPhase
 
 var player = null
@@ -16,11 +18,12 @@ var speed = 200
 
 var mass = 100
 
-var maxHP = 1300
+var maxHP = 400
 
-export var HP = 1300
+export var HP = 400
 
 func _ready():
+
 	$Laser/Hurtbox.damage = 7
 	if HP > maxHP:
 		maxHP = HP
@@ -35,12 +38,14 @@ func _ready():
 		player = get_tree().get_nodes_in_group("Player")[0]
 
 func next_phase():
-	# get next phase from list and update list
+	# get next phase from list
 	# return next phase as String
-	currentPhase = allPhases[randi()%3]
-	energy -= 75
+	var validPhases = allPhases.duplicate()
+	validPhases.erase(lastPhase)
+	lastPhase = currentPhase
+	currentPhase = validPhases[randi()%validPhases.size()]
+	energy -= 47
 	return currentPhase
-	pass
 
 func _process(delta):
 	pass
@@ -68,4 +73,5 @@ func _on_Hitbox_got_hit(damage):
 	$Damage.play()
 	$SuperAnimator.play("Damage")
 	$Overlay/HealthBar.value = HP
+	$EyeSprite.material.set_shader_param("col1bonus",-0.600 - 0.066 * (HP/maxHP) )
 	pass # Replace with function body.
