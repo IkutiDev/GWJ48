@@ -38,7 +38,7 @@ func fire_bullet():
 func _on_BulletTimer_timeout():
 	fire_bullet()
 	bulletCount += 1
-	if bulletCount > 10:
+	if bulletCount > 8:
 		$BulletTimer.stop()
-		_state_machine.transition_to("Stop")
+		_state_machine.transition_to("Stop",{"time":1.0})
 	pass # Replace with function body.

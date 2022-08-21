@@ -26,7 +26,8 @@ func enter(_msg: Dictionary = {}) -> void:
 	regain_shield_timer.stop()
 	owner.player.skin.play_animated_sprite("startBlock", 1)
 	owner.player.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
-	
+	owner.get_node("Shield").get_node("Animator").stop()
+	owner.get_node("Shield").get_node("Animator").play("IN")
 	
 func exit() -> void:
 	owner.player.audio_player.play_shield_sheath_SFX()
@@ -35,3 +36,5 @@ func exit() -> void:
 	play_hold_animation = false
 	regain_shield_timer.start()
 	owner.player.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")
+	owner.get_node("Shield").get_node("Animator").stop()
+	owner.get_node("Shield").get_node("Animator").play("OUT")

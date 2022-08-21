@@ -18,9 +18,9 @@ var speed = 200
 
 var mass = 100
 
-var maxHP = 400
+var maxHP = 1500
 
-export var HP = 400
+export var HP = 1500
 
 func _ready():
 
@@ -41,8 +41,8 @@ func next_phase():
 	# get next phase from list
 	# return next phase as String
 	var validPhases = allPhases.duplicate()
-	validPhases.erase(lastPhase)
 	lastPhase = currentPhase
+	validPhases.erase(lastPhase)
 	currentPhase = validPhases[randi()%validPhases.size()]
 	energy -= 47
 	return currentPhase
@@ -73,5 +73,5 @@ func _on_Hitbox_got_hit(damage):
 	$Damage.play()
 	$SuperAnimator.play("Damage")
 	$Overlay/HealthBar.value = HP
-	$EyeSprite.material.set_shader_param("col1bonus",-0.600 - 0.066 * (HP/maxHP) )
+	$EyeSprite.material.set_shader_param("col1bonus",-0.580 - 0.076 * (HP/maxHP) )
 	pass # Replace with function body.

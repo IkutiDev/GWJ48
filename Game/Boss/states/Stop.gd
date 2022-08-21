@@ -15,8 +15,8 @@ var time = 0 # time since phase started
 
 
 func enter(_msg: Dictionary = {}):
-	if _msg.has("duration"):
-		duration = _msg["duration"]
+	if _msg.has("time"):
+		time += _msg["time"]
 	owner.velocity = Vector2(0,0)
 	owner.get_node("SuperAnimator").play("Default")
 	pass

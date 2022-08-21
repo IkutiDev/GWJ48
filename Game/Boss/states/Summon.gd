@@ -25,7 +25,7 @@ func physics_process(delta):
 		ghostTimer = 0
 		spawn_ghost()
 		if ghostsSpawned >= ghostMax:
-			_state_machine.transition_to("Stop",{"duration":3.0})
+			_state_machine.transition_to("Stop",{"time":-2.0})
 
 func exit():
 	pass
@@ -34,6 +34,7 @@ func exit():
 func spawn_ghost():
 	ghostsSpawned += 1
 	var newGhost = ghostScene.instance()
+	newGhost.dropLoot = false
 	newGhost.global_position = owner.global_position
 	newGhost.velocity = Vector2(rand_range(-500,500),rand_range(-100,0)) 
 	owner.get_parent().add_child(newGhost)

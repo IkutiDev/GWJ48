@@ -35,3 +35,13 @@ func _on_Start2_pressed():
 	var value = get_tree().change_scene("res://Game.tscn")
 	assert(value == OK)
 	pass # Replace with function body.
+
+
+func _on_Tutorial_pressed():
+	$Tutorial.visible = true
+	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	$Tutorial.visible = false
+	pass # Replace with function body.

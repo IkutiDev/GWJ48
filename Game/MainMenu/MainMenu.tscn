@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Fonts/default_font_deutsch_gothic.tres" type="DynamicFont" id=2]
+[ext_resource path="res://MainMenu/tutorial.png" type="Texture" id=3]
 [ext_resource path="res://MainMenu/BasicButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=5]
+[ext_resource path="res://UI/Fonts/default_font_a_absolute_empire.tres" type="DynamicFont" id=6]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -41,60 +43,108 @@ size_flags_vertical = 6
 size_flags_stretch_ratio = 8.89
 
 [node name="Control4" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_right = 179.0
+margin_right = 138.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="Credits" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 183.0
-margin_right = 362.0
+margin_left = 142.0
+margin_right = 281.0
 text = "CREDITS"
 
+[node name="Control5" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 285.0
+margin_right = 424.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="Tutorial" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 428.0
+margin_right = 566.0
+text = "TUTORIAL"
+
 [node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_left = 366.0
-margin_right = 546.0
+margin_left = 570.0
+margin_right = 709.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="Start" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 550.0
-margin_right = 729.0
+margin_left = 713.0
+margin_right = 852.0
 text = "START"
 
 [node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_left = 733.0
-margin_right = 913.0
+margin_left = 856.0
+margin_right = 994.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
 [node name="Options" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 917.0
-margin_right = 1096.0
+margin_left = 998.0
+margin_right = 1137.0
 text = "OPTIONS"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1100.0
+margin_left = 1141.0
 margin_right = 1280.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 
-[node name="Boss" parent="." instance=ExtResource( 4 )]
-visible = false
-margin_left = 708.0
-margin_top = 609.0
-margin_right = 894.0
-margin_bottom = 669.0
-text = "boss test room"
+[node name="Tutorial" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
 
-[node name="Start2" parent="." instance=ExtResource( 4 )]
-margin_left = 650.0
-margin_top = 560.0
-margin_right = 945.0
-margin_bottom = 620.0
-text = "TEST-SPWN BOSS EARLY"
+[node name="Button" parent="Tutorial" instance=ExtResource( 4 )]
+margin_left = 567.0
+margin_top = 581.0
+margin_right = 700.0
+margin_bottom = 641.0
+text = "RETURN"
+
+[node name="Label" type="Label" parent="Tutorial"]
+margin_left = 106.0
+margin_top = 506.0
+margin_right = 376.0
+margin_bottom = 549.0
+custom_fonts/font = ExtResource( 6 )
+text = "Double jump to
+reach greater heights"
+align = 1
+
+[node name="Label2" type="Label" parent="Tutorial"]
+margin_left = 858.0
+margin_top = 214.0
+margin_right = 1215.0
+margin_bottom = 257.0
+custom_fonts/font = ExtResource( 6 )
+text = "Prevent damage by
+blocking with your shield"
+align = 1
+
+[node name="Label3" type="Label" parent="Tutorial"]
+margin_left = 847.0
+margin_top = 452.0
+margin_right = 1204.0
+margin_bottom = 495.0
+custom_fonts/font = ExtResource( 6 )
+text = "Brake crates for loot
+and healing"
+align = 1
+
+[node name="Label4" type="Label" parent="Tutorial"]
+margin_left = 498.0
+margin_top = 417.0
+margin_right = 855.0
+margin_bottom = 460.0
+custom_fonts/font = ExtResource( 6 )
+text = "cast healing spells
+to regain health"
+align = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Boss" to="." method="_on_Boss_pressed"]
-[connection signal="pressed" from="Start2" to="." method="_on_Start2_pressed"]
+[connection signal="pressed" from="Tutorial/Button" to="." method="_on_Button_pressed"]

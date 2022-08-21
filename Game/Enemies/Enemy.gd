@@ -26,6 +26,8 @@ export var speed_difference_on_spawn_max : float = 0.0
 
 export var distance_to_attack : float = 25.0
 
+var dropLoot = true
+
 export(Array, Resource) var attack_sounds
 
 var current_enemy_life_state : int = enemy_life_state.Spawning
@@ -68,19 +70,21 @@ func _is_enemy_alive() -> bool:
 	return current_enemy_life_state == enemy_life_state.Alive
 
 func _death() -> void:
-
+	Events.emit_signal("spawner_record_death", self)
+	current_enemy_life_state = enemy_life_state.Dead
+	if !dropLoot:
+		return
 	while score > 0 :
 		var newCoin = goldCoinScene.instance()
 		newCoin.global_position = global_position
 		get_tree().root.add_child(newCoin)
 		newCoin.activate(7)
 		score -= 7
-	Events.emit_signal("spawner_record_death", self)
 	var exp_orb_instance = experience_orb_scene.instance()
 	get_tree().root.add_child(exp_orb_instance)
 	exp_orb_instance.global_position = global_position
 	exp_orb_instance.activate(experience)
-	current_enemy_life_state = enemy_life_state.Dead
+	
 
 func _got_hit(damage: float) -> void:
 	hitbox.current_health -= damage
