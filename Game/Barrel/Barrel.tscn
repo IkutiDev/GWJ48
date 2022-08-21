@@ -244,6 +244,7 @@ tracks/7/keys = {
 }
 
 [node name="Barrel" type="StaticBody2D"]
+collision_layer = 0
 script = ExtResource( 3 )
 
 [node name="Blocker" type="CollisionShape2D" parent="."]
@@ -314,4 +315,9 @@ anims/1 = SubResource( 7 )
 anims/2 = SubResource( 9 )
 anims/RESET = SubResource( 8 )
 
+[node name="TestTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="got_hit" from="Hitbox" to="." method="_on_Hitbox_got_hit"]
+[connection signal="timeout" from="TestTimer" to="." method="_on_TestTimer_timeout"]

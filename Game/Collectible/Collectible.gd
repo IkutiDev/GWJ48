@@ -6,6 +6,9 @@ onready var timer: Timer = $Timer
 
 var value : int
 
+func _ready():
+	assert(get_node("Ding")!=null)
+
 func activate(value_to_earn : int):
 	value = value_to_earn
 	timer.connect("timeout", self, "_finish_activation")
@@ -27,6 +30,11 @@ func _physics_process(_delta: float) -> void:
 	
 	if bodies.size() > 0:
 		_on_Pickup()
+		$Ding.pitch_scale += randf() * 0.4
+		$Ding.play()
+		area_2d.monitoring = false
+		visible = false
+		yield(get_tree().create_timer(0.7),"timeout")
 		queue_free()
 
 func _on_Pickup():

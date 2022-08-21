@@ -31,6 +31,12 @@ func _on_InvincibilityTimer_time_out()-> void:
 	invincible = false
 	blocked_this_frame = false
 
+func gain_health(gain):
+	current_health = min(current_health+gain,health)
+	hitbox.current_health = current_health
+	emit_signal("health_changed", current_health)
+	pass
+
 func _on_RegainShieldTimer_time_out() -> void:
 	if current_shield_charges < shield_charges:
 		emit_signal("shield_regained", current_shield_charges)
@@ -46,7 +52,9 @@ func _ready() -> void:
 	assert(value == OK)
 	value = player.buff_manager.connect("update_dmg_up", self, "update_damage")
 	assert(value == OK)
+	value = Events.connect("health_gained",self,"gain_health")
 	regain_shield_timer.connect("timeout", self, "_on_RegainShieldTimer_time_out")
+	
 
 func _on_Hitbox_got_hit(damage) -> void:
 	if invincible:

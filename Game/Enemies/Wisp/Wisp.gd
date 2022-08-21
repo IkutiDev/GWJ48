@@ -28,6 +28,7 @@ func buff_enemy(buff_counter: float) -> void:
 
 func _ready() -> void:
 	._ready()
+	$Explode.rotation_degrees = (randi()%4) * 90
 	hurtbox.damage = damage
 	skin.play_animation_player("spawn")
 	skin.connect("animation_finished", self, "_on_AnimationPlayer_finished")
@@ -45,6 +46,7 @@ func _physics_process(delta):
 
 func start_attack():
 	attackMode = true
+	$AttackAnimator.stop()
 	$AttackAnimator.play("Explode")
 
 func resume_follow():
@@ -83,4 +85,6 @@ func _on_AttackRange_body_entered(body):
 		start_attack()
 	
 	pass # Replace with function body.
+
+
 

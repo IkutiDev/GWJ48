@@ -8,3 +8,5 @@ signal score_gained(score)
 signal increase_experience(gained_experience)
 #warning-ignore:unused_signal
 signal spawner_record_death(enemy)
+
+signal health_gained(HP)

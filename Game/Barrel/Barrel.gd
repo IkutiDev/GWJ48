@@ -1,5 +1,15 @@
 extends StaticBody2D
 
+var goldScene = preload("res://Collectible/Gold/GoldCoin.tscn")
+
+var healthScene = preload("res://Collectible/Health/HealthPotion.tscn")
+
+var lootTable = {
+	0 : [0],
+	7 : [1,1],
+	12 : [1,1,1],
+	19 : [2],
+}
 
 var mode = 1 # 1 for Barrel / 2 for Crate
 
@@ -28,5 +38,30 @@ func un_repair():
 	$Blocker.disabled = true
 	$Smash.pitch_scale = 0.7 + randf() * 0.9
 	$Smash.play()
+	var lotto = randi()%28
+	var loot = 0
+	for k in lootTable.keys():
+		if lotto > k :
+			loot = k
+	for l in lootTable[loot]:
+		match l:
+			0:
+				pass
+			1:
+				var newCoin = goldScene.instance()
+				get_tree().root.add_child(newCoin)
+				newCoin.global_position = global_position + Vector2(0,-30)
+				newCoin.activate(10)
+			2:
+				var HPpot = healthScene.instance()
+				get_tree().root.add_child(HPpot)
+				HPpot.global_position = global_position + Vector2(0,-30)
+				HPpot.activate(10)
 	$SmashAnimator.play(String(mode))
+	$TestTimer.start()
 	pass
+
+
+func _on_TestTimer_timeout():
+	un_brake()
+	pass # Replace with function body.
