@@ -14,7 +14,7 @@ scroll_base_scale = Vector2( 0.2, 0.2 )
 motion_scale = Vector2( 0.2, 0.1 )
 motion_offset = Vector2( -320, -300 )
 
-[node name="Sky" type="Sprite" parent="Sky"]
+[node name="Sky" type="Sprite" parent="Sky" groups=["Sky"]]
 texture = ExtResource( 2 )
 centered = false
 
