@@ -22,6 +22,7 @@ func process(_delta: float) -> void:
 func enter(_msg: Dictionary = {}) -> void:
 	owner.player.audio_player.play_shield_unsheath_SFX()
 	owner.block_active = true
+	owner.stop_movement = true
 	regain_shield_timer.stop()
 	owner.player.skin.play_animated_sprite("startBlock", 1)
 	owner.player.skin.connect("animated_sprite_finished", self, "_on_Skin_animation_finished")
@@ -30,6 +31,7 @@ func enter(_msg: Dictionary = {}) -> void:
 func exit() -> void:
 	owner.player.audio_player.play_shield_sheath_SFX()
 	owner.block_active = false
+	owner.stop_movement = false
 	play_hold_animation = false
 	regain_shield_timer.start()
 	owner.player.skin.disconnect("animated_sprite_finished", self, "_on_Skin_animation_finished")

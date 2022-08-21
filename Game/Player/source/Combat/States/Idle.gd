@@ -11,6 +11,11 @@ func unhandled_input(event: InputEvent) -> void:
 			_state_machine.transition_to("Block")
 		else:
 			owner.player.audio_player.play_shield_error_SFX()
+	elif event.is_action("spell"):
+		if owner.current_mana >= owner.spell_cost:
+			_state_machine.transition_to("Spell")
+		else:
+			owner.player.audio_player.play_shield_error_SFX()
 
 func physics_process(_delta: float) -> void:
 	return

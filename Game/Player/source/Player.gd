@@ -41,6 +41,12 @@ func get_current_health() -> float:
 func get_max_health() -> float:
 	return player_combat.health
 	
+func get_current_mana() -> float:
+	return player_combat.current_mana
+	
+func get_max_mana() -> float:
+	return player_combat.mana
+	
 func freeze_player(freeze: bool):
 	if freeze:
 		state_machine.transition_to("Freeze")

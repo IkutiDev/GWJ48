@@ -129,7 +129,6 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="SkillTreeWindow" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -595,8 +594,9 @@ text = "Buy"
 
 [node name="ManaRegenUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
 visible = false
+margin_left = 187.0
 margin_top = 247.0
-margin_right = 127.2
+margin_right = 314.2
 margin_bottom = 374.2
 rect_min_size = Vector2( 127.2, 127.2 )
 show_stacks_label = true
@@ -634,8 +634,9 @@ text = "Buy"
 
 [node name="SpellDamageUp" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
 visible = false
+margin_left = 374.0
 margin_top = 247.0
-margin_right = 127.2
+margin_right = 501.2
 margin_bottom = 374.2
 rect_min_size = Vector2( 127.2, 127.2 )
 hide_on_zero_stacks = false
@@ -672,8 +673,9 @@ text = "Buy"
 
 [node name="ManaShield" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
 visible = false
+margin_left = 561.0
 margin_top = 247.0
-margin_right = 127.2
+margin_right = 688.2
 margin_bottom = 374.2
 rect_min_size = Vector2( 127.2, 127.2 )
 hide_on_zero_stacks = false
@@ -710,8 +712,9 @@ text = "Buy"
 
 [node name="Fireballs" parent="SkillTreeWindow/BuffsIcons" instance=ExtResource( 16 )]
 visible = false
+margin_left = 748.0
 margin_top = 247.0
-margin_right = 127.2
+margin_right = 875.2
 margin_bottom = 374.2
 rect_min_size = Vector2( 127.2, 127.2 )
 show_stacks_label = true

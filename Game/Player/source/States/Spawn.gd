@@ -13,6 +13,8 @@ func _on_Skin_animation_finished(_anim_name: String) -> void:
 func enter(_msg: Dictionary = {}) -> void:
 	owner.player_combat.regain_all_shield_charges()
 	owner.player_combat.hitbox.current_health = owner.player_combat.health
+	owner.player_combat.current_health = owner.player_combat.health
+	owner.player_combat.current_mana = owner.player_combat.mana
 	owner.player_combat.emit_signal("health_changed", owner.player_combat.hitbox.current_health)
 	owner.position = _start_position
 	owner.buff_manager._on_ClearInsomnia()

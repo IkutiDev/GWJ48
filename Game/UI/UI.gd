@@ -20,12 +20,17 @@ onready var player = $"%Player"
 
 var current_score = 0
 
+var last_current_health := 0
+
 func _on_HealthUpdated(current_health: float):
-
-	if ((current_health)/ player.get_max_health())*100 < $HP.value:
+	
+	var current_health_percentage = ((current_health)/ player.get_max_health())*100
+	
+	if current_health < last_current_health:
 		$DamageScreenFlash/AnimationPlayer.play("New Anim") # flash red on screen
-	$HP.value = ((current_health)/ player.get_max_health())*100
-
+	$HP.value = current_health_percentage
+	
+	last_current_health = current_health
 	
 func _on_ShieldRegained(shield_index: int):
 	var animation_player : AnimationPlayer = shield_icons.get_child(shield_index).get_node("AnimationPlayer")
@@ -92,11 +97,13 @@ func _ready() -> void:
 	assert(value == OK)
 	value = buff_manager.connect("update_speed_up", self, "_on_SpeedUpAdded")
 	assert(value == OK)
+	last_current_health = player.get_current_health()
 	_on_HealthUpdated(player.get_current_health())
 	score_dynamic_value.text = str(current_score)
 	experience_dynamic_value.text = str(buff_manager.total_experience)
 
-
+func _process(delta: float) -> void:
+	$Mana.value = ((player.get_current_mana())/ player.get_max_mana())*100
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

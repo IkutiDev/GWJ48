@@ -14,6 +14,8 @@ onready var shield_unsheath: AudioStreamPlayer2D = $ShieldUnsheath
 onready var shield_sheath: AudioStreamPlayer2D = $ShieldSheath
 onready var shield_hit: AudioStreamPlayer2D = $ShieldHit
 onready var shield_error: AudioStreamPlayer2D = $ShieldError
+onready var spell: AudioStreamPlayer2D = $Spell
+
 
 
 export(Array, Resource) var wood_foot_steps
@@ -125,6 +127,8 @@ func play_shield_error_SFX():
 func play_spawn_SFX():
 	spawn.play()
 	
+func play_spell_SFX():
+	spell.play()
 	
 func find_current_surface_type() -> int:
 	var closest_surface: int = Surface.SurfaceType.Air

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/bar_background.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Buff/assets/SpellBookPage09_105.png" type="Texture" id=19]
 [ext_resource path="res://Resouces/ScreenShaders/Border.png" type="Texture" id=20]
 [ext_resource path="res://Resouces/ShaderTextures/Shader_Texture_11.png" type="Texture" id=21]
+[ext_resource path="res://UI/mana_bar.png" type="Texture" id=22]
 
 [sub_resource type="Shader" id=25]
 code = "shader_type canvas_item;
@@ -112,7 +113,7 @@ margin_bottom = 115.0
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
+texture_progress = ExtResource( 22 )
 texture_progress_offset = Vector2( 5, 0 )
 nine_patch_stretch = true
 stretch_margin_left = 6
@@ -443,6 +444,7 @@ text = "For each stack gain a fireball projectile that will shoot in random dire
 material = SubResource( 28 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 20 )
 __meta__ = {
 "_editor_description_": ""

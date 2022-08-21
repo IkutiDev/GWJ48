@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Enemies/Rat/Rat.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Rat/assets/48x48Rat_Idle.png" type="Texture" id=2]
@@ -188,6 +188,21 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=142]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 3,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=130]
 resource_name = "spawn"
 tracks/0/type = "value"
@@ -198,9 +213,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 3,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"transitions": PoolRealArray( 2.92817, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="CapsuleShape2D" id=117]
@@ -216,8 +231,6 @@ extents = Vector2( 5, 16.5 )
 collision_layer = 32
 collision_mask = 26
 script = ExtResource( 1 )
-damage = 15
-health = 30
 score = 15
 experience = 10
 speed = 100.0
@@ -237,12 +250,14 @@ bus = "Effects"
 position = Vector2( 0, -17 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
+modulate = Color( 0, 0, 0, 1 )
 frames = SubResource( 104 )
 animation = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 anims/RESET = SubResource( 131 )
 anims/death = SubResource( 132 )
+anims/hit = SubResource( 142 )
 anims/spawn = SubResource( 130 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

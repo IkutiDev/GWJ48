@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=2]
+[gd_scene load_steps=127 format=2]
 
 [ext_resource path="res://Player/source/AudioPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Player/assets/Audio/Wood_Steps/FLY_Wood_Step_018.wav" type="AudioStream" id=2]
@@ -124,6 +124,7 @@
 [ext_resource path="res://Player/assets/Audio/Shield/SFX_Unsheath_02.wav" type="AudioStream" id=122]
 [ext_resource path="res://Player/assets/Audio/Shield/SFX_Unsheath_00.wav" type="AudioStream" id=123]
 [ext_resource path="res://Player/assets/Audio/Shield/SFX_Sheath_00.wav" type="AudioStream" id=124]
+[ext_resource path="res://Player/assets/Audio/Spell/SFX_Spell_01.wav" type="AudioStream" id=125]
 
 [sub_resource type="RayShape2D" id=1]
 
@@ -165,6 +166,11 @@ bus = "Effects"
 bus = "Effects"
 
 [node name="Swing" type="AudioStreamPlayer2D" parent="."]
+bus = "Effects"
+
+[node name="Spell" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 125 )
+volume_db = 7.0
 bus = "Effects"
 
 [node name="Pain" type="AudioStreamPlayer2D" parent="."]

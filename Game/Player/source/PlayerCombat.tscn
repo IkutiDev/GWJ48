@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Player/source/Combat/States/Block.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Player/source/Combat/States/NormalAttack.gd" type="Script" id=5]
 [ext_resource path="res://Player/source/Combat/States/Idle.gd" type="Script" id=6]
 [ext_resource path="res://Player/source/Combat/PlayerCombat.gd" type="Script" id=7]
+[ext_resource path="res://Player/source/Combat/States/Spell.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.5, 14 )
@@ -46,6 +47,13 @@ script = ExtResource( 6 )
 script = ExtResource( 5 )
 start_frame = 3
 
+[node name="Spell" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+
+[node name="SpellDurationTimer" type="Timer" parent="StateMachine/Spell"]
+wait_time = 8.0
+one_shot = true
+
 [node name="Block" type="Node" parent="StateMachine"]
 script = ExtResource( 2 )
 
@@ -58,3 +66,4 @@ one_shot = true
 
 [connection signal="died" from="Hitbox" to="." method="_on_Hitbox_died"]
 [connection signal="got_hit" from="Hitbox" to="." method="_on_Hitbox_got_hit"]
+[connection signal="timeout" from="StateMachine/Spell/SpellDurationTimer" to="." method="_on_SpellDurationTimer_timeout"]

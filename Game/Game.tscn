@@ -158,9 +158,6 @@ position = Vector2( 24, 96 )
 [node name="CollisionShape2D" parent="Player" index="2"]
 visible = true
 
-[node name="Air" parent="Player/StateMachine/Move" index="2"]
-jump_impulse = 800
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 

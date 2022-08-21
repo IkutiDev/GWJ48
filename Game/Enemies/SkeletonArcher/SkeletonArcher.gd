@@ -27,6 +27,7 @@ func _on_Hitbox_got_hit(damage) -> void:
 	if hitbox.current_health <= 0:
 		return
 	_got_hit(damage)
+	skin.play_animation_player("hit")
 	if hitbox.current_health > 0 and not is_attacking:
 		state_machine.transition_to("HitEnemy")
 

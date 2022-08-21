@@ -9,7 +9,7 @@ func unhandled_input(event: InputEvent) -> void:
 func physics_process(_delta: float) -> void:
 	var move = get_parent() as MoveState
 	if owner.is_on_floor():
-		if move.get_move_direction(owner.player_combat.block_active).x != 0.0:
+		if move.get_move_direction(owner.player_combat.stop_movement).x != 0.0:
 			_state_machine.transition_to("Move/Run")
 	else:
 		_state_machine.transition_to("Move/Air")

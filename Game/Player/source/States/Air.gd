@@ -49,14 +49,14 @@ func physics_process(delta: float) -> void:
 	
 	# Landing
 	if owner.is_on_floor():
-		var target_state: = "Move/Idle" if move.get_move_direction(owner.player_combat.block_active).x == 0.0 else "Move/Run"
+		var target_state: = "Move/Idle" if move.get_move_direction(owner.player_combat.stop_movement).x == 0.0 else "Move/Run"
 		_state_machine.transition_to(target_state)
 		owner.audio_player.play_fall_SFX()
 
 func process(_delta: float) -> void:
 	var move = get_parent() as MoveState
 	
-	owner.flip_direction(move.get_move_direction(owner.player_combat.block_active).x)
+	owner.flip_direction(move.get_move_direction(owner.player_combat.stop_movement).x)
 	
 	if sign(move.velocity.y) == -1:
 		if owner.skin.animation != "jump":

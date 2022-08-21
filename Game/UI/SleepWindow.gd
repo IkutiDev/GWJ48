@@ -50,6 +50,9 @@ signal SleepWindowShowed()
 signal SleepWindowClosed()
 
 func _ready() -> void:
+	var canvas_rid = get_canvas_item()
+	VisualServer.canvas_item_set_z_index(canvas_rid, 500)
+	VisualServer.canvas_item_set_draw_index(canvas_rid, 500)
 
 	SoundManager.play_song(4)
 	player = get_node("/root/Game/Player")

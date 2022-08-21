@@ -12,17 +12,30 @@ onready var hurtbox: Hurtbox = $Hurtbox
 onready var invincibility_timer: Timer = $InvincibilityTimer
 onready var regain_shield_timer: Timer = $StateMachine/Block/RegainShieldTimer
 
+onready var spell_animation_player: AnimationPlayer = $"../Skin/SpellAnimationPlayer"
+
+
 export var health: float = 100.0
+export var mana: float = 50.0
 export var shield_charges: int = 3
 export var normal_attack_damage: float = 10.0
 
 onready var base_health = health
+onready var base_mana = mana
 onready var base_shield_charges = shield_charges
 var current_health = health 
+onready var current_mana = mana
 var current_shield_charges = shield_charges
 var invincible := false
 
+var mana_regen : float = 2
+var spell_cost : float = 25.0
+
+var health_regen : float = 1
+
 var block_active := false
+var stop_movement := false
+var spell_active := false
 
 var blocked_this_frame := false
 
@@ -94,3 +107,15 @@ func _on_Hitbox_got_hit(damage) -> void:
 
 func _on_Hitbox_died() -> void:
 	player.state_machine.transition_to("Die")
+
+func _process(delta: float) -> void:
+	current_mana += mana_regen * delta
+	current_mana = clamp(current_mana, 0, mana)
+	
+	if spell_active:
+		gain_health(health_regen * delta)
+
+
+func _on_SpellDurationTimer_timeout() -> void:
+	spell_active = false
+	spell_animation_player.stop()
