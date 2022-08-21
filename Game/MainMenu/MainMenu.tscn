@@ -86,7 +86,15 @@ margin_right = 894.0
 margin_bottom = 669.0
 text = "boss test room"
 
+[node name="Start2" parent="." instance=ExtResource( 4 )]
+margin_left = 650.0
+margin_top = 560.0
+margin_right = 945.0
+margin_bottom = 620.0
+text = "TEST-SPWN BOSS EARLY"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Boss" to="." method="_on_Boss_pressed"]
+[connection signal="pressed" from="Start2" to="." method="_on_Start2_pressed"]

@@ -19,7 +19,7 @@ func _toggled(button_pressed):
 
 
 func _unhandled_input(event:InputEvent):
-	if pressed and (event.is_class("InputEventJoypadButton") or event.is_class("InputEventKey")):
+	if pressed and (event.is_class("InputEventJoypadButton") or event.is_class("InputEventKey") or event.is_class("InputEventJoypadMotion")):
 		remap_action_to(event)
 		pressed = false
 

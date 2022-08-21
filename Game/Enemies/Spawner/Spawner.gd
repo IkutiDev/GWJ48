@@ -26,7 +26,7 @@ var allowedEnemies : Array
 
 var waveCounter = 0
 
-var maxWave = 3
+var maxWave = 5
 
 var enemiesToSpawn = 0
 
@@ -49,6 +49,8 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(owner, "ready")
+	if Events.testMode:
+		maxWave = 3
 	current_spawn_wait_time = $SpawnTimer.wait_time
 	Events.connect("spawner_record_death", self, "record_death")
 	SoundManager.play_song(1)

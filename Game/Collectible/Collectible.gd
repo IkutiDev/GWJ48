@@ -30,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if bodies.size() > 0:
 		_on_Pickup()
-		$Ding.pitch_scale += randf() * 0.4
+		$Ding.pitch_scale += randf() * 0.2
 		$Ding.play()
 		area_2d.monitoring = false
 		visible = false

@@ -8,7 +8,7 @@ var lootTable = {
 	0 : [0],
 	7 : [1,1],
 	12 : [1,1,1],
-	19 : [2],
+	18 : [2],
 }
 
 var mode = 1 # 1 for Barrel / 2 for Crate
