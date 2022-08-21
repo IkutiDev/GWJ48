@@ -70,63 +70,75 @@ color = Color( 0, 0, 0, 0.658824 )
 margin_left = -55.0
 margin_top = 572.0
 margin_right = 1100.0
-margin_bottom = 669.0
+margin_bottom = 659.0
 size_flags_horizontal = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 8.89
 
 [node name="Control4" type="Control" parent="HBoxContainer"]
-margin_right = 124.0
-margin_bottom = 97.0
+margin_right = 149.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
 
 [node name="Credits" parent="HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 128.0
-margin_right = 253.0
-margin_bottom = 97.0
+margin_left = 153.0
+margin_right = 303.0
+margin_bottom = 87.0
 text = "CREDITS"
 
 [node name="Control5" type="Control" parent="HBoxContainer"]
-margin_left = 257.0
+margin_left = 307.0
 margin_right = 382.0
-margin_bottom = 97.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="Tutorial" parent="HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 386.0
-margin_right = 511.0
-margin_bottom = 97.0
+margin_right = 536.0
+margin_bottom = 87.0
 text = "TUTORIAL"
 
 [node name="Control3" type="Control" parent="HBoxContainer"]
-margin_left = 515.0
-margin_right = 639.0
-margin_bottom = 97.0
+margin_left = 540.0
+margin_right = 614.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="Start" parent="HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 643.0
+margin_left = 618.0
 margin_right = 768.0
-margin_bottom = 97.0
+margin_bottom = 87.0
 text = "START"
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
 margin_left = 772.0
-margin_right = 897.0
-margin_bottom = 97.0
+margin_right = 847.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="Options" parent="HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 901.0
-margin_right = 1026.0
-margin_bottom = 97.0
+margin_left = 851.0
+margin_right = 1001.0
+margin_bottom = 87.0
 text = "OPTIONS"
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_left = 1030.0
+margin_left = 1005.0
 margin_right = 1155.0
-margin_bottom = 97.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
+
+[node name="WildCard" type="TextureRect" parent="."]
+margin_left = 1021.0
+margin_top = 362.0
+margin_right = 1263.0
+margin_bottom = 852.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
 
 [node name="Tutorial" type="TextureRect" parent="."]
 visible = false
@@ -180,15 +192,6 @@ custom_fonts/font = ExtResource( 6 )
 text = "cast healing spells
 to regain health"
 align = 1
-
-[node name="WildCard" type="TextureRect" parent="."]
-margin_left = 1021.0
-margin_top = 362.0
-margin_right = 1263.0
-margin_bottom = 852.0
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 5
 
 [connection signal="pressed" from="HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="HBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]

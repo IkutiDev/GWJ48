@@ -7,7 +7,7 @@ func _on_Start_pressed():
 	Events.testMode = false
 	var value = get_tree().change_scene("res://Game.tscn")
 	assert(value == OK)
-	$VBoxContainer/HBoxContainer/Start.get_node("Click").volume_db = -80
+	$HBoxContainer/Start.get_node("Click").volume_db = -80
 	pass # Replace with function body.
 
 
