@@ -8,6 +8,8 @@ func physics_process(_delta: float) -> void:
 			_state_machine.transition_to("MoveEnemy/RunEnemy")
 		elif owner.global_position.distance_to(owner.desiredLoc) <= owner.distance_to_attack and attack_cooldown.time_left == 0:
 			_state_machine.transition_to("AttackEnemy")
+		elif owner.can_teleport:
+			_state_machine.transition_to("MoveEnemy/TeleportEnemy")
 	else:
 		_state_machine.transition_to("MoveEnemy/AirEnemy")
 		

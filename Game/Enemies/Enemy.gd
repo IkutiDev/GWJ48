@@ -35,6 +35,8 @@ var desiredLoc = Vector2()
 
 var is_attacking := false
 
+var can_teleport := false
+
 var experience_orb_scene = preload("res://Collectible/Experience/ExperienceOrb.tscn")
 
 var goldCoinScene = preload("res://Collectible/Gold/GoldCoin.tscn")

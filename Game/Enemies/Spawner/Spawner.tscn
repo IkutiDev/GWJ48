@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Enemies/Spawner/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/default_font_morris_roman.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemies/Spawner/enemy_data/SkeletonArcherData.tres" type="Resource" id=6]
 [ext_resource path="res://UI/WaveCompletedPopup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Spawner/AmbianceDJ.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/MoonWarrior/MoonWarriorData.tres" type="Resource" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
@@ -29,7 +30,7 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 wave_completed_popup = ExtResource( 7 )
 buff_enemies_on_every_x_wave = 3
-enemies_data = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
+enemies_data = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ) ]
 
 [node name="Exits" type="Node2D" parent="."]
 
