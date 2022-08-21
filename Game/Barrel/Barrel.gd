@@ -6,7 +6,7 @@ var healthScene = preload("res://Collectible/Health/HealthPotion.tscn")
 
 var lootTable = {
 	0 : [0],
-	7 : [1,1],
+	5 : [1,1],
 	12 : [1,1,1],
 	18 : [2],
 }
@@ -38,7 +38,10 @@ func un_repair():
 	$Blocker.disabled = true
 	$Smash.pitch_scale = 0.7 + randf() * 0.9
 	$Smash.play()
+	var player = $"%Player".get_node("PlayerCombat")
 	var lotto = randi()%22
+	if player.current_health == player.health:
+		lotto = min(17,lotto)
 	var loot = 0
 	for k in lootTable.keys():
 		if lotto > k :
