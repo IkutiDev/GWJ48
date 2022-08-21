@@ -33,8 +33,12 @@ func physics_process(delta):
 	if time > duration :
 		time = 0
 		_state_machine.transition_to("Stop")
-
-
+		
+	if owner.global_position.distance_to(owner.player.global_position) < 200:
+		var direction = owner.global_position - owner.player.global_position
+		direction = direction.normalized()
+		owner.velocity = Steering.follow(owner.velocity,owner.global_position,direction * 5 + owner.global_position,owner.speed*0.3,owner.mass)
+		owner.move_and_collide(owner.velocity * delta)
 	
 func track(delta):
 	var significantAngle = owner.get_node("Laser").get_angle_to(owner.player.global_position)
@@ -47,7 +51,7 @@ func track(delta):
 func distance_bonus():
 	var origin = owner.global_position
 	var point = owner.player.global_position
-	return max(0.2, -0.002 * origin.distance_to(point) + 1.0)
+	return max(0.2, -0.019 * origin.distance_to(point) + 3.0)
 	
 
 
@@ -61,7 +65,7 @@ func exit():
 
 
 func _on_BlastTimer_timeout():
-	turnSpeed = 0.8
+	turnSpeed = 0.72
 	yield(get_tree().create_timer(0.4),"timeout")
 	owner.get_node("Laser").width = 20
 	owner.get_node("Laser").get_node("Fire").play()
