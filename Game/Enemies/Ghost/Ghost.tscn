@@ -182,7 +182,7 @@ collision_layer = 32
 collision_mask = 16
 script = ExtResource( 1 )
 damage = 12.0
-score = 21
+score = 14
 experience = 10
 speed = 60.0
 speed_difference_on_spawn_min = -10.0
@@ -206,7 +206,6 @@ bus = "Effects"
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Skin"]
 frames = SubResource( 104 )
 animation = "float"
-frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]

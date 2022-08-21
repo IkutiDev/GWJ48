@@ -2,7 +2,7 @@
 
 [ext_resource path="res://MainMenu/CreditsScreen.gd" type="Script" id=1]
 [ext_resource path="res://MainMenu/BasicButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/Fonts/default_font_livingstone.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Fonts/default_font_livingstone_medium.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UI/Background.tscn" type="PackedScene" id=4]
 
 [node name="CreditsScreen" type="Control"]
@@ -18,16 +18,32 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.627451 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 264.0
-margin_top = 119.0
-margin_right = 502.0
-margin_bottom = 150.0
+margin_left = 2.0
+margin_top = 54.0
+margin_right = 751.0
+margin_bottom = 591.0
 custom_fonts/font = ExtResource( 3 )
 text = "A game made by:
 
 Ktosox
 Ikuti  
 Therankofjedimaster
+"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 529.0
+margin_top = 45.0
+margin_right = 1278.0
+margin_bottom = 582.0
+custom_fonts/font = ExtResource( 3 )
+text = "Special thanks to:
+
+brullov
+Ramen
+CreativeKind
+XYEzawr
+
 "
 align = 1
 
