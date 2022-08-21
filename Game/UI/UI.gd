@@ -21,7 +21,11 @@ onready var player = $"%Player"
 var current_score = 0
 
 func _on_HealthUpdated(current_health: float):
+
+	if ((current_health)/ player.get_max_health())*100 < $HP.value:
+		$DamageScreenFlash/AnimationPlayer.play("New Anim") # flash red on screen
 	$HP.value = ((current_health)/ player.get_max_health())*100
+
 	
 func _on_ShieldRegained(shield_index: int):
 	var animation_player : AnimationPlayer = shield_icons.get_child(shield_index).get_node("AnimationPlayer")

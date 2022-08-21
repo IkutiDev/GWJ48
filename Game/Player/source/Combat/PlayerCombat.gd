@@ -37,9 +37,11 @@ func _on_InvincibilityTimer_time_out()-> void:
 	blocked_this_frame = false
 
 func gain_health(gain):
-	current_health = min(current_health+gain,health)
-	hitbox.current_health = current_health
+
+	hitbox.current_health = min(hitbox.current_health+gain,health)
+	current_health = hitbox.current_health
 	emit_signal("health_changed", current_health)
+
 	pass
 
 func _on_RegainShieldTimer_time_out() -> void:

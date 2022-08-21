@@ -32,7 +32,7 @@ signal SleepWindowShowed()
 signal SleepWindowClosed()
 
 func _ready() -> void:
-	print("test")
+
 	SoundManager.play_song(4)
 	player = get_node("/root/Game/Player")
 	buff_manager = get_node("/root/Game/BuffManager")  as BuffManager
